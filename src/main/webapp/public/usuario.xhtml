@@ -54,47 +54,44 @@
 						
 						<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}" id="hiddenId" />
 	
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="nome" value="#{messages['user.name']}" />
 							<p:inputText id="nome" styleClass="form-control"
 								value="#{gerenciarUsuarioMB.usuario.nome}" required="true" />
 							<!-- <p:message for="nome" /> -->
-						</div>
+						</p:outputPanel>
 
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="sobrenome"
 								value="#{messages['user.lastname']}" />
 							<p:inputText id="sobrenome" styleClass="form-control"
 								value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" />
 							<!-- <p:message for="sobrenome" errorClass="invalid" /> -->
-						</div>
+						</p:outputPanel>
 
-						<div class="form-group">
-							<p:outputLabel for="email" value="#{messages['user.email']}" />
-							<p:inputText id="email" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
-							<!-- <p:message for="email" errorClass="invalid" /> -->
-						</div>
-						
-						
 						<h:panelGrid styleClass="form-group" >
 							<p:outputLabel for="automovel" value="#{messages['user.automovel']}" />
-							<p:selectOneMenu id="automovel" value="#{gerenciarUsuarioMB.usuario.automovel.id}"  >
+							<p:selectOneMenu id="automovel" value="#{gerenciarUsuarioMB.usuario.automovel.id}" style="width:125px" >
 								<f:selectItem itemLabel="Select One" itemValue="" />
 					            <f:selectItems value="#{gerenciarUsuarioMB.automoveis}"  styleClass="form-control" 
 					             		var="auto" itemLabel="#{auto.placa}" itemValue="#{auto.id}" />
 					        </p:selectOneMenu>
 						</h:panelGrid>
+
+						<p:outputPanel styleClass="form-group" >
+							<p:outputLabel for="email" value="#{messages['user.email']}" />
+							<p:inputText id="email" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
+							<!-- <p:message for="email" errorClass="invalid" /> -->
+						</p:outputPanel>
 						
-						
-						
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="senha" value="#{messages['user.password']}" />
 							<p:password id="senha" styleClass="form-control"
 								value="#{gerenciarUsuarioMB.usuario.senha}" required="true">
 							</p:password>
 							<!-- <p:message for="senha" errorClass="invalid" /> -->
-						</div>
+						</p:outputPanel>
 
 						<p:commandButton value="#{messages['clean']}" 
 						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"

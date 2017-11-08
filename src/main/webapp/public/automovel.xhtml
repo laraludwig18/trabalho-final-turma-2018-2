@@ -53,41 +53,41 @@
 						
 						<h:inputHidden value="#{gerenciarAutomovelMB.automovel.id}" id="hiddenId" />
 	
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="placa" value="#{messages['automovel.placa']}" />
 							<p:inputText id="placa" styleClass="form-control"
 								value="#{gerenciarAutomovelMB.automovel.placa}" required="true" />
 							<p:message for="placa" />
-						</div>
+						</p:outputPanel>
 
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="marca"
 								value="#{messages['automovel.marca']}" />
 							<p:inputText id="marca" styleClass="form-control"
 								value="#{gerenciarAutomovelMB.automovel.marca}"  />
 							<p:message for="marca" errorClass="invalid" />
-						</div>
+						</p:outputPanel>
 
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="modelo" value="#{messages['automovel.modelo']}" />
 							<p:inputText id="modelo" styleClass="form-control"
 								value="#{gerenciarAutomovelMB.automovel.modelo}"  />
 							<p:message for="modelo" errorClass="invalid" />
-						</div>
+						</p:outputPanel>
 
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="ano" value="#{messages['automovel.ano']}" />
 							<p:inputText id="ano" styleClass="form-control"
 								value="#{gerenciarAutomovelMB.automovel.ano}"  />
 							<p:message for="ano" errorClass="invalid" />
-						</div>
+						</p:outputPanel>
 						
-						<div class="form-group">
+						<p:outputPanel styleClass="form-group" >
 							<p:outputLabel for="renavan" value="#{messages['automovel.renavam']}" />
 							<p:inputText id="renavan" styleClass="form-control"
 								value="#{gerenciarAutomovelMB.automovel.renavan}" />
 							<p:message for="renavan" errorClass="invalid" />
-						</div>
+						</p:outputPanel>
 
 						<p:commandButton value="#{messages['clean']}" 
 						    action="#{gerenciarAutomovelMB.limpa}" styleClass="btn btn-default"
