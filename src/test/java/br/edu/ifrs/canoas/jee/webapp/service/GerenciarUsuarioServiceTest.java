@@ -1,6 +1,8 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -44,12 +46,12 @@ public class GerenciarUsuarioServiceTest {
 	@Test
 	public void salva_usuario() {
 		Usuario usuario = criaUsuario();
-		assertTrue(gerenciarUsuarioService.salvaUsario(usuario));
+		assertTrue(gerenciarUsuarioService.salva(usuario));
 		assertNotNull(usuario.getId());
 		log.info(usuario.getNome() + " foi persistido com o id " + usuario.getId());
 		
 		usuario = criaUsuario();
-		assertFalse(gerenciarUsuarioService.salvaUsario(usuario));
+		assertFalse(gerenciarUsuarioService.salva(usuario));
 		log.info("não permite criar usuario com mesmo email");
 	}
 
