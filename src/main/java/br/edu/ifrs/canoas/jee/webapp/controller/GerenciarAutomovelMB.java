@@ -8,48 +8,38 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.Automovel;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarAutomovelService;
-import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 
 @Named
 @RequestScoped
-public class GerenciarUsuarioMB {
+public class GerenciarAutomovelMB {
 
 	@Inject
-    private GerenciarUsuarioService gerenciarUsuarioService;
-	@Inject
-    private GerenciarAutomovelService gerenciarAutomovelService;
+    private GerenciarAutomovelService gerenciarAutomovelService;	
 	
 	@Inject
-	private Usuario usuario;
+	private Automovel automovel;
 	
-	private List<Usuario> usuarios;
 	private List<Automovel> automoveis;
-		
+			
 	@PostConstruct
     public void init() {
-		usuarios = gerenciarUsuarioService.busca(null);	
 		automoveis = gerenciarAutomovelService.busca(null);	
     }
 	
 	public String limpa() {
-		usuario = new Usuario();
-		return "/public/usuario.jsf?facesRedirect=true";
+		automovel = new Automovel();
+		return "/public/automovel.jsf?facesRedirect=true";
 	}
-	
+
 	public String salva() {
-		gerenciarUsuarioService.salva(usuario);
+		gerenciarAutomovelService.salva(automovel);
 		this.init();
 		return limpa();
 	}
 
-	public void edita(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public void exclui() {
-		gerenciarUsuarioService.exclui(usuario);
+		gerenciarAutomovelService.exclui(automovel);
 		this.init();
 	}
 	
@@ -57,18 +47,18 @@ public class GerenciarUsuarioMB {
 	 * GETTERS & SETTERS
 	 ********************/
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
+	public void edita(Automovel automovel) {
+		this.automovel = automovel;
 	}
 	
+	public Automovel getAutomovel() {
+		return automovel;
+	}
+
+	public void setAutomovel(Automovel automovel) {
+		this.automovel = automovel;
+	}
+
 	public List<Automovel> getAutomoveis() {
 		return automoveis;
 	}
@@ -77,7 +67,4 @@ public class GerenciarUsuarioMB {
 		this.automoveis = automoveis;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 }

@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.jee.webapp.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -30,10 +31,17 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	private String telefone;
 	
+	@OneToOne
+	private Automovel automovel;
+	
 	public Usuario() {
 		super();
+		automovel = new Automovel();
 	}
 		
+	/********************
+	 * GETTERS & SETTERS
+	 ********************/
 	public String getEmail() {
 		return this.email;
 	}
@@ -72,5 +80,14 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+	public Automovel getAutomovel() {
+		return automovel==null?new Automovel():automovel;
+	}
+
+	public void setAutomovel(Automovel automovel) {
+		this.automovel = automovel;
+	}
+	
 	
 }

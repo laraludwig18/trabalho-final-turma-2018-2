@@ -13,8 +13,8 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					<p:outputLabel value="#{messages['menu.title']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle']}" /></small>
+					<p:outputLabel value="#{messages['user.title']}" />
+					<small><p:outputLabel value="#{messages['user.subtitle']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
@@ -75,7 +75,19 @@
 								value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
 							<!-- <p:message for="email" errorClass="invalid" /> -->
 						</div>
-
+						
+						
+						<h:panelGrid styleClass="form-group" >
+							<p:outputLabel for="automovel" value="#{messages['user.automovel']}" />
+							<p:selectOneMenu id="automovel" value="#{gerenciarUsuarioMB.usuario.automovel.id}"  >
+								<f:selectItem itemLabel="Select One" itemValue="" />
+					            <f:selectItems value="#{gerenciarUsuarioMB.automoveis}"  styleClass="form-control" 
+					             		var="auto" itemLabel="#{auto.placa}" itemValue="#{auto.id}" />
+					        </p:selectOneMenu>
+						</h:panelGrid>
+						
+						
+						
 						<div class="form-group">
 							<p:outputLabel for="senha" value="#{messages['user.password']}" />
 							<p:password id="senha" styleClass="form-control"

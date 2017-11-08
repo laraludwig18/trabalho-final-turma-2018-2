@@ -26,7 +26,7 @@ public class GerenciarUsuarioService {
 	@Inject
 	private Logger log;
 
-	public boolean salvaUsario(Usuario usuario) {
+	public boolean salva(Usuario usuario) {
 
 		log.info("Salvando " + usuario.getNome());
 		
