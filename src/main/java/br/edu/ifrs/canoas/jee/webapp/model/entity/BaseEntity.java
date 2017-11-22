@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.model;
+package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

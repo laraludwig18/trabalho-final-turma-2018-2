@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.model;
+package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 
 import static org.junit.Assert.assertNotNull;
@@ -14,8 +14,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.edu.ifrs.canoas.jee.webapp.model.BaseEntity;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.BaseEntity;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 
 @RunWith(Arquillian.class)
 public class UsuarioTest {

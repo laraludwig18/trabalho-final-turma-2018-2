@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.data;
+package br.edu.ifrs.canoas.jee.webapp.model.dao;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -16,7 +16,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.UsuarioDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 
 @RunWith(Arquillian.class)
 public class UsuarioDAOTest {

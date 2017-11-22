@@ -16,8 +16,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.edu.ifrs.canoas.jee.webapp.data.UsuarioDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.UsuarioDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 @RunWith(Arquillian.class)

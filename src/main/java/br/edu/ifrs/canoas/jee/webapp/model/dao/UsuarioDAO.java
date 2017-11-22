@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.data;
+package br.edu.ifrs.canoas.jee.webapp.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 
 @Stateless
 public class UsuarioDAO extends BaseDAO<Usuario, Long> {

@@ -12,8 +12,8 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.edu.ifrs.canoas.jee.webapp.data.UsuarioDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.UsuarioDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 
