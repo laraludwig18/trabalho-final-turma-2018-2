@@ -7,9 +7,9 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 
-import br.edu.ifrs.canoas.jee.webapp.data.AutomovelDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.Automovel;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.AutomovelDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Automovel;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 

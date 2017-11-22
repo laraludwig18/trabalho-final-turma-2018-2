@@ -1,10 +1,10 @@
-package br.edu.ifrs.canoas.jee.webapp.data;
+package br.edu.ifrs.canoas.jee.webapp.model.dao;
 
 import java.util.List;
 
 import javax.ejb.Stateless;
 
-import br.edu.ifrs.canoas.jee.webapp.model.Automovel;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Automovel;
 
 @Stateless
 public class AutomovelDAO extends BaseDAO<Automovel, Long> {

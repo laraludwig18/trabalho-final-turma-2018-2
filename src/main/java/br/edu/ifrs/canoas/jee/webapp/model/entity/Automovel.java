@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.model;
+package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 import java.io.Serializable;
 
@@ -28,6 +28,11 @@ public class Automovel extends BaseEntity<Long> implements Serializable {
 	private String ano;		
 	private String renavan;
 	
+	public Automovel() {}
+	
+	public Automovel(String placa) {
+		this.placa = placa;
+	}
 	/********************
 	 * GETTERS & SETTERS
 	 ********************/

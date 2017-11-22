@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.data;
+package br.edu.ifrs.canoas.jee.webapp.model.dao;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 
-import br.edu.ifrs.canoas.jee.webapp.model.BaseEntity;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.BaseEntity;
 
 @Stateless
 public abstract class BaseDAO<T extends BaseEntity<ID>, ID> implements Serializable{

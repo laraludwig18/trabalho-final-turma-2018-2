@@ -18,8 +18,10 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import br.edu.ifrs.canoas.jee.webapp.data.UsuarioDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.AutomovelDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.UsuarioDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Automovel;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 @RunWith(Arquillian.class)
@@ -29,12 +31,15 @@ public class GerenciarUsuarioServiceTest {
 	GerenciarUsuarioService gerenciarUsuarioService;
 	
 	@Inject
+	AutomovelDAO automovelDAO;
+	
+	@Inject
     Logger log;
 
 	@Deployment
     public static Archive<?> createTestArchive() {
 	    return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(GerenciarUsuarioService.class, UsuarioDAO.class, org.apache.commons.lang3.StringUtils.class, Mensagens.class)
+                .addClasses(GerenciarUsuarioService.class, UsuarioDAO.class, AutomovelDAO.class, org.apache.commons.lang3.StringUtils.class, Mensagens.class)
                 .addPackages(true, "br.edu.ifrs.canoas.jee.webapp")
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource(new File("src/main/webapp", "WEB-INF/faces-config.xml"))
@@ -56,11 +61,15 @@ public class GerenciarUsuarioServiceTest {
 	}
 
 	private Usuario criaUsuario() {
+		Automovel automovel = new Automovel("AAA-0000");
+		automovelDAO.insere(automovel);
+		
 		Usuario usuario = new Usuario();
 		usuario.setEmail("email@email.com");
 		usuario.setNome("Rodrigo");
 		usuario.setSenha("senha");
 		usuario.setSobrenome("Noll");
+		usuario.setAutomovel(automovel);
 		return usuario;
 	}
 

@@ -1,4 +1,4 @@
-package br.edu.ifrs.canoas.jee.webapp.controller;
+package br.edu.ifrs.canoas.jee.webapp.model;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifrs.canoas.jee.webapp.model.Automovel;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Automovel;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarAutomovelService;
 
 @Named
