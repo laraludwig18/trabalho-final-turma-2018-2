@@ -14,3 +14,5 @@ Este projeto permite a criação de aplicações em conformidade com o especific
  - [Arquillian](http://arquillian.org/)
  - [AssertJ](http://joel-costigliola.github.io/assertj/)
  
+## Referência para Aula JEE (Rodrigo Noll / IFRS Canoas)
+ - [JEE](https://lpoo2.github.io/aulas/jee/#/)
