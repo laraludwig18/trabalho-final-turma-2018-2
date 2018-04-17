@@ -127,6 +127,24 @@
 			<version>1.0.10</version>
 		</dependency> -->
 		
+		<!--  WEBJARS -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>adminlte</artifactId>
+		    <version>2.3.11</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>ionicons</artifactId>
+		    <version>2.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>font-awesome</artifactId>
+		    <version>4.7.0</version>
+		</dependency>	
+		<!-- ! WEBJARS -->	
+		
 
 
 
