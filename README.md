@@ -1,5 +1,5 @@
 # [Aplicação JEE](https://rodrigonoll.github.io/aula/java-jee/#/)
-Este é um projeto Web simples obtido a partir do JBoss Tools para auxiliar a rápida criação de projetos JEE usando JBoss Enterprise Application Platform 6, JBoss Application Server 7.1 ou Wildfly 8.0+.  
+Este é um projeto Web simples obtido a partir do JBoss Tools para auxiliar a rápida criação de projetos JEE usando JBoss Enterprise Application Platform 6, JBoss Application Server 7.1 ou Wildfly 8.0+. Teste de Notify
 
 Este projeto permite a criação de aplicações em conformidade com o especificação JEE e utiliza as seguintes tecnologias/frameworks:
  - [Apache Maven](https://maven.apache.org/)
