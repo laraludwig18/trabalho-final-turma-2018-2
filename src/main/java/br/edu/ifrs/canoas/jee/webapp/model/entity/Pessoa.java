@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+
+import org.hibernate.validator.constraints.Email;
 
 import lombok.Data;
 
@@ -23,8 +26,9 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	@Max(100)
 	private String nome;
-
+	@Email
 	private String email;
 	private String telefone;
 	private Endereco endereco;

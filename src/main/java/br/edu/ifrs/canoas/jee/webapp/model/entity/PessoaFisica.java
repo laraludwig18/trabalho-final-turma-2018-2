@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -22,7 +23,9 @@ public class PessoaFisica extends Pessoa implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	
 	private String cpf;
+	@Size(max = 10)
 	private String rg;
 	private Date dataNascimento;
 	@Enumerated(EnumType.STRING)
