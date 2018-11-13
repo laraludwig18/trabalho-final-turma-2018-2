@@ -19,14 +19,12 @@ import lombok.Data;
  */
 @Entity
 @Data
-public abstract class Pessoa implements Serializable {
+public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 	private String nome;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+
 	private String email;
 	private String telefone;
 	private Endereco endereco;
