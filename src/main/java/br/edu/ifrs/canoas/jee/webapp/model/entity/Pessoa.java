@@ -3,7 +3,6 @@ package br.edu.ifrs.canoas.jee.webapp.model.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
