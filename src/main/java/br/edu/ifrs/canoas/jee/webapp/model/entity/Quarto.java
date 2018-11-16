@@ -29,7 +29,7 @@ public class Quarto extends BaseEntity<Long> implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoDeQuarto tipo;
 	@Enumerated(EnumType.STRING)
-	private ServicoQuarto servico = ServicoQuarto.DISPONIVEL;
+	private SituacaoQuarto servico = SituacaoQuarto.DISPONIVEL;
 	@Max(400)
 	private String descricao;
 	

@@ -1,6 +1,6 @@
 package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
-public enum ServicoQuarto {
+public enum SituacaoQuarto {
 	
 	DISPONIVEL, INDISPONIVEL
 
