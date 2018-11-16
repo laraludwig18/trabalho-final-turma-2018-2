@@ -55,6 +55,6 @@ public class GerenciarQuarto {
 		quarto = new Quarto();
 		return "/client/quarto.jsf?facesRedirect=true";
 	}
-	
+	 
 
 }
