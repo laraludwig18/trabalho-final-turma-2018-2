@@ -2,12 +2,13 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/template.xhtml">
 
 	<ui:define name="content">
+
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
@@ -24,37 +25,133 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<h:panelGrid>
-					<h1>Diária</h1>
-					<h:outputLabel value="Tipo de Cliente: *" for="tipoCliente" />
-					<h:selectOneMenu id="tipoCliente">
-						<f:selectItem itemLabel="--Selecione o tipo de cliente--" itemValue="" />
-					</h:selectOneMenu>
-					
-					<h:outputLabel value="CNPJ: *" for="cnpj" />
-					<h:selectOneMenu id="cnpj">
-						<f:selectItem itemLabel="--Selecione o CNPJ--" itemValue="" />
-					</h:selectOneMenu>
-					
-					<h:outputLabel value="CPF: *" for="cpf" />
-					<h:selectOneMenu id="cpf">
-						<f:selectItem itemLabel="--Selecione o CPF--" itemValue="" />
-					</h:selectOneMenu>
-					
-					<h:outputLabel value="Quarto: *" for="quarto" />
-					<h:selectOneMenu id="quarto">
-						<f:selectItem itemLabel="--Selecione o quarto--" itemValue="" />
-					</h:selectOneMenu>
-					
-					<h:outputLabel value="Quantidade de dias: *" for="qtdDias" />
-					<p:inputNumber id="qtdDias" />  
-					
-					<h:commandButton value="Salvar" />
-					<h:commandButton value="Limpar" />	
-				</h:panelGrid>
+				<h:panelGroup id="user-content">
+					<!-- Default box -->
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">
+								<p:outputLabel value="#{messages['user']}" />
+							</h3>
+
+							<div class="box-tools pull-right">
+								<button type="button" class="btn btn-box-tool"
+									data-widget="collapse" data-toggle="tooltip" title="Collapse">
+									<i class="fa fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-box-tool"
+									data-widget="remove" data-toggle="tooltip" title="Remove">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+						</div>
+
+
+
+						<div class="box-body" id="form-usuario">
+
+							<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}"
+								id="hiddenId" />
+
+							<div class="form-group">
+								<h:outputLabel value="Tipo de Cliente: *" for="tipoCliente" />
+								<p:selectOneMenu id="tipoCliente"
+									value="#{gerenciarDiariaMB.tipoCliente}">
+									<f:selectItem itemLabel="Selecione o tipo de cliente" itemValue="" />
+									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel value="CNPJ: *" for="cnpj" />
+								<h:selectOneMenu id="cnpj">
+									<f:selectItem itemLabel="--Selecione o CNPJ--" itemValue="" />
+									<f:selectItems value="#{gerenciarDiariaMB.cnpjs}" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel value="CPF: *" for="cpf" />
+								<h:selectOneMenu id="cpf">
+									<f:selectItem itemLabel="--Selecione o CPF--" itemValue="" />
+									<f:selectItems value="#{gerenciarDiariaMB.cpfs}" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel value="Quarto: *" for="quarto" />
+								<h:selectOneMenu id="quarto">
+									<f:selectItem itemLabel="--Selecione o quarto--" itemValue="" />
+									<f:selectItems value="#{gerenciarDiariaMB.quartos}" />
+								</h:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel value="Quantidade de dias: *" for="qtdDias" />
+								<p:inputNumber id="qtdDias" />
+							</div>
+
+							
+							<h:commandButton value="Limpar" />	
+							<h:commandButton value="Salvar"
+								styleClass="btn btn-primary pull-right"
+								action="#{gerenciarDiariaMB.salvar}">
+							</h:commandButton>
+						</div>
+
+						<div class="box-footer">
+
+							<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
+								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+							</h:panelGroup>
+
+
+							<p:dataTable var="_usr" value="#{gerenciarUsuarioMB.usuarios}"
+								id="tb-usuarios"
+								rendered="#{not empty gerenciarUsuarioMB.usuarios}">
+								<p:column headerText="Nome">
+									<h:outputText value="#{_usr.nome}" />
+								</p:column>
+								<p:column headerText="Sobrenome">
+									<h:outputText value="#{_usr.sobrenome}" />
+								</p:column>
+								<p:column headerText="Email">
+									<h:outputText value="#{_usr.email}" />
+								</p:column>
+
+								<p:column headerText="Ações">
+									<!-- EDITA -->
+									<h:commandButton value="#{messages['edit']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarUsuarioMB.edita(_usr)}"
+										update="form-usuario">
+										<p:ajax update=":mainForm:user-content" />
+									</h:commandButton>
+									<!-- EXCLUI -->
+									<h:commandLink value="#{messages['delete']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarUsuarioMB.exclui}" ajax="true"
+										update="tb-usuarios">
+										<f:setPropertyActionListener value="#{_usr}"
+											target="#{gerenciarUsuarioMB.usuario}" />
+									</h:commandLink>
+								</p:column>
+							</p:dataTable>
+
+						</div>
+
+					</div>
+					<!-- /.box -->
+				</h:panelGroup>
 			</section>
 			<!-- /.content -->
 		</div>
-	</ui:define>
 
+	</ui:define>
 </ui:composition>
+
+
+
+
+
+
+

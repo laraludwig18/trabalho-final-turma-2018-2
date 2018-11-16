@@ -22,8 +22,6 @@ import lombok.Data;
 @DiscriminatorColumn(name = "diaria_tipo")
 @Data
 public class Diaria  extends BaseEntity<Long> implements Serializable {
-
-	
 	private static final long serialVersionUID = 1L;
 	
 	protected Date data;
