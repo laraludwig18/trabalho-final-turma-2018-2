@@ -1,17 +1,11 @@
 package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+
 
 import lombok.Data;
 
@@ -25,7 +19,7 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	@Max(100)
+	@Size(max = 100)
 	private String nome;
 	@Email
 	private String email;

@@ -53,12 +53,11 @@
 
 						<div class="box-body" id="form-usuario">
 
-							<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}"
-								id="hiddenId" />
-
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
-								<p:inputText id="nome" styleClass="form-control" required="true" />
+								<p:inputText id="nome" styleClass="form-control"
+									value="#{gerenciarPessoaFisica.pessoaFisica.nome}"
+									required="true" />
 
 							</div>
 
@@ -66,45 +65,46 @@
 								<p:outputLabel for="telefone"
 									value="#{messages['cliente.telefone']}" />
 								<p:inputText id="telefone" styleClass="form-control"
+									value="#{gerenciarPessoaFisica.pessoaFisica.telefone}"
 									required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="email" value="#{messages['cliente.email']}" />
 								<p:inputText id="email" styleClass="form-control"
+									value="#{gerenciarPessoaFisica.pessoaFisica.email}"
 									required="true" />
 							</div>
-							
+
 							<div class="form-group">
-								<p:outputLabel for="cpf"
-									value="#{messages['cliente.cpf']}" />
+								<p:outputLabel for="cpf" value="#{messages['cliente.cpf']}" />
 								<p:inputText id="cpf" styleClass="form-control"
+									value="#{gerenciarPessoaFisica.pessoaFisica.cpf}"
 									required="true" />
 							</div>
-							
+
 							<div class="form-group">
-								<p:outputLabel for="rg"
-									value="#{messages['cliente.rg']}" />
+								<p:outputLabel for="rg" value="#{messages['cliente.rg']}" />
 								<p:inputText id="rg" styleClass="form-control"
+									value="#{gerenciarPessoaFisica.pessoaFisica.rg}"
 									required="true" />
 							</div>
-							
+
 							<div class="form-group">
 								<p:outputLabel for="datanasc"
 									value="#{messages['cliente.datanasc']}" />
-								<p:inputText id="datanasc" styleClass="form-control"
-									required="true" />
+								<p:calendar id="datanasc"
+									value="#{gerenciarPessoaFisica.pessoaFisica.dataNascimento}"
+									showOn="button" />
 							</div>
 
-
-
 							<p:commandButton value="#{messages['clean']}"
-								action="#{gerenciarUsuarioMB.limpa}"
+								action="#{gerenciarPessoaFisica.limpa}"
 								styleClass="btn btn-default" ajax="false" style="border: none;"
 								immediate="true" />
 
 							<h:commandButton value="Salvar"
-								action="#{gerenciarUsuarioMB.salva}"
+								action="#{gerenciarPessoaFisica.salva}"
 								styleClass="btn btn-primary pull-right">
 
 							</h:commandButton>
@@ -117,43 +117,43 @@
 							</h:panelGroup>
 
 
-							<p:dataTable var="_usr" value="#{gerenciarUsuarioMB.usuarios}"
+							<p:dataTable var="_usr" value="#{gerenciarPessoaFisica.pessoasFisicas}"
 								id="tb-usuarios"
-								rendered="#{not empty gerenciarUsuarioMB.usuarios}">
+								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
 								<p:column headerText="#{messages['cliente.table.nome']}">
-									<h:outputText value="#{cliente.table.nome}" />
+									<h:outputText value="#{_usr.nome}" />
 								</p:column>
 								<p:columns headerText="#{messages['cliente.table.telefone']}">
-									<h:outputText value="#{cliente.table.telefone}" />
+									<h:outputText value="#{_usr.telefone}" />
 								</p:columns>
 								<p:column headerText="#{messages['cliente.table.email']}">
-									<h:outputText value="#{cliente.table.email}" />
+									<h:outputText value="#{_usr.email}"/>
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.cpf']}">
-									<h:outputText value="#{cliente.table.cpf}" />
+									<h:outputText value="#{_usr.cpf}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.rg']}">
-									<h:outputText value="#{cliente.table.rg}" />
+									<h:outputText value="#{_usr.rg}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.datanasc']}">
-									<h:outputText value="#{cliente.table.datanasc}" />
+									<h:outputText value="#{_usr.dataNascimento}" />
 								</p:column>
 
 								<p:column headerText="Ações">
 									<!-- EDITA -->
 									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarUsuarioMB.edita(_usr)}"
+										action="#{gerenciarPessoaFisica.edita(_usr)}"
 										update="form-usuario">
 										<p:ajax update=":mainForm:user-content" />
 									</h:commandButton>
 									<!-- EXCLUI -->
 									<h:commandLink value="#{messages['delete']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarUsuarioMB.exclui}" ajax="true"
+										action="#{gerenciarPessoaFisica.exclui}" ajax="true"
 										update="tb-usuarios">
 										<f:setPropertyActionListener value="#{_usr}"
-											target="#{gerenciarUsuarioMB.usuario}" />
+											target="#{gerenciarPessoaFisica.pessoaFisica}" />
 									</h:commandLink>
 								</p:column>
 							</p:dataTable>
