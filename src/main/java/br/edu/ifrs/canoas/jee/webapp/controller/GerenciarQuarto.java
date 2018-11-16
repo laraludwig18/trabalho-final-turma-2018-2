@@ -58,7 +58,7 @@ public class GerenciarQuarto {
 		quarto = new Quarto();
 		situacao = SituacaoQuarto.DISPONIVEL;
 		quarto.setSituacao(situacao);
-		return "/client/quarto.jsf?facesRedirect=true";
+		return "/adm/quarto.jsf?facesRedirect=true";
 	}
 	 
 
