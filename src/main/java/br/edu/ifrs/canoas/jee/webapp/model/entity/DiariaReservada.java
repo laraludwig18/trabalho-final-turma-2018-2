@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -18,6 +20,10 @@ public class DiariaReservada extends Diaria implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
  
+	@JoinColumn(unique = true)
+	@OneToOne
+	private Reserva reserva;
+	
 	public DiariaReservada() {
 		super();
 	}
