@@ -1,15 +1,10 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
 
 import java.util.List;
-
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
-
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
-import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 @Stateless
 public class GerenciarPessoaFisicaService {
@@ -35,6 +30,13 @@ public class GerenciarPessoaFisicaService {
 	}
 
 	public void exclui(PessoaFisica pessoaFisica) {
-		pessoaFisicaDAO.exclui(pessoaFisica.getId());
+		if(pessoaFisica.getId() != null)
+		{
+			pessoaFisicaDAO.exclui(pessoaFisica.getId());
+		}
+		else
+		{
+			pessoaFisicaDAO.insere(pessoaFisica);
+		}
 	}
 }

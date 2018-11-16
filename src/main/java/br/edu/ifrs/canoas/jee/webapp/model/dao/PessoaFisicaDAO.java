@@ -2,7 +2,6 @@ package br.edu.ifrs.canoas.jee.webapp.model.dao;
 
 import java.util.List;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 public class PessoaFisicaDAO extends BaseDAO<PessoaFisica, Long>{
 
 	/**
