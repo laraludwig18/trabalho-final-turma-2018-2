@@ -12,7 +12,7 @@ public class PessoaFisicaDAO extends BaseDAO<PessoaFisica, Long>{
 	 //CONSULTAS ESPECIFICAS
 	
 	@SuppressWarnings("unchecked")
-	public List<PessoaFisica> buscaPorCpf(String cpf) {
+	public List<PessoaFisica> g(String cpf) {
 		return em.createQuery("SELECT u " + "FROM PessoaFisica u " + "WHERE u.cpf = :cpf")
 				.setParameter("cpf", cpf).getResultList();
 	}
