@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.jee.webapp.service;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -114,6 +115,38 @@ public class GerenciarUsuarioService {
 
 	public Usuario get(Long id) {
 		return usuarioDAO.busca(id);
+	}
+	
+	//*************************************************//
+	
+	public List<String> getPaises() {
+		List<String> list = new ArrayList<String>();
+		
+		list.add("Brasil");
+		list.add("Ucrânia");
+		list.add("Bélgica");
+		
+		return list;
+	}
+	
+	public List<String> getEstados() {
+		List<String> list = new ArrayList<String>();
+		
+		list.add("Rio Grande do Sul");
+		list.add("São Paulo");
+		list.add("Rio de Janeiro");
+		
+		return list;
+	}
+	
+	public List<String> getMunicipios() {
+		List<String> list = new ArrayList<String>();
+		
+		list.add("Porto Alegre");
+		list.add("Canoas");
+		list.add("Belém");
+		
+		return list;
 	}
 
 }

@@ -10,16 +10,27 @@ import javax.inject.Named;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 
+import lombok.Data;
+
 @Named
 @RequestScoped
+@Data
 public class GerenciarUsuarioMB {
 
 	@Inject
     private GerenciarUsuarioService gerenciarUsuarioService;	
 	@Inject
 	private Usuario usuario;
-	
 	private List<Usuario> usuarios;
+	
+	private String pais;
+	private List<String> paises;
+
+	private String estado;
+	private List<String> estados;
+	
+	private String municipio;
+	private List<String> municipios;
 		
 	public String salva() {
 		gerenciarUsuarioService.salvaUsario(usuario);
@@ -30,6 +41,7 @@ public class GerenciarUsuarioMB {
 	@PostConstruct
     public void init() {
 		usuarios = gerenciarUsuarioService.busca(null);	
+		paises = gerenciarUsuarioService.getPaises();
     }
 	
 	public void exclui() {
@@ -41,24 +53,16 @@ public class GerenciarUsuarioMB {
 		this.usuario = u;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 	public String limpa() {
 		usuario = new Usuario();
 		return "/public/usuario.jsf?facesRedirect=true";
 	}
-
+	
+	public void alterarPais() {
+	    estados = gerenciarUsuarioService.getEstados();
+	}
+	
+	public void alterarEstado() {
+		municipios = gerenciarUsuarioService.getMunicipios();
+	}
 }
