@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.SituacaoQuarto;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarQuartoService;
 
 public class GerenciarQuarto {
@@ -12,6 +13,8 @@ public class GerenciarQuarto {
 	private GerenciarQuartoService gerenciarQuartoService;
 	
 	private Quarto quarto;
+	
+	private SituacaoQuarto situacao;
 	
 	private List<Quarto> quartos;
 		
@@ -53,6 +56,8 @@ public class GerenciarQuarto {
 
 	public String limpa() {
 		quarto = new Quarto();
+		situacao = SituacaoQuarto.DISPONIVEL;
+		quarto.setSituacao(situacao);
 		return "/client/quarto.jsf?facesRedirect=true";
 	}
 	 
