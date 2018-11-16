@@ -9,9 +9,11 @@ import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaFisicaService;
+import lombok.Data;
 
 @Named
 @RequestScoped
+@Data
 public class GerenciarPessoaFisica {
 	
 	@Inject
@@ -41,25 +43,9 @@ public class GerenciarPessoaFisica {
 		this.pessoaFisica = pessoaFisica;
 	}
 
-	public PessoaFisica getPessoaFisica() {
-		return pessoaFisica;
-	}
-
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
-		this.pessoaFisica = pessoaFisica;
-	}
-
-	public List<PessoaFisica> getPessoasFisicas() {
-		return pessoasFisicas;
-	}
-
-	public void setPessoasFisicas(List<PessoaFisica> pessoasFisicas) {
-		this.pessoasFisicas = pessoasFisicas;
-	}
-
 	public String limpa() {
 		pessoaFisica = new PessoaFisica();
-		return "/client/pessoafisica.jsf?facesRedirect=true";
+		return "/Client/PessoaFisica.jsf?facesRedirect=true";
 	}
 
 }

@@ -52,6 +52,8 @@
 
 
 						<div class="box-body" id="form-usuario">
+						
+							<h:inputHidden value="#{gerenciarPessoaFisica.pessoaFisica.id}" id="hiddenId" />
 
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
@@ -95,12 +97,12 @@
 									value="#{messages['cliente.datanasc']}" />
 								<p:calendar id="datanasc"
 									value="#{gerenciarPessoaFisica.pessoaFisica.dataNascimento}"
-									showOn="button" />
+									showOn="button" required="true" />
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
-								action="#{gerenciarPessoaFisica.limpa}"
-								styleClass="btn btn-default" ajax="false" style="border: none;"
+								action="#{gerenciarPessoaFisica.limpa}" styleClass="btn btn-default"
+								ajax="false" style="border: none;"
 								immediate="true" />
 
 							<h:commandButton value="Salvar"
@@ -112,13 +114,14 @@
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
+							<h:panelGroup rendered="#{empty gerenciarPessoaFisica.pessoasFisicas}">
 								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
 							</h:panelGroup>
 
 
-							<p:dataTable var="_usr" value="#{gerenciarPessoaFisica.pessoasFisicas}"
-								id="tb-usuarios"
+							<p:dataTable var="_usr" 
+								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
+								paginator="true" id="tb-usuarios"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
 								<p:column headerText="#{messages['cliente.table.nome']}">
 									<h:outputText value="#{_usr.nome}" />
@@ -127,7 +130,7 @@
 									<h:outputText value="#{_usr.telefone}" />
 								</p:columns>
 								<p:column headerText="#{messages['cliente.table.email']}">
-									<h:outputText value="#{_usr.email}"/>
+									<h:outputText value="#{_usr.email}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.cpf']}">
 									<h:outputText value="#{_usr.cpf}" />

@@ -18,7 +18,7 @@ public class GerenciarPessoaFisicaService {
 	private PessoaFisicaDAO pessoaFisicaDAO;
 
 	public void salvaPessoaFisica(PessoaFisica pessoaFisica) {
-		// TODO Auto-generated method stub
+
 		if (pessoaFisica.getId() == null) {
 			pessoaFisicaDAO.insere(pessoaFisica);
 		} else {
@@ -32,12 +32,6 @@ public class GerenciarPessoaFisicaService {
 		} else {
 			return pessoaFisicaDAO.lista();
 		}
-	}
-
-	public List<PessoaFisica> busca(Object object) {
-		// TODO Auto-generated method stub
-		
-		return null;
 	}
 
 	public void exclui(PessoaFisica pessoaFisica) {
