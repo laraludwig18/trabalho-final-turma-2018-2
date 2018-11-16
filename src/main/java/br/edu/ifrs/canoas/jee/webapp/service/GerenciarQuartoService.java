@@ -6,11 +6,8 @@ import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 
-import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.QuartoDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 @Stateless
