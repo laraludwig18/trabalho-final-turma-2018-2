@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
@@ -38,65 +38,49 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Cliente</span>
+            <i class="fa fa-user"></i> <h:outputText value="#{messages['side.cliente']}" />
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/webapp/Client/PessoaFisica.xhtml"><i class="fa fa-circle-o"></i> Pessoa Física</a></li>
-            <li><a href="/webapp/Client/PessoaJuridica.xhtml"><i class="fa fa-circle-o"></i> Pessoa Jurídica</a></li>
-            <li><a href="/webapp/resources/AdminLTE-2.4.2/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+
+            <li><a href="/webapp/Client/PessoaFisica.xhtml"><i class="fa fa-user"> </i> 
+            <h:outputText value="#{messages['side.pessoaFisica']}" /></a></li>
+            <li><a href="/webapp/Client/PessoaJuridica.xhtml"><i class="fa fa-users"></i> 
+            <h:outputText value="#{messages['side.pessoaJuridica']}" /></a></li>
+
           </ul>
         </li>
        
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
+            <i class="fa fa-calendar"></i> <h:outputText value="#{messages['side.diaria']}" />
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/chartjs.html"><i class="fa fa-bed"></i>  
+            <h:outputText value="#{messages['side.diaria']}" /></a></li>
+            <li><a href="../resources/AdminLTE-2.4.2/pages/charts/morris.html"><i class="fa fa-calendar-check-o"></i>  
+            <h:outputText value="#{messages['side.reserva']}" /></a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
+            <i class="fa fa-cog"></i> <h:outputText value="#{messages['side.adm']}" />
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
+            <li><a href="../resources/AdminLTE-2.4.2/pages/UI/general.html"><i class="fa fa-users"></i> 
+			<h:outputText value="#{messages['side.user']}" /></a></li>
+            <li><a href="/webapp/Adm/quarto.xhtml"><i class="fa fa-bed"></i> 
+			<h:outputText value="#{messages['side.quarto']}" /></a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../resources/AdminLTE-2.4.2/pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="../resources/AdminLTE-2.4.2/pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-          </ul>
-        </li>
-             
-       
    
       </ul>
     </section>
