@@ -26,7 +26,7 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 	private String nome;
 	@Email
 	private String email;
-	@Pattern(regexp="^[1-9]{2}\\-[2-9][0-9]{9,9}$") //FORMATO ACEITO POR ENQUANTO: 99-99999999 /99-999999999
+	@Pattern(regexp="^\\([1-9]{2}\\) [2-9][0-9]{4}\\-[0-9]{4}$") //FORMATO ACEITO POR ENQUANTO: (99) 99999-9999
 	private String telefone;
 	private Endereco endereco;
 	

@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -27,7 +28,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
 	
 	
 	private String cpf;
-	@Size(max = 10)
+	@Pattern(regexp="^[0-9]{10}$")
 	private String rg;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
