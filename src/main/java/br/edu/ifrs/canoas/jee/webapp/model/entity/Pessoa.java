@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.jee.webapp.model.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -19,6 +20,8 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	
+	@Pattern(regexp="@\"^((\\b[a-zA-Z]{2,40}\\b)\\s*){2,}$\"", message="Invalid Name!")
 	@Size(max = 100)
 	private String nome;
 	@Email

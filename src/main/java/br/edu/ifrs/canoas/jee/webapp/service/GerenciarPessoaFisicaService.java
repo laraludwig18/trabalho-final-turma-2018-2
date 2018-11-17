@@ -39,4 +39,8 @@ public class GerenciarPessoaFisicaService {
 			pessoaFisicaDAO.insere(pessoaFisica);
 		}
 	}
+	
+	public void validaId() {
+		
+	}
 }
