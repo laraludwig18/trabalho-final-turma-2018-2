@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 import lombok.Data;
 
@@ -19,9 +20,10 @@ import lombok.Data;
 public class GerenciarReservaMB {
 
 	@Inject
-    private GerenciarUsuarioService gerenciarUsuarioService;	
+    private GerenciarReservaService gerenciarReservaService;	
 	@Inject
 	private Reserva reserva;
+	private List<Reserva> reservas;
 	private List<String> tipoClientes;
 	private String tipoCliente;
 	private List<String> cpfs;
@@ -31,35 +33,35 @@ public class GerenciarReservaMB {
 	private List<String> quartos;
 	private String quarto;
 	
-	
-	
-	private List<Reserva> reservas;
-		
-	public String salva() {
-//		gerenciarReservaService.salvaReserva(reserva);
-//		this.init();
-		return limpa();
-	}
-	
 	@PostConstruct
     public void init() {
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = Arrays.asList("CPF1", "CPF2");
 		cnpjs = Arrays.asList("CNPJ1", "CNPJ2");
 		quartos = Arrays.asList("Quarto 1", "Quarto 2");
-		//gerenciar reserva services	
-		//reservas = gerenciarReservaService.busca(null);	
+		reservas = gerenciarReservaService.busca(null);	
     }
 	
-	public void exclui() {
-//		gerenciarReservaService.exclui(reserva);
+	public String salva() {
+		gerenciarReservaService.salvaReserva(reserva);
 		this.init();
+		return limpa();
+	}
+	
+	public String limpa() {
+		reserva = new Reserva();
+		return "/public/reserva.jsf?facesRedirect=true";
 	}
 	
 	public void edita(Reserva r) {
 		this.reserva = r;
 	}
-
+	
+	public void exclui() {
+		gerenciarReservaService.exclui(reserva);
+		this.init();
+	}
+	
 	public Reserva getReserva() {
 		return reserva;
 	}
@@ -72,12 +74,8 @@ public class GerenciarReservaMB {
 		return reservas;
 	}
 
-	public void setUsuarios(List<Reserva> r) {
+	public void setReservas(List<Reserva> r) {
 		this.reservas = r;
-	}
-	public String limpa() {
-		reserva = new Reserva();
-		return "/public/reserva.jsf?facesRedirect=true";
 	}
 
 }

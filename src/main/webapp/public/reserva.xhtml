@@ -13,8 +13,9 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					<p:outputLabel value="#{messages['menu.title.reserva']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle.reserva']}" /></small>
+					<p:outputLabel value="#{messages['menu.title.diaria']}" />
+					<small><p:outputLabel
+							value="#{messages['menu.subtitle.diaria']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
@@ -26,133 +27,150 @@
 
 			<!-- Main content -->
 			<section class="content">
-	  	  		<p:messages id="msgs" showDetail="false" autoUpdate="true" closable="true"/>	
-	  	  		
-	  	  		<h:panelGroup id="reserva-content">
-	  	  		<!-- Default box -->
-				<div class="box">
-					<div class="box-header with-border">
-						<h3 class="box-title">
-							<p:outputLabel value="#{messages['reserva']}" />
-						</h3>
+				<p:messages id="msgs" showDetail="false" autoUpdate="true"
+					closable="true" />
 
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool"
-								data-widget="collapse" data-toggle="tooltip" title="Collapse">
-								<i class="fa fa-minus"></i>
-							</button>
-							<button type="button" class="btn btn-box-tool"
-								data-widget="remove" data-toggle="tooltip" title="Remove">
-								<i class="fa fa-times"></i>
-							</button>
+				<h:panelGroup id="reserva-content">
+					<!-- Default box -->
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">
+								<p:outputLabel value="#{messages['reserva']}" />
+							</h3>
+
+							<div class="box-tools pull-right">
+								<button type="button" class="btn btn-box-tool"
+									data-widget="collapse" data-toggle="tooltip" title="Collapse">
+									<i class="fa fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-box-tool"
+									data-widget="remove" data-toggle="tooltip" title="Remove">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
 						</div>
+
+
+
+						<div class="box-body" id="form-reserva">
+
+							<h:inputHidden value="#{gerenciarReservaMB.reserva.id}"
+								id="hiddenId" />
+
+							<div class="form-group">
+								<p:outputLabel for="tpCliente"
+									value="#{messages['reserva.tipoCliente']}" />
+								<p:selectOneMenu id="tpCliente"
+									value="#{gerenciarReservaMB.tipoCliente}"
+									styleClass="form-control" required="true">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
+								<p:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}"
+									styleClass="form-control" required="true">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.cnpjs}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
+								<p:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}"
+									styleClass="form-control" required="true">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.cpfs}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="quarto"
+									value="#{messages['reserva.quarto']}" />
+								<p:selectOneMenu id="quarto"
+									value="#{gerenciarReservaMB.quarto}" styleClass="form-control"
+									required="true">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.quartos}" />
+								</p:selectOneMenu>
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="qntdias" value="#{messages['reserva.dias']}" />
+								<p:inputText id="qntdias" styleClass="form-control"
+									required="true" />
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="data" value="#{messages['reserva.data']}" />
+								<p:calendar id="data" value="#{gerenciarReservaMB.reserva.data}"
+									showOn="button" required="true" />
+							</div>
+
+							<div class="form-group">
+								<p:outputLabel for="valor" value="#{messages['reserva.valor']}" />
+								<p:inputText id="valor" styleClass="form-control"
+									value="#{gerenciarReservaMB.reserva.valor}" required="true" />
+							</div>
+
+
+							<p:commandButton value="#{messages['clean']}"
+								action="#{gerenciarReservaMB.limpa}"
+								styleClass="btn btn-default" ajax="false" style="border: none;"
+								immediate="true" />
+
+							<h:commandButton value="Salvar"
+								action="#{gerenciarReservaMB.salva}"
+								styleClass="btn btn-primary pull-right">
+							</h:commandButton>
+
+						</div>
+
+						<div class="box-footer">
+
+							<h:panelGroup rendered="#{empty gerenciarReservaMB.reservas}">
+								<em><p:outputLabel value="#{messages['reserva.empty']}" />.</em>
+							</h:panelGroup>
+
+
+							<p:dataTable var="reserva" value="#{gerenciarReservaMB.reservas}"
+								id="tb-reservas"
+								rendered="#{not empty gerenciarReservaMB.reservas}">
+								<p:column headerText="Tipo de Cliente">
+									<h:outputText value="#{reserva.tipoCliente}" />
+								</p:column>
+								<p:column headerText="CNPJ">
+									<h:outputText value="#{reserva.cnpj}" />
+								</p:column>
+								<p:column headerText="CPF">
+									<h:outputText value="#{reserva.cpf}" />
+								</p:column>
+
+								<p:column headerText="Ações">
+									<!-- EDITA -->
+									<h:commandButton value="#{messages['edit']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarReservaMB.edita(reserva)}"
+										update="form-reserva">
+										<p:ajax update=":mainForm:user-content" />
+									</h:commandButton>
+									<!-- EXCLUI -->
+									<h:commandLink value="#{messages['delete']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarReservaMB.exclui}" ajax="true"
+										update="tb-reservas">
+										<f:setPropertyActionListener value="#{reserva}"
+											target="#{gerenciarReservaMB.reserva}" />
+									</h:commandLink>
+								</p:column>
+							</p:dataTable>
+
+						</div>
+
 					</div>
-					
-					
-					
-					<div class="box-body" id="form-reserva">
-						
-						<h:inputHidden value="#{gerenciarReservaMB.reserva.id}" id="hiddenId" />
-	
-						<div class="form-group">
-							<p:outputLabel for="tpCliente" value="#{messages['reserva.tipoCliente']}" />
-							<p:selectOneMenu id="tpCliente" value="#{gerenciarReservaMB.tipoCliente}">
-					            <f:selectItem itemLabel="Select One" itemValue="" />
-					            <f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
-					        </p:selectOneMenu>
-							<!-- <p:message for="tpCliente" /> -->
-						</div>
-
-						<div class="form-group">
-							<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
-							<p:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}">
-					            <f:selectItem itemLabel="Select One" itemValue="" />
-					            <f:selectItems value="#{gerenciarReservaMB.cnpjs}" />
-					        </p:selectOneMenu>
-							<!-- <p:message for="tpCliente" /> -->
-						</div>
-
-						<div class="form-group">
-							<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
-							<p:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}">
-					            <f:selectItem itemLabel="Select One" itemValue="" />
-					            <f:selectItems value="#{gerenciarReservaMB.cpfs}" />
-					        </p:selectOneMenu>
-							<!-- <p:message for="tpCliente" /> -->
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="quarto" value="#{messages['reserva.quarto']}" />
-							<p:selectOneMenu id="quarto" value="#{gerenciarReservaMB.quarto}">
-					            <f:selectItem itemLabel="Select One" itemValue="" />
-					            <f:selectItems value="#{gerenciarReservaMB.quartos}" />
-					        </p:selectOneMenu>
-							<!-- <p:message for="tpCliente" /> -->
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="qntdias" value="#{messages['reserva.dias']}" />
-							<p:inputText id="qntdias" />
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="data" value="#{messages['reserva.data']}" />
-        					<p:calendar id="data" value="#{calendarView.date3}" showOn="button" />
-						</div>
-						
-						<div class="form-group">
-							<p:outputLabel for="valor" value="#{messages['reserva.valor']}" />
-							<p:inputText id="valor" />
-						</div>
-
-						<p:commandButton value="#{messages['clean']}" 
-						    action="#{gerenciarReservaMB.limpa}" styleClass="btn btn-default"
-							ajax="false" style="border: none;" immediate="true" />
-							
-						<h:commandButton value="Salvar" action="#{gerenciarReservaMB.salva}"
-							styleClass="btn btn-primary pull-right">
-						</h:commandButton>
-						
-					</div>
-					
-					<div class="box-footer">
-
-						<h:panelGroup rendered="#{empty gerenciarReservaMB.reservas}">
-							<em><p:outputLabel value="#{messages['reserva.empty']}" />.</em>
-						</h:panelGroup>
-						
-						
-						<p:dataTable var="reserva" value="#{gerenciarReservaMB.reservas}" id="tb-reservas"
-							rendered="#{not empty gerenciarReservaMB.reservas}">
-							<p:column headerText="Tipo de Cliente">
-								<h:outputText value="#{reserva.tipoCliente}" />
-							</p:column>
-							<p:column headerText="CNPJ">
-								<h:outputText value="#{reserva.cnpj}" />
-							</p:column>
-							<p:column headerText="CPF">
-								<h:outputText value="#{reserva.cpf}" />
-							</p:column>
-
-							<p:column headerText="Ações">
-								<!-- EDITA -->
-								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarReservaMB.edita(reserva)}" update="form-reserva" >
-									<p:ajax update=":mainForm:user-content" />
-								</h:commandButton>
-				 				<!-- EXCLUI -->
-								<h:commandLink value="#{messages['delete']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarReservaMB.exclui}" ajax="true" update="tb-reservas">									
-									<f:setPropertyActionListener value="#{reserva}"
-										target="#{gerenciarReservaMB.reserva}" />
-								</h:commandLink>
-							</p:column>
-						</p:dataTable>
-
-					</div>
-					
-				</div>
-				<!-- /.box -->
+					<!-- /.box -->
 				</h:panelGroup>
 			</section>
 			<!-- /.content -->
