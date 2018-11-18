@@ -112,14 +112,37 @@
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarPessoaJuridicaMB.pessoasJuridicas}">
-								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
-							</h:panelGroup>
+						<h:panelGroup rendered="#{empty gerenciarPessoaJuridicaMB.pessoasJuridicas}">
+							<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+						</h:panelGroup>
+						
+						
+						<p:dataTable var="_usr" value="#{gerenciarPessoaJuridicaMB.pessoasJuridicas}" id="tb-usuarios"
+							rendered="#{not empty gerenciarPessoaJuridicaMB.pessoasJuridicas}">
+							<p:column headerText="Razão Social">
+								<h:outputText value="#{_usr.razaoSocial}" />
+							</p:column>
+							<p:column headerText="CNPJ">
+								<h:outputText value="#{_usr.cnpj}" />
+							</p:column>
 
-							
+							<p:column headerText="Ações">
+								<!-- EDITA -->
+								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
+									action="#{gerenciarPessoaJuridicaMB.edita(_usr)}" update="form-usuario" >
+									<p:ajax update=":mainForm:user-content" />
+								</h:commandButton>
+				 				<!-- EXCLUI -->
+								<h:commandLink value="#{messages['delete']}" immediate="true" styleClass="btn btn-default"
+									action="#{gerenciarPessoaJuridicaMB.exclui}" ajax="true" update="tb-usuarios">									
+									<f:setPropertyActionListener value="#{_usr}"
+										target="#{gerenciarPessoaJuridicaMB.pessoaJuridica}" />
+								</h:commandLink>
+							</p:column>
+						</p:dataTable>
 
-						</div>
-
+					</div>
+						
 					</div>
 					<!-- /.box -->
 				</h:panelGroup>
