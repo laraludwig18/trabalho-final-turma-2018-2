@@ -78,8 +78,8 @@
 							<div class="form-group">
 								<p:outputLabel for="cnpj"
 									value="#{messages['cliente.cnpj']}" />
-								<p:inputText id="cnpj" styleClass="form-control"
-									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.cnpj}" />
+								<p:inputMask id="cnpj" styleClass="form-control"
+									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.cnpj}"  mask="99.999.999/9999-99"/>
 							</div>
 							
 							<div class="form-group">
@@ -90,13 +90,13 @@
 							</div>
 							
 							<div class="form-group">
+
 								<p:outputLabel for="telefone"
-									value="#{messages['cliente.telefone']}" />
-								<p:inputText id="telefone" styleClass="form-control"
-									required="true"  value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.telefone}" />
+										value="#{messages['cliente.telefone']}" />
+	        					<p:inputMask id="telefone" styleClass="form-control" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.telefone}" mask="(99) 9 9999-9999"/>
+								
+								
 							</div>
-
-
 
 							<p:commandButton value="#{messages['clean']}"
 								action="#{gerenciarPessoaJuridicaMB.limpa}"
