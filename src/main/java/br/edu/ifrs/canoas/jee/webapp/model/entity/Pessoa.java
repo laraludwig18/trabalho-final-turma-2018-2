@@ -24,9 +24,11 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 	@Pattern(regexp="@\"^((\\b[a-zA-Z]{2,40}\\b)\\s*){2,}$\"", message="Invalid Name!")
 	@Size(max = 100)
 	private String nome;
+	@Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+", 
+	         message = "{ValidationMessages.Usuario.email.invalido}")
 	@Email
 	private String email;
-	@Pattern(regexp="^\\([1-9]{2}\\) [2-9][0-9]{4}\\-[0-9]{4}$") //FORMATO ACEITO POR ENQUANTO: (99) 99999-9999
+	//@Pattern(regexp="^\\([1-9]{2}\\) [2-9][0-9]{4}\\-[0-9]{4}$") //FORMATO ACEITO POR ENQUANTO: (99) 99999-9999
 	private String telefone;
 	private Endereco endereco;
 	
