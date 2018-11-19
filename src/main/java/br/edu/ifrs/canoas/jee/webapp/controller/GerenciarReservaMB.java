@@ -9,9 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
-import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 import lombok.Data;
 
 @Named
@@ -35,22 +33,17 @@ public class GerenciarReservaMB {
 	
 	@PostConstruct
     public void init() {
+		reservas = gerenciarReservaService.busca(null);	
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = Arrays.asList("CPF1", "CPF2");
 		cnpjs = Arrays.asList("CNPJ1", "CNPJ2");
 		quartos = Arrays.asList("Quarto 1", "Quarto 2");
-		reservas = gerenciarReservaService.busca(null);	
     }
 	
 	public String salva() {
 		gerenciarReservaService.salvaReserva(reserva);
 		this.init();
 		return limpa();
-	}
-	
-	public String limpa() {
-		reserva = new Reserva();
-		return "/public/reserva.jsf?facesRedirect=true";
 	}
 	
 	public void edita(Reserva r) {
@@ -62,20 +55,25 @@ public class GerenciarReservaMB {
 		this.init();
 	}
 	
-	public Reserva getReserva() {
-		return reserva;
+	public String limpa() {
+		reserva = new Reserva();
+		return "/public/reserva.jsf?facesRedirect=true";
 	}
-
-	public void setReserva(Reserva r) {
-		this.reserva = r;
-	}
-
-	public List<Reserva> getReservas() {
-		return reservas;
-	}
-
-	public void setReservas(List<Reserva> r) {
-		this.reservas = r;
-	}
-
+	
+//	public Reserva getReserva() {
+//		return reserva;
+//	}
+//
+//	public List<Reserva> getReservas() {
+//		return reservas;
+//	}
+//	
+//	public void setReserva(Reserva r) {
+//		this.reserva = r;
+//	}
+//
+//	public void setReservas(List<Reserva> r) {
+//		this.reservas = r;
+//	}
+	
 }

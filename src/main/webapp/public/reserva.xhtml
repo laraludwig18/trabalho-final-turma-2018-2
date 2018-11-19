@@ -67,7 +67,7 @@
 									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
 								</p:selectOneMenu>
 							</div>
-
+							<!-- if {gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'} -->
 							<div class="form-group">
 								<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
 								<p:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}"
@@ -76,16 +76,16 @@
 									<f:selectItems value="#{gerenciarReservaMB.cnpjs}" />
 								</p:selectOneMenu>
 							</div>
-
+							<!-- if {gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'} -->
 							<div class="form-group">
-								<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
+								<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}"/>
 								<p:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}"
 									styleClass="form-control" required="true">
 									<f:selectItem itemLabel="Select One" itemValue="" />
 									<f:selectItems value="#{gerenciarReservaMB.cpfs}" />
 								</p:selectOneMenu>
 							</div>
-
+											
 							<div class="form-group">
 								<p:outputLabel for="quarto"
 									value="#{messages['reserva.quarto']}" />

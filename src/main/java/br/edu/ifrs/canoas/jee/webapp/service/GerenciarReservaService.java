@@ -12,25 +12,24 @@ public class GerenciarReservaService {
 	private ReservaDAO reservaDAO;
 	
 	public void salvaReserva(Reserva reserva) {
-		
-		if (reserva.getId() == null) {
+		if (reserva.getId() == null)
 			reservaDAO.insere(reserva);
-		} else {
+		else 
 			reservaDAO.atualiza(reserva);
-		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Reserva> busca(String parm) {
-//		if () {
-//			return reservaDAO.buscaPorX(parm);
-		return null;
-//		} else {
-//			return reservaDAO.lista();
-//		}
+	public List<Reserva> busca(String criterio) {
+		if (criterio !=null && criterio.length() > 0) 
+			return reservaDAO.buscaPorCriterio(criterio);
+		 else 
+			return reservaDAO.lista();
+		
 	}
 	
 	public void exclui(Reserva reserva) {
 		reservaDAO.exclui(reserva.getId());
 	}
+	
+	
 }
