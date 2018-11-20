@@ -62,11 +62,16 @@
 						</div>
 
 						<div class="form-group">
-							<p:outputLabel for="tipo"
-								value="#{messages['quarto.tipo']}" />
-							<p:inputText id="tipo" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" />
-							<!-- <p:message for="sobrenome" errorClass="invalid" /> -->
+						
+						<p:outputLabel for="tipo" value="#{messages['quarto.tipo']}" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"  cellpadding="5">
+            			<p:selectOneMenu id="tipo" value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" style="width:180px" >
+                		<f:selectItem itemLabel="#{messages['quarto.select']}" itemValue="" noSelectionOption="true" />
+                		<f:selectItems value="#{dropdownView.tipo}" />
+            			</p:selectOneMenu>
+            			</h:panelGrid>
+						
+							
 						</div>
 
 						<div class="form-group">
@@ -104,20 +109,20 @@
 					<div class="box-footer">
 
 						<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
-							<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+							<em><p:outputLabel value="#{messages['quarto.empty']}" />.</em>
 						</h:panelGroup>
 						
 						
-						<p:dataTable var="_usr" value="#{gerenciarUsuarioMB.usuarios}" id="tb-usuarios"
+						<p:dataTable var="_qrt" value="#{gerenciarUsuarioMB.usuarios}" id="tb-quartos"
 							rendered="#{not empty gerenciarUsuarioMB.usuarios}">
-							<p:column headerText="Nome">
-								<h:outputText value="#{_usr.nome}" />
+							<p:column headerText="#{messages['qrt.numero']}">
+								<h:outputText value="#{qrt.numero}" />
 							</p:column>
-							<p:column headerText="Sobrenome">
-								<h:outputText value="#{_usr.sobrenome}" />
+							<p:column headerText="#{messages['qrt.tipo']}">
+								<h:outputText value="#{qrt.tipo}" />
 							</p:column>
-							<p:column headerText="Email">
-								<h:outputText value="#{_usr.email}" />
+							<p:column headerText="#{messages['qrt.situacao']}">
+								<h:outputText value="#{qrt.situacao}" />
 							</p:column>
 
 							<p:column headerText="Ações">
