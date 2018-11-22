@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+
 
 import lombok.Data;
 
@@ -23,10 +24,9 @@ import lombok.Data;
 @Data
 public class PessoaFisica extends Pessoa implements Serializable {
 	
-	
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Column(unique=true) 
 	private String cpf;
 	@Pattern(regexp="^[0-9]{10}$")
 	private String rg;
