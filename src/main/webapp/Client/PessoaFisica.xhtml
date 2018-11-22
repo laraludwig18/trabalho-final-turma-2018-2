@@ -52,8 +52,9 @@
 
 
 						<div class="box-body" id="form-usuario">
-						
-							<h:inputHidden value="#{gerenciarPessoaFisica.pessoaFisica.id}" id="hiddenId" />
+
+							<h:inputHidden value="#{gerenciarPessoaFisica.pessoaFisica.id}"
+								id="hiddenId" />
 
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
@@ -66,9 +67,10 @@
 							<div class="form-group">
 								<p:outputLabel for="telefone"
 									value="#{messages['cliente.telefone']}" />
-								<p:inputText id="telefone" styleClass="form-control"
+
+								<p:inputMask id="telefone" styleClass="form-control"
 									value="#{gerenciarPessoaFisica.pessoaFisica.telefone}"
-									required="true" />
+									mask="(99)99999-9999" required="true" />
 							</div>
 
 							<div class="form-group">
@@ -80,9 +82,9 @@
 
 							<div class="form-group">
 								<p:outputLabel for="cpf" value="#{messages['cliente.cpf']}" />
-								<p:inputText id="cpf" styleClass="form-control"
+								<p:inputMask id="cpf" styleClass="form-control"
 									value="#{gerenciarPessoaFisica.pessoaFisica.cpf}"
-									required="true" />
+									mask="999.999.999-99" required="true" />
 							</div>
 
 							<div class="form-group">
@@ -97,12 +99,14 @@
 									value="#{messages['cliente.datanasc']}" />
 								<p:calendar id="datanasc"
 									value="#{gerenciarPessoaFisica.pessoaFisica.dataNascimento}"
-									showOn="button" required="true" />
+									showOn="button" required="true" mask="99/99/99" />
+
+
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
-								action="#{gerenciarPessoaFisica.limpa}" styleClass="btn btn-default"
-								ajax="false" style="border: none;"
+								action="#{gerenciarPessoaFisica.limpa}"
+								styleClass="btn btn-default" ajax="false" style="border: none;"
 								immediate="true" />
 
 							<h:commandButton value="Salvar"
@@ -114,12 +118,13 @@
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarPessoaFisica.pessoasFisicas}">
+							<h:panelGroup
+								rendered="#{empty gerenciarPessoaFisica.pessoasFisicas}">
 								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
 							</h:panelGroup>
 
 
-							<p:dataTable var="_usr" 
+							<p:dataTable var="_usr"
 								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
 								paginator="true" id="tb-usuarios"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
