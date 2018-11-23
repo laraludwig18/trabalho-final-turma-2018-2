@@ -53,8 +53,6 @@
 							</div>
 						</div>
 
-
-
 						<div class="box-body" id="form-usuario">
 
 							<h:inputHidden value="#{gerenciarPessoaFisica.pessoaFisica.id}"
@@ -127,7 +125,6 @@
 								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
 							</h:panelGroup>
 
-
 							<p:dataTable var="cli"
 								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
 								paginator="true" widgetVar="cliTable"
@@ -137,10 +134,10 @@
 
 								<f:facet name="header">
 									<p:outputPanel>
-										<h:outputText value="Search all fields:" />
+										<h:outputText value="Buscar:" />
 										<p:inputText id="globalFilter"
-											onkeyup="PF('cliTable').filter()" style="width:150px"
-											placeholder="Enter keyword" />
+											onkeyup="PF('cliTable').filter()" style="width:170px"
+											placeholder="Pesquisar" />
 									</p:outputPanel>
 								</f:facet>
 
@@ -148,28 +145,33 @@
 								<p:column headerText="#{messages['cliente.table.nome']}"
 									sortBy="#{cli.nome}" filterMatchMode="contains"
 									filterBy="#{cli.nome}">
-									<h:outputText value="#{cli.nome}" />
+									<h:outputText value="#{cli.nome}"/>
 								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.telefone']}"
-									sortBy="#{cli.telefone}" filterMatchMode="contains"
+									sortBy="#{cli.telefone}" filterMatchMode="contains" 
 									filterBy="#{cli.telefone}">
 									<h:outputText value="#{cli.telefone}" />
 								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.email']}"
 									sortBy="#{cli.email}" filterMatchMode="contains"
 									filterBy="#{cli.email}">
 									<h:outputText value="#{cli.email}" />
 								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.cpf']}"
 									sortBy="#{cli.cpf}" filterMatchMode="contains"
 									filterBy="#{cli.cpf}">
 									<h:outputText value="#{cli.cpf}" />
 								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.rg']}"
 									sortBy="#{cli.rg}" filterMatchMode="contains"
 									filterBy="#{cli.rg}">
 									<h:outputText value="#{cli.rg}" />
 								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.datanasc']}"
 									sortBy="#{cli.dataNascimento}" filterMatchMode="contains"
 									filterBy="#{cli.dataNascimento}">
@@ -188,21 +190,18 @@
 									<h:commandLink value="#{messages['delete']}" immediate="true"
 										styleClass="btn btn-default"
 										action="#{gerenciarPessoaFisica.exclui}" ajax="true"
-										update="tb-usuarios">
-										<f:setPropertyActionListener value="#{_usr}"
+										update="cliTable">
+										<f:setPropertyActionListener value="#{cli}"
 											target="#{gerenciarPessoaFisica.pessoaFisica}" />
 									</h:commandLink>
 								</p:column>
 							</p:dataTable>
-
 						</div>
 					</div>
 					<!-- /.box -->
 				</h:panelGroup>
 			</section>
-
 		</div>
-
 	</ui:define>
 </ui:composition>
 
