@@ -128,22 +128,28 @@
 								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
 								paginator="true" id="tb-usuarios"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
-								<p:column headerText="#{messages['cliente.table.nome']}">
+								<p:column headerText="#{messages['cliente.table.nome']}"
+									sortBy="#{_usr.nome}">
 									<h:outputText value="#{_usr.nome}" />
 								</p:column>
-								<p:columns headerText="#{messages['cliente.table.telefone']}">
+								<p:column headerText="#{messages['cliente.table.telefone']}"
+									sortBy="#{_usr.telefone}">
 									<h:outputText value="#{_usr.telefone}" />
-								</p:columns>
-								<p:column headerText="#{messages['cliente.table.email']}">
+								</p:column>
+								<p:column headerText="#{messages['cliente.table.email']}"
+									sortBy="#{_usr.email}">
 									<h:outputText value="#{_usr.email}" />
 								</p:column>
-								<p:column headerText="#{messages['cliente.table.cpf']}">
+								<p:column headerText="#{messages['cliente.table.cpf']}"
+									sortBy="#{_usr.cpf}">
 									<h:outputText value="#{_usr.cpf}" />
 								</p:column>
-								<p:column headerText="#{messages['cliente.table.rg']}">
+								<p:column headerText="#{messages['cliente.table.rg']}"
+									sortBy="#{_usr.rg}">
 									<h:outputText value="#{_usr.rg}" />
 								</p:column>
-								<p:column headerText="#{messages['cliente.table.datanasc']}">
+								<p:column headerText="#{messages['cliente.table.datanasc']}"
+									sortBy="#{_usr.dataNascimento}">
 									<h:outputText value="#{_usr.dataNascimento}" />
 								</p:column>
 
@@ -167,12 +173,11 @@
 							</p:dataTable>
 
 						</div>
-
 					</div>
 					<!-- /.box -->
 				</h:panelGroup>
 			</section>
-			<!-- /.content -->
+
 		</div>
 
 	</ui:define>
