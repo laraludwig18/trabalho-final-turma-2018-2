@@ -28,7 +28,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
 	
 	@Column(unique=true) 
 	private String cpf;
-	@Pattern(regexp="^[0-9]{10}$")
+	@Pattern(regexp="^[0-9]{10}$", message="RG INVÁLIDO!")
 	private String rg;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;

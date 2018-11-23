@@ -182,8 +182,8 @@
 									<!-- EDITA -->
 									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarPessoaFisica.edita(_usr)}"
-										update="form-usuario">
+										action="#{gerenciarPessoaFisica.edita(cli)}"
+										update="cliTable">
 										<p:ajax update=":mainForm:user-content" />
 									</h:commandButton>
 									<!-- EXCLUI -->
