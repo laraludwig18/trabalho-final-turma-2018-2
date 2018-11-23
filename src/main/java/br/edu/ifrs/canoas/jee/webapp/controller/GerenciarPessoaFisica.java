@@ -22,6 +22,8 @@ public class GerenciarPessoaFisica {
 	private PessoaFisica pessoaFisica;
 	
 	private List<PessoaFisica> pessoasFisicas;
+	
+	private List<PessoaFisica> pessoasFisicasFiltradas;
 		
 	public String salva() {
 		gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);

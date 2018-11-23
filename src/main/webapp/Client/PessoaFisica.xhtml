@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/template.xhtml">
+
+
 
 	<ui:define name="content">
 
@@ -124,33 +128,52 @@
 							</h:panelGroup>
 
 
-							<p:dataTable var="_usr"
+							<p:dataTable var="cli"
 								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
-								paginator="true" id="tb-usuarios"
+								paginator="true" widgetVar="cliTable"
+								emptyMessage="No clients found with given criteria"
+								filteredValue="#{gerenciarPessoaFisica.pessoasFisicasFiltradas}"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
+
+								<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="Search all fields:" />
+										<p:inputText id="globalFilter"
+											onkeyup="PF('cliTable').filter()" style="width:150px"
+											placeholder="Enter keyword" />
+									</p:outputPanel>
+								</f:facet>
+
+
 								<p:column headerText="#{messages['cliente.table.nome']}"
-									sortBy="#{_usr.nome}">
-									<h:outputText value="#{_usr.nome}" />
+									sortBy="#{cli.nome}" filterMatchMode="contains"
+									filterBy="#{cli.nome}">
+									<h:outputText value="#{cli.nome}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.telefone']}"
-									sortBy="#{_usr.telefone}">
-									<h:outputText value="#{_usr.telefone}" />
+									sortBy="#{cli.telefone}" filterMatchMode="contains"
+									filterBy="#{cli.telefone}">
+									<h:outputText value="#{cli.telefone}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.email']}"
-									sortBy="#{_usr.email}">
-									<h:outputText value="#{_usr.email}" />
+									sortBy="#{cli.email}" filterMatchMode="contains"
+									filterBy="#{cli.email}">
+									<h:outputText value="#{cli.email}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.cpf']}"
-									sortBy="#{_usr.cpf}">
-									<h:outputText value="#{_usr.cpf}" />
+									sortBy="#{cli.cpf}" filterMatchMode="contains"
+									filterBy="#{cli.cpf}">
+									<h:outputText value="#{cli.cpf}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.rg']}"
-									sortBy="#{_usr.rg}">
-									<h:outputText value="#{_usr.rg}" />
+									sortBy="#{cli.rg}" filterMatchMode="contains"
+									filterBy="#{cli.rg}">
+									<h:outputText value="#{cli.rg}" />
 								</p:column>
 								<p:column headerText="#{messages['cliente.table.datanasc']}"
-									sortBy="#{_usr.dataNascimento}">
-									<h:outputText value="#{_usr.dataNascimento}" />
+									sortBy="#{cli.dataNascimento}" filterMatchMode="contains"
+									filterBy="#{cli.dataNascimento}">
+									<h:outputText value="#{cli.dataNascimento}" />
 								</p:column>
 
 								<p:column headerText="Ações">
