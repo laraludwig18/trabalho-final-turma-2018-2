@@ -69,7 +69,6 @@
 							<div class="form-group">
 								<p:outputLabel for="telefone"
 									value="#{messages['cliente.telefone']}" />
-
 								<p:inputMask id="telefone" styleClass="form-control"
 									value="#{gerenciarPessoaFisica.pessoaFisica.telefone}"
 									mask="(99)99999-9999" required="true" />
@@ -101,17 +100,16 @@
 									value="#{messages['cliente.datanasc']}" />
 								<p:calendar id="datanasc"
 									value="#{gerenciarPessoaFisica.pessoaFisica.dataNascimento}"
-									showOn="button" required="true" mask="99/99/99" />
-
-
+									showOn="button" required="true" mask="99/99/9999" />
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
 								action="#{gerenciarPessoaFisica.limpa}"
 								styleClass="btn btn-default" ajax="false" style="border: none;"
 								immediate="true" />
-
-							<h:commandButton value="Salvar"
+							
+							<!-- SALVA -->
+							<h:commandButton value="#{messages['save']}"
 								action="#{gerenciarPessoaFisica.salva}"
 								styleClass="btn btn-primary pull-right">
 
@@ -131,21 +129,21 @@
 								emptyMessage="No clients found with given criteria"
 								filteredValue="#{gerenciarPessoaFisica.pessoasFisicasFiltradas}"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
-
+								
+								<!-- BUSCAR-->
 								<f:facet name="header">
 									<p:outputPanel>
-										<h:outputText value="Buscar:" />
+										<h:outputText value="#{messages['buscar']}"/>
 										<p:inputText id="globalFilter"
-											onkeyup="PF('cliTable').filter()" style="width:170px"
-											placeholder="Pesquisar" />
+											onkeyup="PF('cliTable').filter()" style="width:133px"
+											placeholder="Buscar" />
 									</p:outputPanel>
 								</f:facet>
-
 
 								<p:column headerText="#{messages['cliente.table.nome']}"
 									sortBy="#{cli.nome}" filterMatchMode="contains"
 									filterBy="#{cli.nome}">
-									<h:outputText value="#{cli.nome}"/>
+									<h:outputText value="#{cli.nome}"/> 
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.telefone']}"
@@ -179,6 +177,7 @@
 								</p:column>
 
 								<p:column headerText="Ações">
+								
 									<!-- EDITA -->
 									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
@@ -186,6 +185,7 @@
 										update="cliTable">
 										<p:ajax update=":mainForm:user-content" />
 									</h:commandButton>
+									
 									<!-- EXCLUI -->
 									<h:commandLink value="#{messages['delete']}" immediate="true"
 										styleClass="btn btn-default"
@@ -194,6 +194,7 @@
 										<f:setPropertyActionListener value="#{cli}"
 											target="#{gerenciarPessoaFisica.pessoaFisica}" />
 									</h:commandLink>
+									
 								</p:column>
 							</p:dataTable>
 						</div>
