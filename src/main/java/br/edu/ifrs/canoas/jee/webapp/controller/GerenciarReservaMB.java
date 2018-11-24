@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -25,19 +26,29 @@ public class GerenciarReservaMB {
 	private List<String> tipoClientes;
 	private String tipoCliente;
 	private List<String> cpfs;
+//	private List<Pessoa> cpfs;
 	private String cpf;
 	private List<String> cnpjs;
+//	private List<Pessoa> cnpjs;
 	private String cnpj;
+	private String labelDado;
 	private List<String> quartos;
+//	private List<Quarto> quartos;
 	private String quarto;
+//	private Quarto quarto;
+	private Date dataAtual;
 	
 	@PostConstruct
     public void init() {
 		reservas = gerenciarReservaService.busca(null);	
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = Arrays.asList("CPF1", "CPF2");
+//		cpfs = gerenciarReservaService.pegaCpfPf();
 		cnpjs = Arrays.asList("CNPJ1", "CNPJ2");
+//		cnpjs = gerenciarReservaService.pegaCnpjPj();
 		quartos = Arrays.asList("Quarto 1", "Quarto 2");
+//		quartos = gerenciarReservaService.pegaQuartos();
+		dataAtual = new Date();
     }
 	
 	public String salva() {
@@ -60,20 +71,5 @@ public class GerenciarReservaMB {
 		return "/public/reserva.jsf?facesRedirect=true";
 	}
 	
-//	public Reserva getReserva() {
-//		return reserva;
-//	}
-//
-//	public List<Reserva> getReservas() {
-//		return reservas;
-//	}
-//	
-//	public void setReserva(Reserva r) {
-//		this.reserva = r;
-//	}
-//
-//	public void setReservas(List<Reserva> r) {
-//		this.reservas = r;
-//	}
 	
 }

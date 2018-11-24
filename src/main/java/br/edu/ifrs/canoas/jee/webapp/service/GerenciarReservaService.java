@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import br.edu.ifrs.canoas.jee.webapp.model.dao.ReservaDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 
 public class GerenciarReservaService {
@@ -25,6 +27,18 @@ public class GerenciarReservaService {
 		 else 
 			return reservaDAO.lista();
 		
+	}
+	
+	public List<Pessoa> pegaCpfPf(){
+		return null;
+	}
+	
+	public List<Pessoa> pegaCnpjPj(){
+		return null;
+	}
+	
+	public List<Quarto> pegaQuartos(){
+		return null;
 	}
 	
 	public void exclui(Reserva reserva) {

@@ -31,8 +31,12 @@ public class Reserva extends BaseEntity<Long> implements Serializable {
 	}
 
 	public Reserva(Date data, Double valor) {
-		this.data = data;
-		this.valor = valor;
+		if(valor >= 0) {
+			this.data = data;
+			this.valor = valor;
+		}else {
+			throw new RuntimeException("valores invalidos");
+		}
 	}
 	
 }
