@@ -13,13 +13,14 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					<p:outputLabel value="#{messages['menu.title']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle']}" /></small>
+					<p:outputLabel value="#{messages['menu.title.diaria']}" />
+					<small><p:outputLabel value="#{messages['menu.subtitle.diariaAvulsa']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
 								value="#{messages['breadcrumb-1']}" /></a></li>
-					<li class="active"><p:outputLabel value="#{messages['user']}" /></li>
+					<li><p:outputLabel value="#{messages['diaria']}" /></li>
+					<li class="active"><p:outputLabel value="#{messages['diaria']}" /></li>
 				</ol>
 			</section>
 
@@ -30,7 +31,7 @@
 					<div class="box">
 						<div class="box-header with-border">
 							<h3 class="box-title">
-								<p:outputLabel value="#{messages['user']}" />
+								<p:outputLabel value="#{messages['diaria']}" />
 							</h3>
 
 							<div class="box-tools pull-right">
@@ -53,69 +54,67 @@
 								id="hiddenId" />
 
 							<div class="form-group">
-								<h:outputLabel value="Tipo de Cliente: *" for="tipoCliente" />
-								<p:selectOneMenu id="tipoCliente"
-									value="#{gerenciarDiariaMB.tipoCliente}">
-									<f:selectItem itemLabel="Selecione o tipo de cliente" itemValue="" />
+								<h:outputLabel value="#{messages['diaria.tipoCliente']}" for="tipoCliente" />
+								<h:selectOneMenu id="tipoCliente" 
+									value="#{gerenciarDiariaMB.tipoCliente}"
+									styleClass="form-control">
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.tipoCliente']}" itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}" />
-								</p:selectOneMenu>
+								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="CNPJ: *" for="cnpj" />
-								<h:selectOneMenu id="cnpj">
-									<f:selectItem itemLabel="--Selecione o CNPJ--" itemValue="" />
+								<h:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
+								<h:selectOneMenu id="cnpj" styleClass="form-control">
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}" itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.cnpjs}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="CPF: *" for="cpf" />
-								<h:selectOneMenu id="cpf">
-									<f:selectItem itemLabel="--Selecione o CPF--" itemValue="" />
+								<h:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
+								<h:selectOneMenu id="cpf" styleClass="form-control">
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cpf']}" itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.cpfs}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="Quarto: *" for="quarto" />
-								<h:selectOneMenu id="quarto">
-									<f:selectItem itemLabel="--Selecione o quarto--" itemValue="" />
+								<h:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
+								<h:selectOneMenu id="quarto" styleClass="form-control">
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.quarto']}" itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.quartos}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="Quantidade de dias: *" for="qtdDias" />
-								<p:inputNumber id="qtdDias" />
+								<h:outputLabel value="#{messages['diaria.dias']}" for="qtdDias" />
+								<h:inputText id="qtdDias" styleClass="form-control"/>
 							</div>
 
 							
-							<h:commandButton value="Limpar" />	
+							<p:commandButton value="#{messages['clean']}" 
+						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"
+							ajax="false" style="border: none;" immediate="true" />
+								
 							<h:commandButton value="Salvar"
 								styleClass="btn btn-primary pull-right"
-								action="#{gerenciarDiariaMB.salvar}">
+								action="#{gerenciarDiariaMB.salva}">
 							</h:commandButton>
 						</div>
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
-								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}">
+								<em><p:outputLabel value="#{messages['diaria.empty']}" />.</em>
 							</h:panelGroup>
 
 
-							<p:dataTable var="_usr" value="#{gerenciarUsuarioMB.usuarios}"
+							<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
 								id="tb-usuarios"
-								rendered="#{not empty gerenciarUsuarioMB.usuarios}">
-								<p:column headerText="Nome">
-									<h:outputText value="#{_usr.nome}" />
-								</p:column>
-								<p:column headerText="Sobrenome">
-									<h:outputText value="#{_usr.sobrenome}" />
-								</p:column>
-								<p:column headerText="Email">
-									<h:outputText value="#{_usr.email}" />
+								rendered="#{not empty gerenciarDiariaMB.diarias}">
+								<p:column headerText="Quartos">
+									<h:outputText value="#{_diaria.quarto}" />
 								</p:column>
 
 								<p:column headerText="Ações">
