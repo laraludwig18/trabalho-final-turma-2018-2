@@ -13,7 +13,6 @@ import br.edu.ifrs.canoas.jee.webapp.model.dao.ReservaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 
 public class GerenciarReservaService {
 	@Inject
@@ -24,11 +23,11 @@ public class GerenciarReservaService {
 	private PessoaJuridicaDAO pessoaJuridicaDAO;
 
 	public void salvaReserva(Reserva reserva) {
-		if (validaDataReserva(data) && validaQuantidadeDias(qtdeDias) && valida)
-			if (reserva.getId() == null)
-				reservaDAO.insere(reserva);
-			else 
-				reservaDAO.atualiza(reserva);
+//		if (validaDataReserva(data) && validaQuantidadeDias(qtdeDias) && valida)
+//			if (reserva.getId() == null)
+//				reservaDAO.insere(reserva);
+//			else 
+//				reservaDAO.atualiza(reserva);
 	}
 	
 //	public List<PessoaFisica> buscaPF(){ //Ver com PF sobre buscarTodos
