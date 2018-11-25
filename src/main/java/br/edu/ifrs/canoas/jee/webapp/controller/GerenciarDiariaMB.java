@@ -38,9 +38,25 @@ public class GerenciarDiariaMB {
 		quartos = Arrays.asList("Quarto 1", "Quarto 2");
 	}
 	
-	public void salva() {
-		System.out.println("Data: "+diariaAvulsa.getData());
-		System.out.println("Quantidade dias: "+diariaAvulsa.getQtdDias());
+	public String salva() {
 		gerenciarDiariaService.salvaDiaria(diariaAvulsa);
+		this.init();
+		return limpa();
+	}
+	
+	public void edita(DiariaAvulsa diariaAvulsa) {
+		this.diariaAvulsa = diariaAvulsa;
+	}
+	
+	public void exclui(DiariaAvulsa diaria) {
+		System.out.println("Entra");
+		System.out.println(diaria);
+		gerenciarDiariaService.exclui(diaria);
+		this.init();
+	}
+	
+	public String limpa() {
+		diariaAvulsa = new DiariaAvulsa();
+		return "/public/diaria.jsf?facesRedirect=true";
 	}
 }

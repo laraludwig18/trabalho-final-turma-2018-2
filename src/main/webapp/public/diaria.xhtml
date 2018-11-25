@@ -14,19 +14,21 @@
 			<section class="content-header">
 				<h1>
 					<p:outputLabel value="#{messages['menu.title.diaria']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle.diariaAvulsa']}" /></small>
+					<small><p:outputLabel
+							value="#{messages['menu.subtitle.diariaAvulsa']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
 								value="#{messages['breadcrumb-1']}" /></a></li>
 					<li><p:outputLabel value="#{messages['diaria']}" /></li>
-					<li class="active"><p:outputLabel value="#{messages['diaria']}" /></li>
+					<li class="active"><p:outputLabel
+							value="#{messages['diaria']}" /></li>
 				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<h:panelGroup id="user-content">
+				<h:panelGroup id="diaria-content">
 					<!-- Default box -->
 					<div class="box">
 						<div class="box-header with-border">
@@ -49,13 +51,19 @@
 
 
 						<div class="box-body" id="form-diaria">
+							
+							<h:inputHidden value="#{gerenciarDiariaMB.diariaAvulsa.id}"
+								id="hiddenId" />
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.tipoCliente']}" for="tipoCliente" />
-								<h:selectOneMenu id="tipoCliente" 
+								<h:outputLabel value="#{messages['diaria.tipoCliente']}"
+									for="tipoCliente" />
+								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarDiariaMB.tipoCliente}"
 									styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.tipoCliente']}" itemValue="" />
+									<f:selectItem
+										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
+										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}" />
 								</h:selectOneMenu>
 							</div>
@@ -63,7 +71,8 @@
 							<div class="form-group">
 								<h:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
 								<h:selectOneMenu id="cnpj" styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}" itemValue="" />
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}"
+										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.cnpjs}" />
 								</h:selectOneMenu>
 							</div>
@@ -71,7 +80,8 @@
 							<div class="form-group">
 								<h:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
 								<h:selectOneMenu id="cpf" styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cpf']}" itemValue="" />
+									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cpf']}"
+										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.cpfs}" />
 								</h:selectOneMenu>
 							</div>
@@ -79,83 +89,80 @@
 							<div class="form-group">
 								<h:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
 								<h:selectOneMenu id="quarto" styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.quarto']}" itemValue="" />
+									<f:selectItem
+										itemLabel="#{messages['diaria.itemLabel.quarto']}"
+										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.quartos}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
 								<h:outputLabel value="#{messages['diaria.dias']}" for="qtdDias" />
-								<h:inputText id="qtdDias" styleClass="form-control" 
-											value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}">
+								<h:inputText id="qtdDias" styleClass="form-control"
+									value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}">
 									<f:passThroughAttribute name="type" value="number" />
 								</h:inputText>
 							</div>
-							
+
 							<div class="form-group">
 								<p:outputLabel for="data" value="#{messages['diaria.data']}" />
-								
-								<p:calendar id="data" value="#{gerenciarDiariaMB.diariaAvulsa.data}"
-									showOn="button" pattern="dd/MM/yyyy" />
+
+								<p:calendar id="data"
+									value="#{gerenciarDiariaMB.diariaAvulsa.data}" showOn="button"
+									pattern="dd/MM/yyyy" />
 							</div>
 
-							<p:commandButton value="#{messages['clean']}" 
-						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"
-							ajax="false" style="border: none;" immediate="true" />
-								
+							<p:commandButton value="#{messages['clean']}"
+								action="#{gerenciarDiariaMB.limpa}" styleClass="btn btn-default"
+								ajax="false" style="border: none;" immediate="true" />
+
 							<h:commandButton value="#{messages['save']}"
 								styleClass="btn btn-primary pull-right"
 								action="#{gerenciarDiariaMB.salva}">
 							</h:commandButton>
 						</div>
-						
-						<h:form id="formTabelaDiaria">
-							<div class="box-footer">
-							
-	
-								<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}">
-									<em><p:outputLabel value="#{messages['diaria.empty']}" />.</em>
-								</h:panelGroup>
-	
-	
-								<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
-									id="tb-diarias"
-									rendered="#{not empty gerenciarDiariaMB.diarias}">
-									
-									<p:column headerText="Data Entrada">
-										<h:outputText value="#{_diaria.data}" />
-									</p:column>
-									
-									<p:column headerText="Quantidade Dias">
-										<h:outputText value="#{_diaria.qtdDias}" />
-									</p:column>
-									
-									<p:column headerText="Ação">
-										<!-- EDITA -->
-										<h:commandButton value="#{messages['edit']}" immediate="true"
-											styleClass="btn btn-default"
-											action="#{gerenciarUsuarioMB.edita(_usr)}"
-											update="form-usuario">
-											<p:ajax update=":mainForm:user-content" />
-										</h:commandButton>
-										<!-- EXCLUI -->
-										<h:commandLink value="#{messages['delete']}" immediate="true"
-											styleClass="btn btn-default"
-											action="#{gerenciarUsuarioMB.exclui}" ajax="true"
-											update="tb-usuarios">
-											<f:setPropertyActionListener value="#{_usr}"
-												target="#{gerenciarUsuarioMB.usuario}" />
-										</h:commandLink>
-									</p:column>
-								</p:dataTable>
-	
-							</div>
-						</h:form>
 
+						<div class="box-footer">
+
+
+							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}">
+								<em><p:outputLabel value="#{messages['diaria.empty']}" />.</em>
+							</h:panelGroup>
+
+
+							<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
+								id="tb-diarias"
+								rendered="#{not empty gerenciarDiariaMB.diarias}">
+
+								<p:column headerText="Data Entrada">
+									<h:outputText value="#{_diaria.data}" />
+								</p:column>
+
+								<p:column headerText="Quantidade Dias">
+									<h:outputText value="#{_diaria.qtdDias}" />
+								</p:column>
+
+								<p:column headerText="Ação">
+									<h:commandButton value="#{messages['edit']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarDiariaMB.edita(_diaria)}"
+										update="tb-diarias">
+										<p:ajax update=":mainForm:diaria-content" />
+									</h:commandButton>
+									
+									<h:commandLink value="#{messages['delete']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarDiariaMB.exclui(_diaria)}" ajax="true"
+										update="tb-diarias">
+									</h:commandLink>
+								</p:column>
+							</p:dataTable>
+
+						</div>
 					</div>
 					<!-- /.box -->
 				</h:panelGroup>
-				
+
 			</section>
 			<!-- /.content -->
 		</div>

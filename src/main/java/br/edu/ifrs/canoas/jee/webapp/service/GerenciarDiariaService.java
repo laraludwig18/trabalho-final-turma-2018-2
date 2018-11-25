@@ -16,6 +16,8 @@ public class GerenciarDiariaService {
 	public void salvaDiaria(DiariaAvulsa diariaAvulsa) {
 		if (diariaAvulsa.getId() == null) {
 			diariaAvulsaDAO.insere(diariaAvulsa);
+		}else {
+			diariaAvulsaDAO.atualiza(diariaAvulsa);
 		}
 	}
 	
@@ -23,4 +25,9 @@ public class GerenciarDiariaService {
 	public List<DiariaAvulsa> busca() {
 			return diariaAvulsaDAO.lista();
 	}
+	
+	public void exclui(DiariaAvulsa diariaAvulsa) {
+		diariaAvulsaDAO.exclui(diariaAvulsa.getId());
+	}
+
 }
