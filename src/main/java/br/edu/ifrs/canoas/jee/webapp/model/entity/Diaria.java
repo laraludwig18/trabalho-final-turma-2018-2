@@ -25,6 +25,7 @@ import lombok.Data;
 public class Diaria  extends BaseEntity<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected Date data;
+	private Integer qtdDias;
 	
 	@ManyToMany()
 	protected Collection<PessoaFisica> hospedes;
@@ -36,10 +37,11 @@ public class Diaria  extends BaseEntity<Long> implements Serializable {
 		super();
 		this.hospedes = new ArrayList<>();
 	}
-	public Diaria(Date data, Quarto quarto) {
+	public Diaria(Date data, Quarto quarto, Integer dias) {
 		this.data = data;
 		this.hospedes = new ArrayList<>();
 		this.quarto = quarto;
+		this.qtdDias = dias;
 	}
 	public void addHospedes(PessoaFisica pessoa) {
 		this.hospedes.add(pessoa);
