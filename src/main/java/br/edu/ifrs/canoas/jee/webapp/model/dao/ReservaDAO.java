@@ -3,13 +3,11 @@ package br.edu.ifrs.canoas.jee.webapp.model.dao;
 import java.util.Date;
 import java.util.List;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 
 public class ReservaDAO extends BaseDAO<Reserva, Long> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")
@@ -17,28 +15,32 @@ public class ReservaDAO extends BaseDAO<Reserva, Long> {
 		return em.createQuery("SELECT r " + "FROM Reserva r " + "WHERE r.data = :data").setParameter("data", data)
 				.getResultList();
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public List<Reserva> buscaPorCpf(String cpf) {
-		return em.createQuery("SELECT r " + "FROM Reserva r " + " inner join r.Pessoa as p" + "WHERE r.cpf = :cpf")
-				.setParameter("cpf", cpf).getResultList();
-
-		/*
-		 * PESSOA_ID
-		 * 
-		 * select d.descricao, p.nome, p.preco from Produto p inner join
-		 * p.detalhesProduto as d
-		 */
+	public List<Pessoa> pegaCpfPf(){
+		return em.createQuery("SELECT p.cpf FROM Pessoa p WHERE p.cpf is not null").getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Pessoa> pegaCnpjPj() {
+		return em.createQuery("SELECT p.cnpj FROM Pessoa p WHERE p.cnpj is not null").getResultList();
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	public List<Reserva> buscaPorCriterio(String criterio) {
-		return null;
+		return em.createQuery(
+		         "SELECT u "
+		         + "FROM Reserva u "
+		         + "WHERE u.data = :data "
+		         + " or u.valor = :valor "
+		         + " or u.pessoa = :pessoa ")
+				
+		         .setParameter("data", criterio.trim().toLowerCase())
+		         .setParameter("valor", criterio.trim().toLowerCase())
+		         .setParameter("pessoa", criterio.trim().toLowerCase())
+		         .getResultList();
 	}
-
-//	public List<Reserva> buscaPorCnpj(String cnpj) {
-//		return em.createQuery("SELECT r " + "FROM Reserva r " + " inner join r.Pessoa as p" + "WHERE r.cnpj = :cnpj")
-//				.setParameter("cnpj", cnpj).getResultList();
-//	}
 
 //	public List<Reserva> buscaQuartos()
 }

@@ -1,5 +1,5 @@
 
-insert into Usuario (id, nome, email, senha, sobrenome) values (0, 'John', 'john.smith@mailinator.com', '2125551212', ' Smith') 
+insert into Usuario (id, nome, email, senha, sobrenome) values (0, 'John', 'john.smith@mailinator.com', '2125551212', ' Smith'); 
 
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
@@ -20,3 +20,5 @@ insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) v
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',116,'Lívia','livia@email.com','(51)98993-8026','707.754.329-99','1989-05-17','25534341');
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null);
+
+insert into Reserva values (1, '2018-11-25', 300.00, 100);

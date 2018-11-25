@@ -56,54 +56,45 @@
 								id="hiddenId" />
 							<div class="form-group">
 								<p:outputLabel for="tpCliente" value="#{messages['reserva.tipoCliente']}" />
-								<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-									<p:selectOneMenu id="tpCliente" value="#{gerenciarReservaMB.tipoCliente}" style="width:400px" required="true">
-										<f:selectItem itemLabel="#{messages['reserva.label.tipoCliente']}" itemValue="" />
-										<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
-										<f:ajax render="@form" />
-									</p:selectOneMenu>
-								</h:panelGrid>
+								<h:selectOneMenu id="tpCliente" value="#{gerenciarReservaMB.tipoCliente}" styleClass="form-control" required="true">
+									<f:selectItem itemLabel="#{messages['reserva.label.tipoCliente']}" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
+<!-- 									<f:ajax render="@form" /> -->
+								</h:selectOneMenu>
 							</div>
 							
-							<form>
-								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}">
-									<div class="form-group">
-										<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
-										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-											<p:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}" style="width:400px" required="true">
-												<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" itemValue="" />
-												<f:selectItems value="#{gerenciarReservaMB.cnpjs}" />
-											</p:selectOneMenu>
-										</h:panelGrid>
-									</div>
-								</h:panelGroup>
+<!-- 							<form> -->
+<!-- 								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}"  class="form-group"> -->
+									<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
+									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}" styleClass="form-control" required="true">
+										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" itemValue="" />
+										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" />
+									</h:selectOneMenu>
+<!-- 								</h:panelGroup> -->
 								
-								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}">
-									<div class="form-group">
+<!-- 								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" class="form-group"> -->
 										<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
-										<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" >
-											<p:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}" style="width:400px" required="true">
-												<f:selectItem itemLabel="#{messages['reserva.label.cpf']}" itemValue="" />
-												<f:selectItems value="#{gerenciarReservaMB.cpfs}" />
-											</p:selectOneMenu>
-										</h:panelGrid>
-									</div>
-								</h:panelGroup>
-							</form>	
+										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}" styleClass="form-control" required="true">
+											<f:selectItem itemLabel="#{messages['reserva.label.cpf']}" itemValue="" />
+											<f:selectItems value="#{gerenciarReservaMB.cpfs}" />
+										</h:selectOneMenu>
+<!-- 								</h:panelGroup> -->
+<!-- 							</form>	 -->
 						
 							<div class="form-group">
 								<p:outputLabel for="quarto" value="#{messages['reserva.quarto']}" />
-								<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-									<p:selectOneMenu id="quarto" value="#{gerenciarReservaMB.quarto}" style="width:400px" required="true">
-										<f:selectItem itemLabel="#{messages['reserva.label.quarto']}" itemValue="" />
-										<f:selectItems value="#{gerenciarReservaMB.quartos}" />
-									</p:selectOneMenu>
-								</h:panelGrid>
+								<h:selectOneMenu id="quarto" value="#{gerenciarReservaMB.quarto}" styleClass="form-control" required="true">
+									<f:selectItem itemLabel="#{messages['reserva.label.quarto']}" itemValue="" />
+									<f:selectItems value="#{gerenciarReservaMB.quartos}" />
+								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="qntdias" value="#{messages['reserva.dias']}" />
-								<p:inputText id="qntdias" styleClass="form-control" required="true" />
+								<h:inputText id="qntdias" styleClass="form-control" required="true" >
+									<f:passThroughAttribute name="type" value="number" />
+									 <f:convertNumber maxFractionDigits="1" maxIntegerDigits="2" type="number" />  
+								</h:inputText>
 							</div>
 							
 							<!-- data deve ser maior q a atual -->
@@ -118,7 +109,8 @@
 							<!-- valor usando mascara para real, maior que zero	 -->
 							<div class="form-group">
 								<p:outputLabel for="valor" value="#{messages['reserva.valor']}" />
-								<p:inputMask id="valor" mask="R$ 9.999.999,99" styleClass="form-control" value="#{gerenciarReservaMB.reserva.valor}" required="true" />
+								<p:inputMask id="valor" symbol="R$" mask="999.99" styleClass="form-control" value="#{gerenciarReservaMB.reserva.valor}" required="true" >
+								</p:inputMask>
 							</div>
 
 
@@ -148,23 +140,8 @@
 								<p:column headerText="Cliente">
 									<h:outputText value="#{reserva.pessoa.nome}" />
 								</p:column>
-
 								<p:column headerText="Ações">
-									<!-- EDITA -->
-									<h:commandButton value="#{messages['edit']}" immediate="true"
-										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.edita(reserva)}"
-										update="form-reserva">
-										<p:ajax update=":mainForm:user-content" />
-									</h:commandButton>
-									<!-- EXCLUI -->
-									<h:commandLink value="#{messages['delete']}" immediate="true"
-										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.exclui}" ajax="true"
-										update="tb-reservas">
-										<f:setPropertyActionListener value="#{reserva}"
-											target="#{gerenciarReservaMB.reserva}" />
-									</h:commandLink>
+								
 								</p:column>
 							</p:dataTable>
 
