@@ -11,6 +11,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.Data;
 
@@ -24,6 +26,8 @@ import lombok.Data;
 @Data
 public class Diaria  extends BaseEntity<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	@Temporal(TemporalType.DATE)
 	protected Date data;
 	private Integer qtdDias;
 	
