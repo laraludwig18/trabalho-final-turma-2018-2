@@ -1,5 +1,7 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -15,5 +17,10 @@ public class GerenciarDiariaService {
 		if (diariaAvulsa.getId() == null) {
 			diariaAvulsaDAO.insere(diariaAvulsa);
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<DiariaAvulsa> busca() {
+			return diariaAvulsaDAO.lista();
 	}
 }

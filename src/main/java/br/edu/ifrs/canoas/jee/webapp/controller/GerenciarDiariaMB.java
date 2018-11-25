@@ -1,6 +1,5 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +18,7 @@ import lombok.Data;
 public class GerenciarDiariaMB {
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
+	@Inject
 	private DiariaAvulsa diariaAvulsa;
 	private List<String> tipoClientes;
 	private String tipoCliente;
@@ -30,8 +30,8 @@ public class GerenciarDiariaMB {
 
 	@PostConstruct
 	public void init() {
+		diarias = gerenciarDiariaService.busca();	
 		diariaAvulsa = new DiariaAvulsa();
-		diarias = new ArrayList<>();
 		tipoClientes = Arrays.asList("Pessoa Física", "Pessoa Jurídica");
 		cpfs = Arrays.asList("CPF 1", "CPF2");
 		cnpjs = Arrays.asList("CNPJ 1", "CNPJ 2");
@@ -39,7 +39,8 @@ public class GerenciarDiariaMB {
 	}
 	
 	public void salva() {
-		System.out.println("Teste: "+tipoCliente);
+		System.out.println("Data: "+diariaAvulsa.getData());
+		System.out.println("Quantidade dias: "+diariaAvulsa.getQtdDias());
 		gerenciarDiariaService.salvaDiaria(diariaAvulsa);
 	}
 }
