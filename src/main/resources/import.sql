@@ -1,9 +1,6 @@
 
 insert into Usuario (id, nome, email, senha, sobrenome) values (0, 'John', 'john.smith@mailinator.com', '2125551212', ' Smith') 
 
-
-
-
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',102,'Bernardo','bernardo@email.com','(51)94366-7661','810.436.399-57','1992-01-25','66156992');
@@ -21,3 +18,5 @@ insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) v
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',114,'Maria Luiza','marialuiza@email.com','(51)94515-5175','884.287.607-27','1998-07-13','45245855');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',115,'Lorena','lorena@email.com','(51)93398-6814','992.146.238-61','1993-01-21','32938078');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',116,'Lívia','livia@email.com','(51)98993-8026','707.754.329-99','1989-05-17','25534341');
+
+insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null);
