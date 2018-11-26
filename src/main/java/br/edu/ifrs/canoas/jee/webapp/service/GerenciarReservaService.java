@@ -1,19 +1,26 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaJuridicaDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.dao.QuartoDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.ReservaDAO;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 
 public class GerenciarReservaService {
 	@Inject
 	private ReservaDAO reservaDAO;
+	@Inject
+	private PessoaFisicaDAO pessoaFisicaDAO;
+	@Inject
+	private PessoaJuridicaDAO pessoaJuridicaDAO;
+	@Inject
+	private QuartoDAO quartoDAO;
 
 	public void salvaReserva(Reserva reserva) {
 			if (reserva.getId() == null)
@@ -21,14 +28,19 @@ public class GerenciarReservaService {
 			else 
 				reservaDAO.atualiza(reserva);
 	}
-	
-	public List<Pessoa> pegaCpfPf(){ //Ver com PF sobre buscarTodos
-		return reservaDAO.pegaCpfPf();
-		
+	@SuppressWarnings("unchecked")
+	public List<PessoaFisica> pegaCpfPf(){ 
+		return pessoaFisicaDAO.lista();
 	}
 	
-	public List<Pessoa> pegaCnpjPj(){ //Ver com PJ sobre buscarTodos
-		return reservaDAO.pegaCnpjPj();
+	@SuppressWarnings("unchecked")
+	public List<PessoaJuridica> pegaCnpjPj(){ 
+		return pessoaJuridicaDAO.lista();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Quarto> pegaQuartos(){
+		return quartoDAO.lista();
 	}
 	
 	@SuppressWarnings("unchecked")
