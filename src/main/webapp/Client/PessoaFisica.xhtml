@@ -126,7 +126,7 @@
 							<p:dataTable var="cli"
 								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
 								paginator="true" widgetVar="cliTable"
-								emptyMessage="No clients found with given criteria"
+								emptyMessage="#{messages['pessoaFisica.busca.invalida']}"
 								filteredValue="#{gerenciarPessoaFisica.pessoasFisicasFiltradas}"
 								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
 								

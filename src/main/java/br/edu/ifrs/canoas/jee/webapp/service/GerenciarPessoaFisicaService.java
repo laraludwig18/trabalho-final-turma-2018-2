@@ -50,4 +50,17 @@ public class GerenciarPessoaFisicaService {
 	public void validaId() {
 		
 	}
+	//public void validaDataDeNascimento(PessoaFisica pessoaFisica) {
+		/*Date dataNascimento = pessoaFisica.getDataNascimento();
+		Date dataHoje = null;
+
+		int idade;
+
+		idade = (int)(dataHoje.getTime() - dataNascimento.getTime());
+		if(idade > 18)
+		{
+			pessoaFisicaDAO.insere(pessoaFisica);
+		}
+	}*/
+//}
 }
