@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.inject.Inject;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -40,6 +41,7 @@ public class Diaria  extends BaseEntity<Long> implements Serializable {
 	public Diaria() {
 		super();
 		this.hospedes = new ArrayList<>();
+		this.quarto = new Quarto();
 	}
 	public Diaria(Date data, Quarto quarto, Integer dias) {
 		this.data = data;

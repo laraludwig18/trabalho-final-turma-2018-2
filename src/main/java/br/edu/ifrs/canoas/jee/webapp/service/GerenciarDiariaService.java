@@ -37,10 +37,9 @@ public class GerenciarDiariaService {
 			diariaAvulsaDAO.atualiza(diariaAvulsa);
 		}
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	public List<DiariaAvulsa> busca() {
-		return diariaAvulsaDAO.lista();
+		return diariaAvulsaDAO.busca();
 	}
 	
 	public void exclui(DiariaAvulsa diariaAvulsa) {
@@ -69,5 +68,4 @@ public class GerenciarDiariaService {
 	public List<Quarto> getQuartos(){ 
 		return quartoDAO.lista();
 	}
-
 }

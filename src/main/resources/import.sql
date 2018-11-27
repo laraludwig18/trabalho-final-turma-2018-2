@@ -21,4 +21,7 @@ insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) v
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null);
 
+insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
+
 insert into Reserva values (1, '2018-11-25', 300.00, 100);

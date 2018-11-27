@@ -1,5 +1,6 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,10 +23,10 @@ public class GerenciarDiariaMB {
     private GerenciarDiariaService gerenciarDiariaService;
 	@Inject
 	private DiariaAvulsa diariaAvulsa;
-	private List<String> tipoClientes;
+	private List<String> tipoClientes;	
 	private String tipoCliente;
-	private Integer pessoaId;
-	private Integer quartoId;
+	private Long pessoaId;
+	private Long quartoId;
 	private List<PessoaJuridica> PJ;
 	private List<PessoaFisica> PF;
 	private List<Quarto> quartos;
@@ -33,8 +34,8 @@ public class GerenciarDiariaMB {
 
 	@PostConstruct
 	public void init() {
-		diarias = gerenciarDiariaService.busca();	
 		diariaAvulsa = new DiariaAvulsa();
+		diarias = gerenciarDiariaService.busca();	
 		tipoClientes = gerenciarDiariaService.getTipoCliente();
 		PF = gerenciarDiariaService.getPF();
 		PJ = gerenciarDiariaService.getPJ();
@@ -42,6 +43,16 @@ public class GerenciarDiariaMB {
 	}
 	
 	public String salva() {
+		if(tipoCliente.equals("Pessoa Física")) {
+			diariaAvulsa.setPessoa(new PessoaFisica());
+		}else {
+			diariaAvulsa.setPessoa(new PessoaJuridica());
+		}
+		diariaAvulsa.getPessoa().setId(pessoaId);
+		
+		diariaAvulsa.setQuarto(new Quarto());
+		diariaAvulsa.getQuarto().setId(quartoId);
+		
 		gerenciarDiariaService.salvaDiaria(diariaAvulsa);
 		this.init();
 		return limpa();
@@ -60,6 +71,9 @@ public class GerenciarDiariaMB {
 	
 	public String limpa() {
 		diariaAvulsa = new DiariaAvulsa();
-		return "/public/diaria.jsf?facesRedirect=true";
+		PF = new ArrayList<>();
+		PJ = new ArrayList<>();
+		quartos = new ArrayList<>();
+		return "/public/diaria?facesRedirect=true";
 	}
 }
