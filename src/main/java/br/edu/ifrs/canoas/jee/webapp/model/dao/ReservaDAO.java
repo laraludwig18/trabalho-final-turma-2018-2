@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 
 public class ReservaDAO extends BaseDAO<Reserva, Long> {
@@ -15,17 +16,6 @@ public class ReservaDAO extends BaseDAO<Reserva, Long> {
 		return em.createQuery("SELECT r " + "FROM Reserva r " + "WHERE r.data = :data").setParameter("data", data)
 				.getResultList();
 	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Pessoa> pegaCpfPf(){
-		return em.createQuery("SELECT p.cpf FROM Pessoa p WHERE p.cpf is not null").getResultList();
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Pessoa> pegaCnpjPj() {
-		return em.createQuery("SELECT p.cnpj FROM Pessoa p WHERE p.cnpj is not null").getResultList();
-	}
-
 	
 	@SuppressWarnings("unchecked")
 	public List<Reserva> buscaPorCriterio(String criterio) {
@@ -42,5 +32,4 @@ public class ReservaDAO extends BaseDAO<Reserva, Long> {
 		         .getResultList();
 	}
 
-//	public List<Reserva> buscaQuartos()
 }

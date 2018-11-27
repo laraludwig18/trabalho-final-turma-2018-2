@@ -9,7 +9,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
 import lombok.Data;
@@ -26,15 +28,12 @@ public class GerenciarReservaMB {
 	private List<Reserva> reservas;
 	private List<String> tipoClientes;
 	private String tipoCliente;
-	private List<Pessoa> cpfs;
-	private String cpf;
-	private List<Pessoa> cnpjs;
-	private String cnpj;
-	private String labelDado;
-	private List<String> quartos;
-//	private List<Quarto> quartos;
-	private String quarto;
-//	private Quarto quarto;
+	private List<PessoaFisica> cpfs;
+	private List<PessoaJuridica> cnpjs;
+	private List<Quarto> quartos;
+	private Integer cpf;
+	private Integer cnpj;
+	private Integer quartoId;
 	private Date dataAtual;
 	
 	@PostConstruct
@@ -43,8 +42,7 @@ public class GerenciarReservaMB {
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = gerenciarReservaService.pegaCpfPf();
 		cnpjs = gerenciarReservaService.pegaCnpjPj();
-		quartos = Arrays.asList("Quarto 1", "Quarto 2");
-//		quartos = gerenciarReservaService.pegaQuartos();
+		quartos = gerenciarReservaService.pegaQuartos();
 		dataAtual = new Date();
     }
 	
@@ -58,8 +56,8 @@ public class GerenciarReservaMB {
 		this.reserva = r;
 	}
 	
-	public void exclui() {
-		gerenciarReservaService.exclui(reserva);
+	public void exclui(Reserva r) {
+		gerenciarReservaService.exclui(r);
 		this.init();
 	}
 	

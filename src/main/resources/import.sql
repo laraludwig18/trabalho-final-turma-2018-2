@@ -19,9 +19,9 @@ insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) v
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',115,'Lorena','lorena@email.com','(51)93398-6814','992.146.238-61','1993-01-21','32938078');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',116,'Lívia','livia@email.com','(51)98993-8026','707.754.329-99','1989-05-17','25534341');
 
+insert into reserva values(1, '2018-11-26', 350.56, 101);
+
 insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null);
 
 insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
 insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
-
-insert into Reserva values (1, '2018-11-25', 300.00, 100);
