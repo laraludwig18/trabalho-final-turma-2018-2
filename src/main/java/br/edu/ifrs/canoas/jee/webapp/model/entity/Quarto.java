@@ -23,8 +23,8 @@ public class Quarto extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 57657643543453426L;
-	@Min(3)
-	@Max(20)
+	//@Min(3)
+	//@Max(20)
 	private String numero;
 	@Enumerated(EnumType.STRING)
 	private TipoDeQuarto tipo;
