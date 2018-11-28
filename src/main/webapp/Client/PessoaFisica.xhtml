@@ -61,8 +61,7 @@
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
 								<p:inputText id="nome" styleClass="form-control"
-									value="#{dtGerenciaPessoa.pessoaFisica.nome}"
-									required="true" />
+									value="#{dtGerenciaPessoa.pessoaFisica.nome}" required="true" />
 
 							</div>
 
@@ -77,8 +76,7 @@
 							<div class="form-group">
 								<p:outputLabel for="email" value="#{messages['cliente.email']}" />
 								<p:inputText id="email" styleClass="form-control"
-									value="#{dtGerenciaPessoa.pessoaFisica.email}"
-									required="true" />
+									value="#{dtGerenciaPessoa.pessoaFisica.email}" required="true" />
 							</div>
 
 							<div class="form-group">
@@ -91,22 +89,20 @@
 							<div class="form-group">
 								<p:outputLabel for="rg" value="#{messages['cliente.rg']}" />
 								<p:inputText id="rg" styleClass="form-control"
-									value="#{dtGerenciaPessoa.pessoaFisica.rg}"
-									required="true" />
+									value="#{dtGerenciaPessoa.pessoaFisica.rg}" required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="datanasc"
 									value="#{messages['cliente.datanasc']}" />
-								<p:calendar id="datanasc"
+								<p:calendar id="datanasc" pattern="dd/MM/yyyy"
 									value="#{dtGerenciaPessoa.pessoaFisica.dataNascimento}"
 									showOn="button" required="true" mask="99/99/9999" />
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
-								action="#{dtGerenciaPessoa.limpa}"
-								styleClass="btn btn-default" ajax="false" style="border: none;"
-								immediate="true" />
+								action="#{dtGerenciaPessoa.limpa}" styleClass="btn btn-default"
+								ajax="false" style="border: none;" immediate="true" />
 
 							<!-- SALVA -->
 							<h:commandButton value="#{messages['save']}"
@@ -118,16 +114,14 @@
 
 						<div class="box-footer">
 
-							<h:panelGroup
-								rendered="#{empty dtGerenciaPessoa.pessoasFisicas}">
+							<h:panelGroup rendered="#{empty dtGerenciaPessoa.pessoasFisicas}">
 								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
 							</h:panelGroup>
 
 
 
-							<p:dataTable var="cli"
-								value="#{dtGerenciaPessoa.pessoasFisicas}" rows="10"
-								paginator="true" widgetVar="cliTable"
+							<p:dataTable var="cli" value="#{dtGerenciaPessoa.pessoasFisicas}"
+								rows="10" paginator="true" widgetVar="cliTable"
 								emptyMessage="#{messages['pessoaFisica.busca.invalida']}"
 								filteredValue="#{dtGerenciaPessoa.pessoasFisicasFiltradas}"
 								rendered="#{not empty dtGerenciaPessoa.pessoasFisicas}">
@@ -181,7 +175,9 @@
 								<p:column headerText="#{messages['cliente.table.datanasc']}"
 									sortBy="#{cli.dataNascimento}" filterMatchMode="contains"
 									filterBy="#{cli.dataNascimento}" filterStyle="display:none">
-									<h:outputText value="#{cli.dataNascimento}" />
+									<h:outputText value="#{cli.dataNascimento}">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:outputText>
 								</p:column>
 
 								<p:column headerText="Ações">
