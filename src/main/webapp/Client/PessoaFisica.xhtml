@@ -55,13 +55,13 @@
 
 						<div class="box-body" id="form-usuario">
 
-							<h:inputHidden value="#{gerenciarPessoaFisica.pessoaFisica.id}"
+							<h:inputHidden value="#{dtGerenciaPessoa.pessoaFisica.id}"
 								id="hiddenId" />
 
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
 								<p:inputText id="nome" styleClass="form-control"
-									value="#{gerenciarPessoaFisica.pessoaFisica.nome}"
+									value="#{dtGerenciaPessoa.pessoaFisica.nome}"
 									required="true" />
 
 							</div>
@@ -70,28 +70,28 @@
 								<p:outputLabel for="telefone"
 									value="#{messages['cliente.telefone']}" />
 								<p:inputMask id="telefone" styleClass="form-control"
-									value="#{gerenciarPessoaFisica.pessoaFisica.telefone}"
+									value="#{dtGerenciaPessoa.pessoaFisica.telefone}"
 									mask="(99)99999-9999" required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="email" value="#{messages['cliente.email']}" />
 								<p:inputText id="email" styleClass="form-control"
-									value="#{gerenciarPessoaFisica.pessoaFisica.email}"
+									value="#{dtGerenciaPessoa.pessoaFisica.email}"
 									required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="cpf" value="#{messages['cliente.cpf']}" />
 								<p:inputMask id="cpf" styleClass="form-control"
-									value="#{gerenciarPessoaFisica.pessoaFisica.cpf}"
+									value="#{dtGerenciaPessoa.pessoaFisica.cpf}"
 									mask="999.999.999-99" required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="rg" value="#{messages['cliente.rg']}" />
 								<p:inputText id="rg" styleClass="form-control"
-									value="#{gerenciarPessoaFisica.pessoaFisica.rg}"
+									value="#{dtGerenciaPessoa.pessoaFisica.rg}"
 									required="true" />
 							</div>
 
@@ -99,18 +99,18 @@
 								<p:outputLabel for="datanasc"
 									value="#{messages['cliente.datanasc']}" />
 								<p:calendar id="datanasc"
-									value="#{gerenciarPessoaFisica.pessoaFisica.dataNascimento}"
+									value="#{dtGerenciaPessoa.pessoaFisica.dataNascimento}"
 									showOn="button" required="true" mask="99/99/9999" />
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
-								action="#{gerenciarPessoaFisica.limpa}"
+								action="#{dtGerenciaPessoa.limpa}"
 								styleClass="btn btn-default" ajax="false" style="border: none;"
 								immediate="true" />
-							
+
 							<!-- SALVA -->
 							<h:commandButton value="#{messages['save']}"
-								action="#{gerenciarPessoaFisica.salva}"
+								action="#{dtGerenciaPessoa.salva}"
 								styleClass="btn btn-primary pull-right">
 
 							</h:commandButton>
@@ -119,90 +119,92 @@
 						<div class="box-footer">
 
 							<h:panelGroup
-								rendered="#{empty gerenciarPessoaFisica.pessoasFisicas}">
+								rendered="#{empty dtGerenciaPessoa.pessoasFisicas}">
 								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
 							</h:panelGroup>
 
+
+
 							<p:dataTable var="cli"
-								value="#{gerenciarPessoaFisica.pessoasFisicas}" rows="10"
+								value="#{dtGerenciaPessoa.pessoasFisicas}" rows="10"
 								paginator="true" widgetVar="cliTable"
 								emptyMessage="#{messages['pessoaFisica.busca.invalida']}"
-								filteredValue="#{gerenciarPessoaFisica.pessoasFisicasFiltradas}"
-								rendered="#{not empty gerenciarPessoaFisica.pessoasFisicas}">
-								
+								filteredValue="#{dtGerenciaPessoa.pessoasFisicasFiltradas}"
+								rendered="#{not empty dtGerenciaPessoa.pessoasFisicas}">
+
 								<!-- BUSCAR-->
 								<f:facet name="header">
 									<p:outputPanel>
-										<h:outputText value="#{messages['buscar']}"/>
+										<h:outputText value="#{messages['buscar']}" />
 										<p:inputText id="globalFilter"
 											onkeyup="PF('cliTable').filter()" style="width:133px"
 											placeholder="Buscar" />
 									</p:outputPanel>
 								</f:facet>
 
+								<p:column headerText="Id" sortBy="#{cli.id}"
+									filterMatchMode="contains" filterBy="#{cli.id}"
+									filterStyle="display:none">
+									<h:outputText value="#{cli.id}" />
+								</p:column>
+
 								<p:column headerText="#{messages['cliente.table.nome']}"
 									sortBy="#{cli.nome}" filterMatchMode="contains"
-									filterBy="#{cli.nome}"
-									>
-									<h:outputText value="#{cli.nome}"/> 
+									filterBy="#{cli.nome}" filterStyle="display:none">
+									<h:outputText value="#{cli.nome}" />
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.telefone']}"
-									sortBy="#{cli.telefone}" filterMatchMode="contains" 
-									filterBy="#{cli.telefone}"
-									>
+									sortBy="#{cli.telefone}" filterMatchMode="contains"
+									filterBy="#{cli.telefone}" filterStyle="display:none">
 									<h:outputText value="#{cli.telefone}" />
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.email']}"
 									sortBy="#{cli.email}" filterMatchMode="contains"
-									filterBy="#{cli.email}"
-									>
+									filterBy="#{cli.email}" filterStyle="display:none">
 									<h:outputText value="#{cli.email}" />
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.cpf']}"
 									sortBy="#{cli.cpf}" filterMatchMode="contains"
-									filterBy="#{cli.cpf}"
-									>
+									filterBy="#{cli.cpf}" filterStyle="display:none">
 									<h:outputText value="#{cli.cpf}" />
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.rg']}"
 									sortBy="#{cli.rg}" filterMatchMode="contains"
-									filterBy="#{cli.rg}"
-									>
+									filterBy="#{cli.rg}" filterStyle="display:none">
 									<h:outputText value="#{cli.rg}" />
 								</p:column>
 
 								<p:column headerText="#{messages['cliente.table.datanasc']}"
 									sortBy="#{cli.dataNascimento}" filterMatchMode="contains"
-									filterBy="#{cli.dataNascimento}"
-									>
+									filterBy="#{cli.dataNascimento}" filterStyle="display:none">
 									<h:outputText value="#{cli.dataNascimento}" />
 								</p:column>
 
 								<p:column headerText="Ações">
-								
+
 									<!-- EDITA -->
 									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarPessoaFisica.edita(cli)}"
-										update="cliTable">
+										action="#{dtGerenciaPessoa.edita(cli)}" update="cliTable">
 										<p:ajax update=":mainForm:user-content" />
 									</h:commandButton>
-									
+
 									<!-- EXCLUI -->
 									<h:commandLink value="#{messages['delete']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarPessoaFisica.exclui}" ajax="true"
+										action="#{dtGerenciaPessoa.exclui()}" ajax="true"
 										update="cliTable">
 										<f:setPropertyActionListener value="#{cli}"
-											target="#{gerenciarPessoaFisica.pessoaFisica}" />
+											target="#{dtGerenciaPessoa.pessoaFisica}" />
 									</h:commandLink>
-									
+
 								</p:column>
 							</p:dataTable>
+
 						</div>
 					</div>
 					<!-- /.box -->

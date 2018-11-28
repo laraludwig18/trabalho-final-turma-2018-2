@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,7 +14,8 @@ import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaFisicaService;
 import lombok.Data;
 
 @Named
-@RequestScoped
+@ManagedBean(name="dtGerenciaPessoa")
+@ViewScoped
 @Data
 public class GerenciarPessoaFisica {
 	

@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
+import lombok.Data;
 
 @Stateless
 public class GerenciarPessoaFisicaService {

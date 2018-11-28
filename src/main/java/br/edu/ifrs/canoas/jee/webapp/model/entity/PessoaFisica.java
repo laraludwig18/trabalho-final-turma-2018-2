@@ -42,6 +42,7 @@ public class PessoaFisica extends Pessoa implements Serializable {
 	public PessoaFisica(String nome, String email, String telefone, Endereco endereco) {
 		super(nome, email, telefone, endereco);
 	}
+	/*
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -74,5 +75,5 @@ public class PessoaFisica extends Pessoa implements Serializable {
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		return result;
 	}
-   
+   */
 }
