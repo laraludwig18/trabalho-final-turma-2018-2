@@ -27,48 +27,19 @@ public class GerenciarUsuarioService {
 	@Inject
 	private Logger log;
 
-	public boolean salvaUsuario(Usuario usuario) {
+	public boolean salvaUsuario(Usuario usuario) {	// : need work
 
-		// log.info("Salvando " + usuario.getNome());
-		
-		// if (usuario.getId() != null) {
-		// 	usuarioDAO.atualiza(usuario);
-		// 	Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
-		// 	return true;
-		// }
-		
-		// // int qtdEmailCadastrado = this.validaEmail(usuario);
-		
-		// // if (qtdEmailCadastrado == 0) {
-		// 	if (validaSenha(usuario)) {
-				
-		// 		usuarioDAO.insere(usuario);
-		// 		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso",usuario.getEmail());
-		// 		log.info("Salvo " + usuario.getNome() + " com id " + usuario.getId());
-		// 		return true;
-		// 	}
-		// // }
-		
-		// // log.info("Problema com email duplicado do usuário " + usuario.getNome() + " - email " + usuario.getEmail());
-		// // Mensagens.define(FacesMessage.SEVERITY_ERROR, "Usuario.email.erro.cadastrado",u suario.getEmail());
-		// return false;
+		log.info("Salvando " + usuario.getNome());
 
-		///////////////////////////////////////
-
-		// log.info("OCTO: " + usuario.toString());
-
-		String nome = "nome: " + usuario.getNome();
-		// String email = "email: " + usuario.getEmail();
-
-		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", nome);
-
-		// Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", email);
-
-		// if (usuario.getId() == null) {
-		// 	usuarioDAO.insere(usuario);
-		// } else {
-		// 	usuarioDAO.atualiza(usuario);
-		// }
+		if (usuario.getId() == null) {
+			usuarioDAO.insere(usuario);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getNome());
+			// return true;
+		} else {
+			usuarioDAO.atualiza(usuario);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso", usuario.getNome());
+			// return true;
+		}
 
 		return true;
 	}

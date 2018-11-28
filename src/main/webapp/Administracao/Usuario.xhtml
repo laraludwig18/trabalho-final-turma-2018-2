@@ -82,7 +82,7 @@
 							<div class="form-group">
 								<p:outputLabel for="pais"
 									value="#{messages['usuario.endereco.pais']}" />
-								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.pais}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.usuario.pais}" style="width: 100% !important" required="true">
 								   <f:selectItems value="#{gerenciarUsuarioMB.paises}" />
 								   <f:ajax listener="#{gerenciarUsuarioMB.alterarPais}" render="estado" />
 								</p:selectOneMenu>
@@ -91,7 +91,7 @@
 							<div class="form-group">
 								<p:outputLabel for="estado"
 									value="#{messages['usuario.endereco.estado']}" />
-								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.estado}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.usuario.estado}" style="width: 100% !important" required="true">
 									<f:selectItems value="#{gerenciarUsuarioMB.estados}" />
 									<f:ajax listener="#{gerenciarUsuarioMB.alterarEstado}" render="municipio" />
 								</p:selectOneMenu>
@@ -100,7 +100,7 @@
 							<div class="form-group">
 								<p:outputLabel for="municipio"
 									value="#{messages['usuario.endereco.municipio']}" />
-								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.municipio}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio}" style="width: 100% !important" required="true">
 									<f:selectItems value="#{gerenciarUsuarioMB.municipios}" />
 								</p:selectOneMenu>
 							</div>

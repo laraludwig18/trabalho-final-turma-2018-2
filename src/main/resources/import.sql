@@ -1,5 +1,5 @@
 
-insert into Usuario (id, nome, email, senha, sobrenome) values (0, 'John', 'john.smith@mailinator.com', '2125551212', ' Smith'); 
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (1, 'valdomir@email.com', 'Rio Grande do Sul', 'Rua da Esquina', 'Canoas', 'Valdomir', 'Brasil', 'valdomir123', 'Silva');
 
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');

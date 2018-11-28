@@ -23,13 +23,8 @@ public class GerenciarUsuarioMB {
 	private Usuario usuario;
 	private List<Usuario> usuarios;
 	
-	private String pais;
 	private List<String> paises;
-
-	private String estado;
 	private List<String> estados;
-	
-	private String municipio;
 	private List<String> municipios;
 		
 	public String salva() {
@@ -45,6 +40,13 @@ public class GerenciarUsuarioMB {
 
 		estados = gerenciarUsuarioService.getEstados();
 		municipios = gerenciarUsuarioService.getMunicipios();
+
+		//	:	for testing
+		usuario.setNome("Lukas");
+		usuario.setSobrenome("Kenes");
+		usuario.setEmail("lukaskenes@live.com");
+		usuario.setSenha("lUk4s123");
+		usuario.setLogradouro("lɐᴉpunɯ ɯǝʇ oɐu oᴉɯǝɹƃ");
     }
 	
 	public void exclui() {
