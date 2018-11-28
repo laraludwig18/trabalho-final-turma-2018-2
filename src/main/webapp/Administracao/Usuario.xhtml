@@ -54,30 +54,29 @@
 							<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}"
 								id="hiddenId" />
 
+
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['usuario.nome']}" />
-								<p:inputText id="nome" styleClass="form-control" required="true" />
-
+								<p:inputText id="nome" styleClass="form-control"
+									value="#{gerenciarUsuarioMB.usuario.nome}" required="true" />
 							</div>
 
 							<div class="form-group">
-								<p:outputLabel for="sobrenome"
-									value="#{messages['usuario.sobrenome']}" />
+								<p:outputLabel for="sobrenome" value="#{messages['usuario.sobrenome']}" />
 								<p:inputText id="sobrenome" styleClass="form-control"
-									required="true" />
+									value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" />
 							</div>
 
 							<div class="form-group">
 								<p:outputLabel for="email" value="#{messages['usuario.email']}" />
 								<p:inputText id="email" styleClass="form-control"
-									required="true" />
+									value="#{gerenciarUsuarioMB.usuario.email}" required="true" />
 							</div>
-							
+
 							<div class="form-group">
-								<p:outputLabel for="senha"
-									value="#{messages['usuario.senha']}" />
+								<p:outputLabel for="senha" value="#{messages['usuario.senha']}" />
 								<p:inputText id="senha" styleClass="form-control"
-									required="true" />
+									value="#{gerenciarUsuarioMB.usuario.senha}" required="true" />
 							</div>
 							
 							<div class="form-group">
@@ -105,12 +104,11 @@
 									<f:selectItems value="#{gerenciarUsuarioMB.municipios}" />
 								</p:selectOneMenu>
 							</div>
-							
+
 							<div class="form-group">
-								<p:outputLabel for="logradouro"
-									value="#{messages['usuario.endereco.logradouro']}" />
+								<p:outputLabel for="logradouro" value="#{messages['usuario.endereco.logradouro']}" />
 								<p:inputText id="logradouro" styleClass="form-control"
-									required="true" />
+									value="#{gerenciarUsuarioMB.usuario.logradouro}" required="true" />
 							</div>
 							
 							<p:commandButton value="#{messages['clean']}"
@@ -136,13 +134,13 @@
 								id="tb-usuarios"
 								rendered="#{not empty gerenciarUsuarioMB.usuarios}">
 								<p:column headerText="#{messages['usuario.table.nome']}">
-									<h:outputText value="#{usuario.table.nome}" />
+									<h:outputText value="#{_usr.nome}" />
 								</p:column>
-								<p:column headerText="#{messages['usuario.table.sobrenome']}">
-									<h:outputText value="#{usuario.table.sobrenome}" />
+								<p:column headerText="#{messages['usuario.table.endereco']}">
+									<h:outputText value="#{_usr.logradouro} - #{_usr.estado} - #{_usr.pais}" />
 								</p:column>
 								<p:column headerText="#{messages['usuario.table.email']}">
-									<h:outputText value="#{usuario.table.email}" />
+									<h:outputText value="#{_usr.email}" />
 								</p:column>
 
 								<p:column headerText="Ações">

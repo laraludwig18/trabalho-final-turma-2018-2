@@ -15,7 +15,7 @@ import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 @Stateless
 public class UsuarioDAO extends BaseDAO<Usuario, Long> {
 
-	private static final long serialVersionUID = -6896321074436211850L;
+	private static final long serialVersionUID = 1L;
 
 	@SuppressWarnings("unchecked")
 	public List<Usuario> buscaPorEmail(String email) {

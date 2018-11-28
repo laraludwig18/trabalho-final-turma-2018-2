@@ -33,7 +33,7 @@ public class GerenciarUsuarioMB {
 	private List<String> municipios;
 		
 	public String salva() {
-		gerenciarUsuarioService.salvaUsario(usuario);
+		gerenciarUsuarioService.salvaUsuario(usuario);
 		this.init();
 		return limpa();
 	}
@@ -42,6 +42,9 @@ public class GerenciarUsuarioMB {
     public void init() {
 		usuarios = gerenciarUsuarioService.busca(null);	
 		paises = gerenciarUsuarioService.getPaises();
+
+		estados = gerenciarUsuarioService.getEstados();
+		municipios = gerenciarUsuarioService.getMunicipios();
     }
 	
 	public void exclui() {
@@ -55,14 +58,14 @@ public class GerenciarUsuarioMB {
 
 	public String limpa() {
 		usuario = new Usuario();
-		return "/public/usuario.jsf?facesRedirect=true";
+		return "/Administracao/Usuario.jsf?facesRedirect=true";
 	}
 	
 	public void alterarPais() {
-	    estados = gerenciarUsuarioService.getEstados();
+	    // estados = gerenciarUsuarioService.getEstados();
 	}
 	
 	public void alterarEstado() {
-		municipios = gerenciarUsuarioService.getMunicipios();
+		// municipios = gerenciarUsuarioService.getMunicipios();
 	}
 }

@@ -22,7 +22,7 @@ import lombok.Data;
 @Data
 public class Usuario extends BaseEntity<Long> implements Serializable {
 
-	private static final long serialVersionUID = 6262524988798723388L;
+	private static final long serialVersionUID = 1L;
 
 	@NotNull @Email 
 	private String email;
@@ -32,7 +32,8 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	@NotNull
 	private String nome;
-	
+
+	@NotNull
 	private String sobrenome;
 	
 	@NotNull
@@ -43,10 +44,16 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	@NotNull
 	private String municipio;
-	
+
+	@NotNull
 	private String logradouro;
 	
 	public Usuario() {
 		super();
+	}
+
+	public String toString() { 
+    	return "\n" + "email: '" + this.email + "\n" + "senha: '" + this.senha + "\n" + "nome: '" + this.nome + "\n" + "sobrenome: '" + this.sobrenome + "\n" + "pais: '" + this.pais + "\n" +
+    	 "estado: '" + this.estado + "\n" + "municipio: '" + this.municipio + "\n" + "logradouro: '" + this.logradouro + "\n";
 	}
 }

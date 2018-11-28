@@ -44,12 +44,12 @@ public class GerenciarUsuarioServiceTest {
 	@Test
 	public void salva_usuario() {
 		Usuario usuario = criaUsuario();
-		assertTrue(gerenciarUsuarioService.salvaUsario(usuario));
+		assertTrue(gerenciarUsuarioService.salvaUsuario(usuario));
 		assertNotNull(usuario.getId());
 		log.info(usuario.getNome() + " foi persistido com o id " + usuario.getId());
 		
 		usuario = criaUsuario();
-		assertFalse(gerenciarUsuarioService.salvaUsario(usuario));
+		assertFalse(gerenciarUsuarioService.salvaUsuario(usuario));
 		log.info("não permite criar usuario com mesmo email");
 	}
 
