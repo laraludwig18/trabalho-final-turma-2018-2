@@ -31,9 +31,10 @@ public class GerenciarReservaMB {
 	private List<PessoaFisica> cpfs;
 	private List<PessoaJuridica> cnpjs;
 	private List<Quarto> quartos;
-	private Integer cpf;
-	private Integer cnpj;
+	private Integer idPf;
+	private Integer idPj;
 	private Integer quartoId;
+	private Integer qtdDias;
 	private Date dataAtual;
 	
 	@PostConstruct

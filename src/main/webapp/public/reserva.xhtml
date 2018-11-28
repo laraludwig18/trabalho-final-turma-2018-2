@@ -66,7 +66,7 @@
 <!-- 							<form> -->
 <!-- 								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}"  class="form-group"> -->
 									<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
-									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.cnpj}" styleClass="form-control" required="true">
+									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.idPj}" styleClass="form-control" required="true">
 										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" itemValue="" />
 										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" var="cnpjs" itemLabel="#{cnpjs.cnpj}" 
 											itemValue="#{cnpjs.id}" />
@@ -75,7 +75,7 @@
 								
 <!-- 								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" class="form-group"> -->
 										<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
-										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.cpf}" styleClass="form-control" required="true">
+										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.idPf}" styleClass="form-control" required="true">
 											<f:selectItem itemLabel="#{messages['reserva.label.cpf']}" itemValue="" />
 											<f:selectItems value="#{gerenciarReservaMB.cpfs}" var="cpfs" itemLabel="#{cpfs.cpf}" 
 												itemValue="#{cpfs.id}"/>
@@ -94,9 +94,9 @@
 
 							<div class="form-group">
 								<p:outputLabel for="qntdias" value="#{messages['reserva.dias']}" />
-								<h:inputText id="qntdias" styleClass="form-control" required="true" >
+								<h:inputText id="qntdias" styleClass="form-control" required="true" 
+									value="#{gerenciarReservaMB.qtdDias}" >
 									<f:passThroughAttribute name="type" value="number" />
-									 <f:convertNumber maxFractionDigits="1" maxIntegerDigits="2" type="number" />  
 								</h:inputText>
 							</div>
 							
