@@ -3,18 +3,21 @@ package br.edu.ifrs.canoas.jee.webapp.controller;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 
 import lombok.Data;
 
-@Named
-@RequestScoped
+import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.component.UIOutput;
+
 @Data
+@ManagedBean
+@RequestScoped
 public class GerenciarUsuarioMB {
 
 	@Inject
@@ -35,10 +38,10 @@ public class GerenciarUsuarioMB {
 	
 	@PostConstruct
     public void init() {
-		usuarios = gerenciarUsuarioService.busca(null);	
-		paises = gerenciarUsuarioService.getPaises();
+		usuarios = gerenciarUsuarioService.busca(null);
 
-		estados = gerenciarUsuarioService.getEstados();
+		paises = gerenciarUsuarioService.getPaises();
+		estados = gerenciarUsuarioService.getEstados();			// : need work
 		municipios = gerenciarUsuarioService.getMunicipios();
 
 		//	:	for testing
@@ -63,11 +66,21 @@ public class GerenciarUsuarioMB {
 		return "/Administracao/Usuario.jsf?facesRedirect=true";
 	}
 	
-	public void alterarPais() {
-	    // estados = gerenciarUsuarioService.getEstados();
+	public void alterarPais(AjaxBehaviorEvent ev) {
+		String pais = (String)((UIOutput)ev.getSource()).getValue();
+		System.out.println("pais: " + pais);
+
+		if(pais.equals("Brasil")) {
+			estados = gerenciarUsuarioService.getEstados();
+		}
 	}
 	
-	public void alterarEstado() {
-		// municipios = gerenciarUsuarioService.getMunicipios();
+	public void alterarEstado(AjaxBehaviorEvent ev) {
+		String estado = (String)((UIOutput)ev.getSource()).getValue();
+		System.out.println("estado: " + estado);
+
+		if(estado.equals("RS - Rio Grande do Sul")) {
+			municipios = gerenciarUsuarioService.getMunicipios();
+		}
 	}
 }

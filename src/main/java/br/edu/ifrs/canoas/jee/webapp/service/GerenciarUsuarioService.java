@@ -52,7 +52,7 @@ public class GerenciarUsuarioService {
 	 */
 	private boolean validaSenha(Usuario usuario) {
 		String senha = this.getSenha(usuario.getSenha());
-		if (senha.length() > 0){
+		if (senha.length() > 8){
 			//atualizar senha criptografada
 			usuario.setSenha(senha);	
 			return true;
@@ -113,8 +113,7 @@ public class GerenciarUsuarioService {
 		List<String> list = new ArrayList<String>();
 		
 		list.add("Brasil");
-		list.add("Ucrânia");
-		list.add("Bélgica");
+		list.add("Outros");
 		
 		return list;
 	}
@@ -122,9 +121,33 @@ public class GerenciarUsuarioService {
 	public List<String> getEstados() {
 		List<String> list = new ArrayList<String>();
 		
-		list.add("Rio Grande do Sul");
-		list.add("São Paulo");
-		list.add("Rio de Janeiro");
+		list.add("AC - Acre");
+		list.add("AL - Alagoas");
+		list.add("AP - Amapá");
+		list.add("AM - Amazonas");
+		list.add("BA - Bahia");
+		list.add("CE - Ceará");
+		list.add("DF - Distrito Federal");
+		list.add("ES - Espírito Santo");
+		list.add("GO - Goiás");
+		list.add("MA - Maranhão");
+		list.add("MT - Mato Grosso");
+		list.add("MS - Mato Grosso do Sul");
+		list.add("MG - Minas Gerais");
+		list.add("PA - Pará");
+		list.add("PB - Paraíba");
+		list.add("PR - Paraná");
+		list.add("PE - Pernambuco");
+		list.add("PI - Piauí");
+		list.add("RJ - Rio de Janeiro");
+		list.add("RN - Rio Grande do Norte");
+		list.add("RS - Rio Grande do Sul");
+		list.add("RO - Rondônia");
+		list.add("RR - Roraima");
+		list.add("SC - Santa Catarina");
+		list.add("SP - São Paulo");
+		list.add("SE - Sergipe");
+		list.add("TO - Tocantins");
 		
 		return list;
 	}
@@ -133,8 +156,15 @@ public class GerenciarUsuarioService {
 		List<String> list = new ArrayList<String>();
 		
 		list.add("Porto Alegre");
+		list.add("Caxias do Sul");
 		list.add("Canoas");
-		list.add("Belém");
+		list.add("Pelotas");
+		list.add("Santa Maria");
+		list.add("Gravataí");
+		list.add("Viamão");
+		list.add("Novo Hamburgo");
+		list.add("São Leopoldo");
+		list.add("Rio Grande");
 		
 		return list;
 	}

@@ -134,7 +134,7 @@
 								id="tb-usuarios"
 								rendered="#{not empty gerenciarUsuarioMB.usuarios}">
 								<p:column headerText="#{messages['usuario.table.nome']}">
-									<h:outputText value="#{_usr.nome}" />
+									<h:outputText value="#{_usr.nome} #{_usr.sobrenome}" />
 								</p:column>
 								<p:column headerText="#{messages['usuario.table.endereco']}">
 									<h:outputText value="#{_usr.logradouro} - #{_usr.estado} - #{_usr.pais}" />
