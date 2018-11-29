@@ -16,9 +16,9 @@ public class PessoaJuridicaDAO extends BaseDAO<PessoaJuridica, Long>{
 	private static final long serialVersionUID = 1L;
 	
 	@SuppressWarnings("unchecked")
-	public List<PessoaJuridica> buscaPorCnpj(String cpf) {
+	public List<PessoaJuridica> buscaPorCnpj(String cnpj) {
 		return em.createQuery("SELECT u " + "FROM PessoaJuridica u " + "WHERE u.cnpj = :cnpj")
-				.setParameter("cpf", cpf).getResultList();
+				.setParameter("cnpj", cnpj).getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

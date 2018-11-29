@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
+import javax.xml.bind.ValidationException;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaJuridicaService;
@@ -23,7 +24,7 @@ public class GerenciarPessoaJuridicaMB {
 	private List<PessoaJuridica> pessoasJuridicas;
 	
 
-	public String salva() {
+	public String salva() throws ValidationException {
 		gerenciarPessoaJuridicaService.salvaPessoaJuridica(pessoaJuridica);
 		this.init();
 		return limpa();
@@ -31,7 +32,6 @@ public class GerenciarPessoaJuridicaMB {
 	
 	@PostConstruct
     public void init() {
-		pessoaJuridica = new PessoaJuridica();
 		pessoasJuridicas = gerenciarPessoaJuridicaService.busca(null);	
     }
 	

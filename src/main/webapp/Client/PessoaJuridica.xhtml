@@ -56,37 +56,14 @@
 							<h:inputHidden value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.id}"
 								id="hiddenId" />  
 
-							<div class="form-group">
-								<p:outputLabel for="razaoSocial" value="#{messages['cliente.razaoSocial']}" />
-								<p:inputText id="razaoSocial" styleClass="form-control" required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.razaoSocial}" />
-
-							</div>
-
-							<div class="form-group">
-								<p:outputLabel for="inscricaoMunicipal"
-									value="#{messages['cliente.inscricaoMunicipal']}" />
-								<p:inputText id="inscricaoMunicipal" styleClass="form-control"
-									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.inscricaoMunicipal}"/>
-							</div>
-
-							<div class="form-group">
-								<p:outputLabel for="inscricaoEstadual" value="#{messages['cliente.inscricaoEstadual']}" />
-								<p:inputText id="inscricaoEstadual" styleClass="form-control"
-									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.inscricaoEstadual}"/>
-							</div>
+							
 							
 							<div class="form-group">
-								<p:outputLabel for="cnpj"
-									value="#{messages['cliente.cnpj']}" />
-								<p:inputMask id="cnpj" styleClass="form-control"
-									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.cnpj}"  mask="99.999.999/9999-99"/>
-							</div>
-							
-							<div class="form-group">
-								<p:outputLabel for="email"
-									value="#{messages['cliente.email']}" />
-								<p:inputText id="email" styleClass="form-control"
-									required="true"  value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.email}"/>
+								<p:outputLabel for="nome" value="#{messages['cliente.nome']}" />
+								<p:inputText id="nome" styleClass="form-control"
+									value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.nome}"
+									required="true" />
+
 							</div>
 							
 							<div class="form-group">
@@ -97,6 +74,43 @@
 								
 								
 							</div>
+							
+							<div class="form-group">
+								<p:outputLabel for="email"
+									value="#{messages['cliente.email']}" />
+								<p:inputText id="email" styleClass="form-control"
+									required="true"  value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.email}"/>
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<p:outputLabel for="cnpj"
+									value="#{messages['cliente.cnpj']}" />
+								<p:inputMask id="cnpj" styleClass="form-control"
+									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.cnpj}"  mask="99.999.999/9999-99"/>
+							</div>
+							
+							<div class="form-group">
+								<p:outputLabel for="razaoSocial" value="#{messages['cliente.razaoSocial']}" />
+								<p:inputText id="razaoSocial" styleClass="form-control" required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.razaoSocial}" />
+
+							</div>
+							
+							<div class="form-group">
+								<p:outputLabel for="inscricaoEstadual" value="#{messages['cliente.inscricaoEstadual']}" />
+								<p:inputText id="inscricaoEstadual" styleClass="form-control"
+									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.inscricaoEstadual}"/>
+							</div>
+							
+							<div class="form-group">
+								<p:outputLabel for="inscricaoMunicipal"
+									value="#{messages['cliente.inscricaoMunicipal']}" />
+								<p:inputText id="inscricaoMunicipal" styleClass="form-control"
+									required="true" value="#{gerenciarPessoaJuridicaMB.pessoaJuridica.inscricaoMunicipal}"/>
+							</div>
+
+							
 
 							<p:commandButton value="#{messages['clean']}"
 								action="#{gerenciarPessoaJuridicaMB.limpa}"
@@ -118,11 +132,13 @@
 						
 						
 						<p:dataTable var="_usr" value="#{gerenciarPessoaJuridicaMB.pessoasJuridicas}" id="tb-usuarios"
-							rendered="#{not empty gerenciarPessoaJuridicaMB.pessoasJuridicas}">
+							rendered="#{not empty gerenciarPessoaJuridicaMB.pessoasJuridicas}" rows="10"
+								paginator="true"
+								emptyMessage="#{messages['users.empty']}">
 							<p:column headerText="Razão Social">
 								<h:outputText value="#{_usr.razaoSocial}" />
 							</p:column>
-							<p:column headerText="CNPJ">
+							<p:column headerText="CNPJ" sortBy="#{_USR.cnpj}">
 								<h:outputText value="#{_usr.cnpj}" />
 							</p:column>
 

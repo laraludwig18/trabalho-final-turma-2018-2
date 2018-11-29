@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.xml.bind.ValidationException;
 
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaJuridicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
@@ -14,9 +15,12 @@ public class GerenciarPessoaJuridicaService {
 	@Inject
 	private PessoaJuridicaDAO pessoaJuridicaDAO;
 
-	public void salvaPessoaJuridica(PessoaJuridica pessoaJuridica) {
+	public void salvaPessoaJuridica(PessoaJuridica pessoaJuridica) throws ValidationException {
 		// TODO Auto-generated method stub
 		if (pessoaJuridica.getId() == null) {
+//			if (pessoaJuridicaDAO.buscaPorCnpj(pessoaJuridica.getCnpj()).size()>0) {
+//				throw new ValidationException("CNPJ ja cadastrado");
+//			}
 			pessoaJuridicaDAO.insere(pessoaJuridica);
 		} else {
 			pessoaJuridicaDAO.atualiza(pessoaJuridica);

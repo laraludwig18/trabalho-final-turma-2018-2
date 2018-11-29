@@ -25,6 +25,7 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 	@Size(max = 100)
 	private String nome;
 	@Email
+	@Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
 	private String email;
 	//@Pattern(regexp="^\\([1-9]{2}\\) [2-9][0-9]{4}\\-[0-9]{4}$") //FORMATO ACEITO POR ENQUANTO: (99) 99999-9999
 	private String telefone;

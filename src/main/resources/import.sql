@@ -25,3 +25,16 @@ insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null
 
 insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
 insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
+
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Nestle LTDA', 'nestlead@aisd.com', '(51)9999-9999', '54.343.453/4354-54', 'Nestle', 'Nestle', 'Nestle', 'PessoaJuridica', 200);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ambev LTDA', 'ambev@asdjio.com', '(51)9999-9988', '54.343.453/8236-54', 'Ambev', 'Ambev', 'Ambev', 'PessoaJuridica', 201);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Unilever LTDA', 'unilever@asid.com', '(51)9999-9977', '54.741.453/4534-54', 'Unilever', 'Unilever', 'Unilever', 'PessoaJuridica', 202);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Admin LTE', 'admin@aiosj.com', '(51)8899-9999', '89.343.453/4534-54', 'Admin', 'Admin', 'Admin', 'PessoaJuridica', 203);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Google LTDA', 'google@asidoj.com', '(51)7799-9999', '87.343.453/4534-54', 'Google', 'Google', 'Google', 'PessoaJuridica', 204);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Apple LTDA', 'apple@aiosjd.com', '(51)9988-9999', '54.852.453/4534-54', 'Apple', 'Apple', 'Apple', 'PessoaJuridica', 205);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Vonpar BLAH', 'vonpaar@aiosdj.com', '(51)9977-9999', '69.343.453/4534-54', 'Vonpar', 'Vonpar', 'Vonpar', 'PessoaJuridica', 206);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Elma chips', 'elma@chips.com', '(51)9889-9999', '36.343.453/4534-54', 'Elma', 'Elma', 'Elma', 'PessoaJuridica', 207);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Banana Borges', 'bababa@broges.com', '(51)9779-9999', '54.145.453/4534-54', 'Banana', 'Banana', 'Banana', 'PessoaJuridica', 208);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Silvestrin LTDA', 'silsvest4rin@asdok.com', '(51)9999-8899', '54.658.453/4534-54', 'Silvestrin', 'Silvestrin', 'Silvestrin', 'PessoaJuridica', 209);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ceasa BLAH', 'ceasa@asd.com' , '(51)9999-7799', '54.853.453/4534-54', 'Ceasa', 'Ceasa', 'Ceasa', 'PessoaJuridica', 210);
+insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Pornhub NETWORK', 'pornhub@network.com', '(06)9999-9999', '00.343.453/4534-54', 'Pornhub', 'Pornhub', 'Pornhub', 'PessoaJuridica', 211);
