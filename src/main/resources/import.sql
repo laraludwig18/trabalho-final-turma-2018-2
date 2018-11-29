@@ -1,5 +1,10 @@
 
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (1, 'valdomir@email.com', 'Rio Grande do Sul', 'Rua da Esquina', 'Canoas', 'Valdomir', 'Brasil', 'valdomir123', 'Silva');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'RN - Rio Grande do Norte', 'Jardim dos Bancários', 'Natal', 'Geraldo', 'Brasil', 'xz6zK6q0f2', 'Moura');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'ES - Espírito Santo', 'Avenida São Francisco de Assis', 'Vila Velha', 'Osvaldo', 'Brasil', 'nbELDhbraz', 'Viana');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'MT - Mato Grosso', 'Rua A-169', 'Rondonópolis', 'Kamilly', 'Brasil', 'IQUd5YpbZp', 'Silva');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'PB - Paraíba', 'Rua Bruno Cunha Peixoto', 'Cabedelo', 'Giovanni', 'Brasil', 'yL29aS36wa', 'Lopes');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'AL - Alagoas', 'Rua José Soares de Souza', 'Maceió', 'Samuel', 'Brasil', 'ybdO2SoxXf', 'Neves');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'BA - Bahia', 'Alto da Floresta', 'Ilhéus', 'Stefany', 'Brasil', 'LSAsJOjoYM', 'Melo');
 
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
