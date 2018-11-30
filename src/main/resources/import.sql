@@ -45,4 +45,5 @@ insert into diaria values('DiariaReservada', 2,'2018-11-26', 10, 2, 1, 101);
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
 
-
+insert into pais values (1, 'Brasil');
+insert into pais values (2, 'Outros');

@@ -40,16 +40,19 @@ public class GerenciarUsuarioMB {
     public void init() {
 		usuarios = gerenciarUsuarioService.busca(null);
 
-		paises = gerenciarUsuarioService.getPaises();
-		estados = gerenciarUsuarioService.getEstados();			// : need work
-		municipios = gerenciarUsuarioService.getMunicipios();
+//		paises = gerenciarUsuarioService.getPaises();
+//		estados = gerenciarUsuarioService.getEstados();			// : need work
+//		municipios = gerenciarUsuarioService.getMunicipios();
 
 		//	:	for testing
-		usuario.setNome("Lukas");
-		usuario.setSobrenome("Kenes");
-		usuario.setEmail("lukaskenes@live.com");
-		usuario.setSenha("lUk4s123");
-		usuario.setLogradouro("lɐᴉpunɯ ɯǝʇ oɐu oᴉɯǝɹƃ");
+//		usuario.builder()
+//			.name("Lukas")
+//			.sobrenome("Kenes")
+//			.email("lukaskenes@live.com")
+//			.senha("lUk4s123")
+//			.logradouro("lɐᴉpunɯ ɯǝʇ oɐu oᴉɯǝɹƃ")
+//			.build();
+
     }
 	
 	public void exclui() {
@@ -71,7 +74,7 @@ public class GerenciarUsuarioMB {
 		System.out.println("pais: " + pais);
 
 		if(pais.equals("Brasil")) {
-			estados = gerenciarUsuarioService.getEstados();
+//			estados = gerenciarUsuarioService.getEstados();
 		}
 	}
 	
@@ -80,7 +83,7 @@ public class GerenciarUsuarioMB {
 		System.out.println("estado: " + estado);
 
 		if(estado.equals("RS - Rio Grande do Sul")) {
-			municipios = gerenciarUsuarioService.getMunicipios();
+//			municipios = gerenciarUsuarioService.getMunicipios();
 		}
 	}
 }
