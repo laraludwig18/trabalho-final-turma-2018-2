@@ -1,10 +1,10 @@
 
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'RN - Rio Grande do Norte', 'Jardim dos Bancários', 'Natal', 'Geraldo', 'Brasil', 'xz6zK6q0f2', 'Moura');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'ES - Espírito Santo', 'Avenida São Francisco de Assis', 'Vila Velha', 'Osvaldo', 'Brasil', 'nbELDhbraz', 'Viana');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'MT - Mato Grosso', 'Rua A-169', 'Rondonópolis', 'Kamilly', 'Brasil', 'IQUd5YpbZp', 'Silva');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'PB - Paraíba', 'Rua Bruno Cunha Peixoto', 'Cabedelo', 'Giovanni', 'Brasil', 'yL29aS36wa', 'Lopes');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'AL - Alagoas', 'Rua José Soares de Souza', 'Maceió', 'Samuel', 'Brasil', 'ybdO2SoxXf', 'Neves');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'BA - Bahia', 'Alto da Floresta', 'Ilhéus', 'Stefany', 'Brasil', 'LSAsJOjoYM', 'Melo');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'Rio Grande do Norte', 'Jardim dos Bancários', 'Natal', 'Geraldo', 'Brasil', 'xz6zK6q0f2', 'Moura');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'Espírito Santo', 'Avenida São Francisco de Assis', 'Vila Velha', 'Osvaldo', 'Brasil', 'nbELDhbraz', 'Viana');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'Mato Grosso', 'Rua A-169', 'Rondonópolis', 'Kamilly', 'Brasil', 'IQUd5YpbZp', 'Silva');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'Paraíba', 'Rua Bruno Cunha Peixoto', 'Cabedelo', 'Giovanni', 'Brasil', 'yL29aS36wa', 'Lopes');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'Alagoas', 'Rua José Soares de Souza', 'Maceió', 'Samuel', 'Brasil', 'ybdO2SoxXf', 'Neves');
+insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'Bahia', 'Alto da Floresta', 'Ilhéus', 'Stefany', 'Brasil', 'LSAsJOjoYM', 'Melo');
 
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
@@ -45,5 +45,43 @@ insert into diaria values('DiariaReservada', 2,'2018-11-26', 10, 2, 1, 101);
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
 
-insert into pais values (1, 'Brasil');
-insert into pais values (2, 'Outros');
+insert into pais (id, nome) values (1, 'Brasil');
+insert into pais (id, nome) values (2, 'Outros');
+
+insert into estado (id, nome, pais_id) values (1, 'Acre', 1);
+insert into estado (id, nome, pais_id) values (2, 'Alagoas', 1);
+insert into estado (id, nome, pais_id) values (3, 'Amapá', 1);
+insert into estado (id, nome, pais_id) values (4, 'Amazonas', 1);
+insert into estado (id, nome, pais_id) values (5, 'Bahia', 1);
+insert into estado (id, nome, pais_id) values (6, 'Ceará', 1);
+insert into estado (id, nome, pais_id) values (7, 'Distrito Federal', 1);
+insert into estado (id, nome, pais_id) values (8, 'Espírito Santo', 1);
+insert into estado (id, nome, pais_id) values (9, 'Goiás', 1);
+insert into estado (id, nome, pais_id) values (10, 'Maranhão', 1);
+insert into estado (id, nome, pais_id) values (11, 'Mato Grosso', 1);
+insert into estado (id, nome, pais_id) values (12, 'Mato Grosso do Sul', 1);
+insert into estado (id, nome, pais_id) values (13, 'Minas Gerais', 1);
+insert into estado (id, nome, pais_id) values (14, 'Pará', 1);
+insert into estado (id, nome, pais_id) values (15, 'Paraíba', 1);
+insert into estado (id, nome, pais_id) values (16, 'Paraná', 1);
+insert into estado (id, nome, pais_id) values (17, 'Pernambuco', 1);
+insert into estado (id, nome, pais_id) values (18, 'Piauí', 1);
+insert into estado (id, nome, pais_id) values (19, 'Rio de Janeiro', 1);
+insert into estado (id, nome, pais_id) values (20, 'Rio Grande do Norte', 1);
+insert into estado (id, nome, pais_id) values (21, 'Rio Grande do Sul', 1);
+insert into estado (id, nome, pais_id) values (22, 'Rondônia', 1);
+insert into estado (id, nome, pais_id) values (23, 'Roraima', 1);
+insert into estado (id, nome, pais_id) values (24, 'Santa Catarina', 1);
+insert into estado (id, nome, pais_id) values (25, 'São Paulo', 1);
+insert into estado (id, nome, pais_id) values (26, 'Sergipe', 1);
+insert into estado (id, nome, pais_id) values (27, 'Tocantins', 1);
+
+insert into municipio (id, nome, estado_id) values (1, 'Porto Alegre', 21);
+insert into municipio (id, nome, estado_id) values (2, 'Caxias do Sul', 21);
+insert into municipio (id, nome, estado_id) values (3, 'Canoas', 21);
+insert into municipio (id, nome, estado_id) values (4, 'Pelotas', 21);
+insert into municipio (id, nome, estado_id) values (5, 'Santa Maria', 21);
+insert into municipio (id, nome, estado_id) values (6, 'Gravataí', 21);
+insert into municipio (id, nome, estado_id) values (7, 'Viamão', 21);
+insert into municipio (id, nome, estado_id) values (8, 'Novo Hamburgo', 21);
+insert into municipio (id, nome, estado_id) values (9, 'São Leopoldo', 21);

@@ -9,11 +9,18 @@ import javax.inject.Inject;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPaisService;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarEstadoService;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarMunicipioService;
 
 import lombok.Data;
 
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.component.UIOutput;
+
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pais;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Estado;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Municipio;
 
 @Data
 @ManagedBean
@@ -21,14 +28,22 @@ import javax.faces.component.UIOutput;
 public class GerenciarUsuarioMB {
 
 	@Inject
-    private GerenciarUsuarioService gerenciarUsuarioService;	
+    private GerenciarUsuarioService gerenciarUsuarioService;
+	
+	@Inject
+    private GerenciarPaisService gerenciarPaisService;
+	@Inject
+    private GerenciarEstadoService gerenciarEstadoService;
+	@Inject
+    private GerenciarMunicipioService gerenciarMunicipioService;
+	
 	@Inject
 	private Usuario usuario;
 	private List<Usuario> usuarios;
 	
-	private List<String> paises;
-	private List<String> estados;
-	private List<String> municipios;
+	private List<Pais> paises;
+	private List<Estado> estados;
+	private List<Municipio> municipios;
 		
 	public String salva() {
 		gerenciarUsuarioService.salvaUsuario(usuario);
@@ -39,6 +54,10 @@ public class GerenciarUsuarioMB {
 	@PostConstruct
     public void init() {
 		usuarios = gerenciarUsuarioService.busca(null);
+		
+		paises = gerenciarPaisService.busca(null);
+		estados = gerenciarEstadoService.busca(null);
+		municipios = gerenciarMunicipioService.busca(null);
 
 //		paises = gerenciarUsuarioService.getPaises();
 //		estados = gerenciarUsuarioService.getEstados();			// : need work
