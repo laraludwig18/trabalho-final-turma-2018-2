@@ -44,3 +44,4 @@ insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quar
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
 
+

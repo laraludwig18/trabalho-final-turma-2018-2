@@ -71,7 +71,7 @@
 
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.pessoaId}" id="cnpj"
+								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cnpj"
 									styleClass="form-control">
 									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}"
 										itemValue="" />
@@ -82,10 +82,9 @@
 
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.pessoaId}" id="cpf"
+								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cpf"
 									styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cpf']}"
-										itemValue="" />
+									
 									<f:selectItems value="#{gerenciarDiariaMB.PF}" var="PF"
 										itemLabel="#{PF.cpf}" itemValue="#{PF.id}" />
 								</h:selectOneMenu>
@@ -93,7 +92,7 @@
 
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.quartoId}"
+								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.quarto.id}"
 									id="quarto" styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.quarto']}"
@@ -147,7 +146,7 @@
 
 								<p:column headerText="CPF/CNPJ">
 									<h:outputText value="#{_diaria.pessoa.cpf}" />
-								</p:column>
+								</p:column> 
 								
 								<p:column headerText="Data Entrada">
 									<h:outputText value="#{_diaria.data}">

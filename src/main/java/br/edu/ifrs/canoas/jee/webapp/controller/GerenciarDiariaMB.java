@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
@@ -24,34 +25,35 @@ public class GerenciarDiariaMB {
 	private DiariaAvulsa diariaAvulsa;
 	private List<String> tipoClientes;	
 	private String tipoCliente;
-	private Long pessoaId;
-	private Long quartoId;
+	private Pessoa pessoa;
+	private Quarto quarto;
+	
 	private List<PessoaJuridica> PJ;
 	private List<PessoaFisica> PF;
+	
 	private List<Quarto> quartos;
 	private List<DiariaAvulsa> diarias;
+	
+	public Boolean isPf() {
+		return pessoa instanceof PessoaFisica ? true : false;
+	}
 
 	@PostConstruct
 	public void init() {
 		diariaAvulsa = new DiariaAvulsa();
+		diariaAvulsa.setPessoa(new PessoaFisica());
+		diariaAvulsa.setQuarto(new Quarto());
+		
 		diarias = gerenciarDiariaService.busca();	
 		tipoClientes = gerenciarDiariaService.getTipoCliente();
+		
 		PF = gerenciarDiariaService.getPF();
 		PJ = gerenciarDiariaService.getPJ();
+		
 		quartos = gerenciarDiariaService.getQuartos();
 	}
 	
 	public String salva() {
-		if(tipoCliente.equals("Pessoa Física")) {
-			diariaAvulsa.setPessoa(new PessoaFisica());
-		}else {
-			diariaAvulsa.setPessoa(new PessoaJuridica());
-		}
-		diariaAvulsa.getPessoa().setId(pessoaId);
-		
-		diariaAvulsa.setQuarto(new Quarto());
-		diariaAvulsa.getQuarto().setId(quartoId);
-		
 		gerenciarDiariaService.salvaDiaria(diariaAvulsa);
 		this.init();
 		return limpa();
