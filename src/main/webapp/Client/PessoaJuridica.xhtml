@@ -133,14 +133,31 @@
 						
 						<p:dataTable var="_usr" value="#{gerenciarPessoaJuridicaMB.pessoasJuridicas}" id="tb-usuarios"
 							rendered="#{not empty gerenciarPessoaJuridicaMB.pessoasJuridicas}" rows="10"
-								paginator="true"
-								emptyMessage="#{messages['users.empty']}">
-							<p:column headerText="Razão Social">
+								paginator="true" widgetVar="pJurTable"
+								emptyMessage="#{messages['users.empty']}"
+								sortBy="#{_usr.razaoSocial}"
+								sortOrder="ascending" 
+								>
+							
+							<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="#{messages['buscar']}" />
+										<p:inputText id="globalFilter"
+											onkeyup="PF('pJurTable').filter()" style="width:133px"
+											placeholder="Buscar" />
+									</p:outputPanel>
+								</f:facet>
+									
+							<p:column headerText="Razão Social" sortBy="#{_usr.razaoSocial}" filterMatchMode="contains"
+									filterBy="#{_usr.razaoSocial}" filterStyle="display:none" >
 								<h:outputText value="#{_usr.razaoSocial}" />
 							</p:column>
-							<p:column headerText="CNPJ" sortBy="#{_USR.cnpj}">
-								<h:outputText value="#{_usr.cnpj}" />
+							
+							<p:column headerText="CNPJ" sortBy="#{_usr.cnpj}" filterMatchMode="contains"
+									filterBy="#{_usr.cnpj}" filterStyle="display:none">
+									<h:outputText value="#{_usr.cnpj}" />
 							</p:column>
+						
 
 							<p:column headerText="Ações">
 								<!-- EDITA -->
