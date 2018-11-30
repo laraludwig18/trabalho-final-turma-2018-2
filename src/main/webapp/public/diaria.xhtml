@@ -28,6 +28,7 @@
 
 			<!-- Main content -->
 			<section class="content">
+				<p:messages id="msgs" showDetail="false" autoUpdate="true" closable="true" />
 				<h:panelGroup id="diaria-content">
 					<!-- Default box -->
 					<div class="box">
@@ -54,20 +55,22 @@
 								id="hiddenId" />
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.tipoCliente']}"
+								<p:outputLabel value="#{messages['diaria.tipoCliente']}"
 									for="tipoCliente" />
 								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarDiariaMB.tipoCliente}"
-									styleClass="form-control">
+									styleClass="form-control" immediate="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
 										itemValue="" />
-									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}" />
+									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}"
+										var="tipoCliente" itemLabel="#{tipoCliente}"
+										temValue="#{tipoCliente}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
+								<p:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
 								<h:selectOneMenu value="#{gerenciarDiariaMB.pessoaId}" id="cnpj"
 									styleClass="form-control">
 									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}"
@@ -78,7 +81,7 @@
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
+								<p:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
 								<h:selectOneMenu value="#{gerenciarDiariaMB.pessoaId}" id="cpf"
 									styleClass="form-control">
 									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cpf']}"
@@ -89,21 +92,22 @@
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
+								<p:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
 								<h:selectOneMenu value="#{gerenciarDiariaMB.quartoId}"
-									id="quarto" styleClass="form-control">
+									id="quarto" styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.quarto']}"
 										itemValue="" />
-									<f:selectItems value="#{gerenciarDiariaMB.quartos}" var="quarto"
-										itemLabel="#{quarto.numero}" itemValue="#{quarto.id}" />
+									<f:selectItems value="#{gerenciarDiariaMB.quartos}"
+										var="quarto" itemLabel="#{quarto.numero}"
+										itemValue="#{quarto.id}" />
 								</h:selectOneMenu>
 							</div>
 
 							<div class="form-group">
-								<h:outputLabel value="#{messages['diaria.dias']}" for="qtdDias" />
+								<p:outputLabel value="#{messages['diaria.dias']}" for="qtdDias" />
 								<h:inputText id="qtdDias" styleClass="form-control"
-									value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}" >
+									value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}" required="true">
 									<f:passThroughAttribute name="type" value="number" />
 								</h:inputText>
 							</div>
@@ -113,7 +117,7 @@
 								<br />
 								<p:calendar id="data"
 									value="#{gerenciarDiariaMB.diariaAvulsa.data}" showOn="button"
-									pattern="dd/MM/yyyy" />
+									pattern="dd/MM/yyyy" required="true" />
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
@@ -128,16 +132,23 @@
 
 						<div class="box-footer">
 
-
-							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}">
+							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}" >
 								<em><p:outputLabel value="#{messages['diaria.empty']}" />.</em>
 							</h:panelGroup>
 
-
 							<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
 								id="tb-diarias"
+								paginator="true"
 								rendered="#{not empty gerenciarDiariaMB.diarias}">
 
+								<p:column headerText="Quartos">
+									<h:outputText value="#{_diaria.quarto.numero}" />
+								</p:column>
+
+								<p:column headerText="CPF/CNPJ">
+									<h:outputText value="#{_diaria.pessoa.cpf}" />
+								</p:column>
+								
 								<p:column headerText="Data Entrada">
 									<h:outputText value="#{_diaria.data}">
 										<f:convertDateTime pattern="dd/MM/yyyy"

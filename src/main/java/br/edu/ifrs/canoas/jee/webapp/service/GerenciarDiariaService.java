@@ -29,7 +29,6 @@ public class GerenciarDiariaService {
 	@Inject
 	private QuartoDAO quartoDAO;
 	
-	
 	public void salvaDiaria(DiariaAvulsa diariaAvulsa) {
 		if (diariaAvulsa.getId() == null) {
 			diariaAvulsaDAO.insere(diariaAvulsa);
@@ -37,9 +36,10 @@ public class GerenciarDiariaService {
 			diariaAvulsaDAO.atualiza(diariaAvulsa);
 		}
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public List<DiariaAvulsa> busca() {
-		return diariaAvulsaDAO.busca();
+		return diariaAvulsaDAO.lista();
 	}
 	
 	public void exclui(DiariaAvulsa diariaAvulsa) {

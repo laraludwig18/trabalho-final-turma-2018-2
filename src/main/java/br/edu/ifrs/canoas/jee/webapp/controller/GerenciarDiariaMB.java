@@ -21,7 +21,6 @@ import lombok.Data;
 public class GerenciarDiariaMB {
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
-	@Inject
 	private DiariaAvulsa diariaAvulsa;
 	private List<String> tipoClientes;	
 	private String tipoCliente;
@@ -63,8 +62,6 @@ public class GerenciarDiariaMB {
 	}
 	
 	public void exclui(DiariaAvulsa diaria) {
-		System.out.println("Entra");
-		System.out.println(diaria);
 		gerenciarDiariaService.exclui(diaria);
 		this.init();
 	}

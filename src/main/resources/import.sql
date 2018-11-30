@@ -24,13 +24,6 @@ insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) v
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',115,'Lorena','lorena@email.com','(51)93398-6814','992.146.238-61','1993-01-21','32938078');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',116,'Lívia','livia@email.com','(51)98993-8026','707.754.329-99','1989-05-17','25534341');
 
-insert into reserva values(1, '2018-11-26', 350.56, 101);
-
-insert into diaria values ('DiariaAvulsa', 1, '1999-02-26', 12, null, null, null);
-
-insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
-
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Nestle LTDA', 'nestlead@aisd.com', '(51)9999-9999', '54.343.453/4354-54', 'Nestle', 'Nestle', 'Nestle', 'PessoaJuridica', 200);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ambev LTDA', 'ambev@asdjio.com', '(51)9999-9988', '54.343.453/8236-54', 'Ambev', 'Ambev', 'Ambev', 'PessoaJuridica', 201);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Unilever LTDA', 'unilever@asid.com', '(51)9999-9977', '54.741.453/4534-54', 'Unilever', 'Unilever', 'Unilever', 'PessoaJuridica', 202);
@@ -43,3 +36,11 @@ insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMun
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Silvestrin LTDA', 'silsvest4rin@asdok.com', '(51)9999-8899', '54.658.453/4534-54', 'Silvestrin', 'Silvestrin', 'Silvestrin', 'PessoaJuridica', 209);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ceasa BLAH', 'ceasa@asd.com' , '(51)9999-7799', '54.853.453/4534-54', 'Ceasa', 'Ceasa', 'Ceasa', 'PessoaJuridica', 210);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Pornhub NETWORK', 'pornhub@network.com', '(06)9999-9999', '00.343.453/4534-54', 'Pornhub', 'Pornhub', 'Pornhub', 'PessoaJuridica', 211);
+
+insert into reserva values(1, '2018-11-26', 350.56, 101);
+
+insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
+
+insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
+
