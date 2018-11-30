@@ -37,10 +37,11 @@ insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMun
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ceasa BLAH', 'ceasa@asd.com' , '(51)9999-7799', '54.853.453/4534-54', 'Ceasa', 'Ceasa', 'Ceasa', 'PessoaJuridica', 210);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Pornhub NETWORK', 'pornhub@network.com', '(06)9999-9999', '00.343.453/4534-54', 'Pornhub', 'Pornhub', 'Pornhub', 'PessoaJuridica', 211);
 
-insert into reserva values(1, '2018-11-26', 350.56, 101);
-
 insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
 insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
+
+insert into reserva values(1, '2018-11-26', 350.56, 101);
+insert into diaria values('DiariaReservada', 2,'2018-11-26', 10, 2, 1, 101);
 
 insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
 

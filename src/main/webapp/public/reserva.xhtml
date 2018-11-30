@@ -59,29 +59,29 @@
 								<h:selectOneMenu id="tpCliente" value="#{gerenciarReservaMB.tipoCliente}" styleClass="form-control" required="true">
 									<f:selectItem itemLabel="#{messages['reserva.label.tipoCliente']}" itemValue="" />
 									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
-<!-- 									<f:ajax render="@form" /> -->
+									<f:ajax render="tipoC" />
 								</h:selectOneMenu>
 							</div>
 							
-<!-- 							<form> -->
-<!-- 								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}"  class="form-group"> -->
+							<h:panelGroup id="tipoC">
+								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}"  class="form-group">
 									<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
 									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.idPj}" styleClass="form-control" required="true">
 										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" itemValue="" />
 										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" var="cnpjs" itemLabel="#{cnpjs.cnpj}" 
 											itemValue="#{cnpjs.id}" />
 									</h:selectOneMenu>
-<!-- 								</h:panelGroup> -->
+								</h:panelGroup>
 								
-<!-- 								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" class="form-group"> -->
+								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" class="form-group">
 										<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
 										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.idPf}" styleClass="form-control" required="true">
 											<f:selectItem itemLabel="#{messages['reserva.label.cpf']}" itemValue="" />
 											<f:selectItems value="#{gerenciarReservaMB.cpfs}" var="cpfs" itemLabel="#{cpfs.cpf}" 
 												itemValue="#{cpfs.id}"/>
 										</h:selectOneMenu>
-<!-- 								</h:panelGroup> -->
-<!-- 							</form>	 -->
+								</h:panelGroup>
+							</h:panelGroup>	
 						
 							<div class="form-group">
 								<p:outputLabel for="quarto" value="#{messages['reserva.quarto']}" />
@@ -134,29 +134,31 @@
 							<p:dataTable var="reserva" value="#{gerenciarReservaMB.reservas}"
 								id="tb-reservas"
 								rendered="#{not empty gerenciarReservaMB.reservas}">
+								
 								<p:column headerText="Quartos">
-									<h:outputText value="#{quarto.numero}" />
+									<h:outputText value="#{diaria.quarto.numero}" />
 								</p:column>
 								<p:column headerText="Cliente">
-									<h:outputText value="#{pessoaFisica.cpf}" />
+									<h:outputText value="#{reserva.pessoa.cpf}" />
 								</p:column>
 								<p:column headerText="Data Reserva">
 									<h:outputText value="#{reserva.data}" />
 								</p:column>
 								<p:column headerText="Quantidade Dias">
-									<h:outputText value="#{quarto.numero}" />
+									<h:outputText value="#{diaria.qtdDias}" />
 								</p:column>
 								<p:column headerText="Ações">
 									<h:commandButton value="#{messages['edit']}" imediate="true" 
 									styleClass="btn btn-default" action="#{gerenciarReservaMB.edita(reserva)}" 
 									upadte="tb-reservas" />
-								</p:column>
-								
+									
 								<h:commandLink value="#{messages['delete']}" immediate="true"
 									styleClass="btn btn-default"
 									action="#{gerenciarReservaMB.exclui(reserva)}" ajax="true"
 									update="tb-reservas">
-								</h:commandLink>
+								</h:commandLink>	
+								</p:column>
+								
 							</p:dataTable>
 
 						</div>
