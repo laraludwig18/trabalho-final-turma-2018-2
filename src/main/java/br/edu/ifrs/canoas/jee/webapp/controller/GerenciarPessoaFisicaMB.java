@@ -11,36 +11,36 @@ import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaFisicaService;
 import lombok.Data;
 
 @Named
-@ManagedBean(name="dtGerenciaPessoa")
+@ManagedBean(name = "dtGerenciaPessoa")
 @ViewScoped
 @Data
-public class GerenciarPessoaFisica {
-	
+public class GerenciarPessoaFisicaMB {
+
 	@Inject
 	private GerenciarPessoaFisicaService gerenciarPessoaFisicaService;
 	@Inject
 	private PessoaFisica pessoaFisica;
-	
+
 	private List<PessoaFisica> pessoasFisicas;
-	
+
 	private List<PessoaFisica> pessoasFisicasFiltradas;
-		
+
 	public String salva() {
 		gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);
 		this.init();
 		return limpa();
 	}
-	
+
 	@PostConstruct
-    public void init() {
-		pessoasFisicas = gerenciarPessoaFisicaService.busca(null);	
-    }
-	
+	public void init() {
+		pessoasFisicas = gerenciarPessoaFisicaService.busca(null);
+	}
+
 	public void exclui() {
 		gerenciarPessoaFisicaService.exclui(pessoaFisica);
 		this.init();
 	}
-	
+
 	public void edita(PessoaFisica pessoaFisica) {
 		this.pessoaFisica = pessoaFisica;
 	}

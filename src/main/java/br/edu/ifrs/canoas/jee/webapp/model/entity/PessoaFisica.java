@@ -23,12 +23,12 @@ import lombok.Data;
 @Entity
 @Data
 public class PessoaFisica extends Pessoa implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	@Column(unique=true) 
+
+	@Column(unique=true)
 	private String cpf;
-	@Pattern(regexp="^[0-9]{10}$", message="RG INVÁLIDO!")
+	@Pattern(regexp="^[0-9]{10}$", message="{Pessoa.rg.erro}")
 	private String rg;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;

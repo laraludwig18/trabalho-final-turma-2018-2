@@ -23,7 +23,7 @@ public class PessoaFisicaDAOTest {
 	@Deployment
     public static Archive<?> createTestArchive() {
 	    return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(UsuarioDAO.class)
+                .addClasses(PessoaFisicaDAO.class)
                 .addPackages(true, "br.edu.ifrs.canoas.jee.webapp")
                 .addPackages(true, "org.apache.commons")
                 .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
