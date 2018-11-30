@@ -27,9 +27,9 @@ public class PessoaJuridicaDAO extends BaseDAO<PessoaJuridica, Long>{
 		         "SELECT u "
 		         + "FROM PessoaFisica u "
 		         + "WHERE u.cnpj = :cnpj "
-		         + " or u.razaoSocial = :razaoSocial "
-		         + " or u.inscricaoEstadual = :inscricaoEstadual "
-		         + " or u.inscricaoMunicipal = :inscricaoMunicipal "
+		         + " or lower(u.razaoSocial) = :razaoSocial "
+		         + " or lower(u.inscricaoEstadual) = :inscricaoEstadual "
+		         + " or lower(u.inscricaoMunicipal) = :inscricaoMunicipal "
 				)				
 				 .setParameter("cnpj", criterio.trim().toLowerCase())
 		         .setParameter("razaoSocial", criterio.trim().toLowerCase())

@@ -35,12 +35,6 @@ public class GerenciarPessoaJuridicaService {
 		}
 	}
 
-	public List<PessoaJuridica> busca(Object object) {
-		// TODO Auto-generated method stub
-		
-		return null;
-	}
-
 	public void exclui(PessoaJuridica pessoaJuridica) {
 		pessoaJuridicaDAO.exclui(pessoaJuridica.getId());
 	}
