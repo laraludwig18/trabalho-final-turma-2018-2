@@ -9,10 +9,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaReservada;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarDiariaService;
+import br.edu.ifrs.canoas.jee.webapp.service.GerenciarQuartoService;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
 import lombok.Data;
 
@@ -22,9 +25,17 @@ import lombok.Data;
 public class GerenciarReservaMB {
 
 	@Inject
-    private GerenciarReservaService gerenciarReservaService;	
+    private GerenciarReservaService gerenciarReservaService;
+	@Inject
+    private GerenciarDiariaService gerenciarDiariaService;
+	@Inject
+    private GerenciarQuartoService gerenciarQuartoService;
 	@Inject
 	private Reserva reserva;
+	@Inject
+	private DiariaReservada diariaReservada;
+	@Inject
+	private Quarto quarto;
 	private List<Reserva> reservas;
 	private List<String> tipoClientes;
 	private String tipoCliente;
@@ -36,36 +47,52 @@ public class GerenciarReservaMB {
 	private Integer quartoId;
 	private Integer qtdDias;
 	private Date dataAtual;
-	
+
 	@PostConstruct
     public void init() {
-		reservas = gerenciarReservaService.busca(null);	
+		reservas = gerenciarReservaService.busca(null);
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = gerenciarReservaService.pegaCpfPf();
 		cnpjs = gerenciarReservaService.pegaCnpjPj();
 		quartos = gerenciarReservaService.pegaQuartos();
 		dataAtual = new Date();
     }
-	
+
 	public String salva() {
 		gerenciarReservaService.salvaReserva(reserva);
+
+		//quarto = gerenciarQuartoService.busca(quartoId);
+		criaDiariaReservada(reserva, qtdDias, quartoId);
+
+		gerenciarDiariaService.salvaDiariaReservada(diariaReservada);	//DataReserva, qtdeDias ,quartoNumero, idReserva, idPessoa
+
 		this.init();
 		return limpa();
 	}
-	
+
 	public void edita(Reserva r) {
 		this.reserva = r;
 	}
-	
+
 	public void exclui(Reserva r) {
 		gerenciarReservaService.exclui(r);
 		this.init();
 	}
-	
+
 	public String limpa() {
 		reserva = new Reserva();
 		return "/public/reserva.jsf?facesRedirect=true";
 	}
-	
-	
+
+
+	public void criaDiariaReservada(Reserva reserva, Integer qtdDias, Integer quartoId) {
+		diariaReservada.setData(reserva.getData());
+		diariaReservada.setQtdDias(qtdDias);
+
+
+
+		diariaReservada.setQuarto(quarto);
+	}
+
+
 }
