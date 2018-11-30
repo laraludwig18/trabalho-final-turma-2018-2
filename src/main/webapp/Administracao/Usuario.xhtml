@@ -78,32 +78,59 @@
 								<p:inputText id="senha" styleClass="form-control"
 									value="#{gerenciarUsuarioMB.usuario.senha}" required="true" />
 							</div>
+
+							<!-- ========================================================= -->
 							
 							<div class="form-group">
-								<p:outputLabel for="pais"
+					            <p:outputLabel for="pais"
 									value="#{messages['usuario.endereco.pais']}" />
 								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.usuario.pais}" style="width: 100% !important" required="true">
 								   <f:selectItems value="#{gerenciarUsuarioMB.paises}" />
-								   <f:ajax listener="#{gerenciarUsuarioMB.alterarPais}" render="estado" />
-								</p:selectOneMenu>
+					               <p:ajax process="pais" update="@form" />
+					            </p:selectOneMenu>
+					        </div>
+
+					        <!-- ========================================================= -->
+
+					        <div class="form-group">
+								<p:outputLabel for="estado"
+					            	value="#{messages['usuario.endereco.estado']}"
+					            	rendered="#{gerenciarUsuarioMB.usuario.pais eq 'Outros'}">
+					            </p:outputLabel>
+								<p:inputText id="estado" styleClass="form-control"
+					            	value="#{gerenciarUsuarioMB.usuario.estado}"
+					            	rendered="#{gerenciarUsuarioMB.usuario.pais eq 'Outros'}"/>
 							</div>
-							
+
+							<!-- ========================================================= -->
+
 							<div class="form-group">
 								<p:outputLabel for="estado"
-									value="#{messages['usuario.endereco.estado']}" />
-								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.usuario.estado}" style="width: 100% !important" required="true">
+					            	value="#{messages['usuario.endereco.estado']}"
+					            	rendered="#{gerenciarUsuarioMB.usuario.pais eq 'Brasil'}">
+					            </p:outputLabel>
+					            <p:selectOneMenu id="estadoMenu" value="#{gerenciarUsuarioMB.usuario.estado}" style="width: 100% !important" required="true"
+					            	rendered="#{gerenciarUsuarioMB.usuario.pais eq 'Brasil'}">
 									<f:selectItems value="#{gerenciarUsuarioMB.estados}" />
-									<f:ajax listener="#{gerenciarUsuarioMB.alterarEstado}" render="municipio" />
+									<p:ajax process="estado"  />
 								</p:selectOneMenu>
 							</div>
-							
+
+							<!-- ========================================================= -->
+
 							<div class="form-group">
 								<p:outputLabel for="municipio"
-									value="#{messages['usuario.endereco.municipio']}" />
-								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio}" style="width: 100% !important" required="true">
+									value="#{messages['usuario.endereco.municipio']}"
+									rendered="#{gerenciarUsuarioMB.usuario.pais eq 'RS - Rio Grande do Sul'}">
+								</p:outputLabel>
+								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio}"
+									style="width: 100% !important" required="true"
+									rendered="#{gerenciarUsuarioMB.usuario.pais eq 'RS - Rio Grande do Sul'}">
 									<f:selectItems value="#{gerenciarUsuarioMB.municipios}" />
 								</p:selectOneMenu>
 							</div>
+
+							<!-- ========================================================= -->
 
 							<div class="form-group">
 								<p:outputLabel for="logradouro" value="#{messages['usuario.endereco.logradouro']}" />

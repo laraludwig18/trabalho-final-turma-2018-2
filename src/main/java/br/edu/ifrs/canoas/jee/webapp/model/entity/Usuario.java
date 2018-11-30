@@ -33,11 +33,13 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	@NotNull
 	private String pais;
-	
+
+	@NotNull
 	private String estado;
 		
 	private String municipio;
 
+	@NotNull
 	private String logradouro;
 	
 	public Usuario() {
