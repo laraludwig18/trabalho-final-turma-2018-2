@@ -3,10 +3,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import br.edu.ifrs.canoas.jee.webapp.model.dao.BaseDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaJuridicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.QuartoDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.ReservaDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
@@ -21,6 +23,7 @@ public class GerenciarReservaService {
 	private PessoaJuridicaDAO pessoaJuridicaDAO;
 	@Inject
 	private QuartoDAO quartoDAO;
+	
 
 	public void salvaReserva(Reserva reserva) {
 			if (reserva.getId() == null)
@@ -50,6 +53,10 @@ public class GerenciarReservaService {
 	
 	public void exclui(Reserva reserva) {
 		reservaDAO.exclui(reserva.getId());
+	}
+	
+	public Quarto buscaQuarto(Long id) {
+		return quartoDAO.busca(id);
 	}
 	
 	

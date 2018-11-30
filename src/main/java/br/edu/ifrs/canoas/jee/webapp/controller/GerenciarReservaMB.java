@@ -10,12 +10,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaReservada;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarDiariaService;
-import br.edu.ifrs.canoas.jee.webapp.service.GerenciarQuartoService;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
 import lombok.Data;
 
@@ -29,8 +29,6 @@ public class GerenciarReservaMB {
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
 	@Inject
-    private GerenciarQuartoService gerenciarQuartoService;
-	@Inject
 	private Reserva reserva;
 	@Inject
 	private DiariaReservada diariaReservada;
@@ -42,9 +40,8 @@ public class GerenciarReservaMB {
 	private List<PessoaFisica> cpfs;
 	private List<PessoaJuridica> cnpjs;
 	private List<Quarto> quartos;
-	private Integer idPf;
-	private Integer idPj;
-	private Integer quartoId;
+	private Long quartoId;
+	private Long pessoaId;
 	private Integer qtdDias;
 	private Date dataAtual;
 
@@ -60,12 +57,9 @@ public class GerenciarReservaMB {
 
 	public String salva() {
 		gerenciarReservaService.salvaReserva(reserva);
-
-		//quarto = gerenciarQuartoService.busca(quartoId);
-		criaDiariaReservada(reserva, qtdDias, quartoId);
-
-		gerenciarDiariaService.salvaDiariaReservada(diariaReservada);	//DataReserva, qtdeDias ,quartoNumero, idReserva, idPessoa
-
+		quarto = gerenciarReservaService.buscaQuarto(quartoId);
+		diariaReservada = criaDiariaReservada(reserva, qtdDias, quarto);
+		gerenciarDiariaService.salvaDiariaReservada(diariaReservada);
 		this.init();
 		return limpa();
 	}
@@ -85,13 +79,13 @@ public class GerenciarReservaMB {
 	}
 
 
-	public void criaDiariaReservada(Reserva reserva, Integer qtdDias, Integer quartoId) {
+	public DiariaReservada criaDiariaReservada(Reserva reserva, Integer qtdDias, Quarto quarto) {
 		diariaReservada.setData(reserva.getData());
 		diariaReservada.setQtdDias(qtdDias);
-
-
-
 		diariaReservada.setQuarto(quarto);
+		diariaReservada.setReserva(reserva);
+		
+		return diariaReservada;
 	}
 
 

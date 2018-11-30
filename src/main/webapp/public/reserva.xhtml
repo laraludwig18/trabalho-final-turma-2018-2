@@ -58,7 +58,8 @@
 								<p:outputLabel for="tpCliente" value="#{messages['reserva.tipoCliente']}" />
 								<h:selectOneMenu id="tpCliente" value="#{gerenciarReservaMB.tipoCliente}" styleClass="form-control" required="true">
 									<f:selectItem itemLabel="#{messages['reserva.label.tipoCliente']}" itemValue="" />
-									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" />
+									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}" var="tpCliente" itemLabel="#{tpCliente}"
+										itemValue="#{tpCliente}" />
 									<f:ajax render="tipoC" />
 								</h:selectOneMenu>
 							</div>
@@ -66,7 +67,7 @@
 							<h:panelGroup id="tipoC">
 								<h:panelGroup  rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}"  class="form-group">
 									<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" />
-									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.idPj}" styleClass="form-control" required="true">
+									<h:selectOneMenu id="cnpj" value="#{gerenciarReservaMB.reserva.pessoa.id}" styleClass="form-control" required="true">
 										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" itemValue="" />
 										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" var="cnpjs" itemLabel="#{cnpjs.cnpj}" 
 											itemValue="#{cnpjs.id}" />
@@ -75,7 +76,7 @@
 								
 								<h:panelGroup rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" class="form-group">
 										<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
-										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.idPf}" styleClass="form-control" required="true">
+										<h:selectOneMenu id="cpf" value="#{gerenciarReservaMB.reserva.pessoa.id}" styleClass="form-control" required="true">
 											<f:selectItem itemLabel="#{messages['reserva.label.cpf']}" itemValue="" />
 											<f:selectItems value="#{gerenciarReservaMB.cpfs}" var="cpfs" itemLabel="#{cpfs.cpf}" 
 												itemValue="#{cpfs.id}"/>

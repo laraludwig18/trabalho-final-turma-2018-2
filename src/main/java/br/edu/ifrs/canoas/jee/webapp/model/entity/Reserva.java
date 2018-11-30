@@ -25,8 +25,6 @@ public class Reserva extends BaseEntity<Long> implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	private Double valor;
-//	@ManyToOne
-//	private Quarto quarto;
 	@ManyToOne
 	private Pessoa pessoa;
 	
@@ -39,7 +37,6 @@ public class Reserva extends BaseEntity<Long> implements Serializable {
 			this.data = data;
 			this.valor = valor;
 			this.pessoa = pessoa;
-//			this.quarto = quarto;
 		}
 		else
 			throw new RuntimeException("data nao pode ser menor que a data atual");
