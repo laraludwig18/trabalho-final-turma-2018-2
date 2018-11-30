@@ -14,7 +14,6 @@ public class PessoaFisicaTeste {
 	public void testaDadosPessoaFisica() throws ParseException {
 		PessoaFisica pf = new PessoaFisica();
 		pf = criaPessoaFisica();
-		
 		assertThat(pf.getNome()).isEqualTo("Cristina Vilas Boas");
 		assertThat(pf.getRg()).isEqualTo("01234567989");
 		assertThat(pf.getCpf()).isEqualTo("000.000.000-58");

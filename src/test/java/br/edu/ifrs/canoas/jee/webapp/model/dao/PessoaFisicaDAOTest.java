@@ -1,4 +1,5 @@
 package br.edu.ifrs.canoas.jee.webapp.model.dao;
+
 import static org.junit.Assert.*;
 import java.util.logging.Logger;
 import javax.inject.Inject;
