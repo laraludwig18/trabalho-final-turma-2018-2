@@ -35,7 +35,7 @@ public class Quarto extends BaseEntity<Long> implements Serializable {
 	
 	public Quarto() {
 		super();
-		this.situacao = situacao.DISPONIVEL;
+		this.situacao = SituacaoQuarto.DISPONIVEL;
 	}
    
 }

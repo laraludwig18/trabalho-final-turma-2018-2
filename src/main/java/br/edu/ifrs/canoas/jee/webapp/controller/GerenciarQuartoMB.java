@@ -24,9 +24,7 @@ public class GerenciarQuartoMB {
 	private GerenciarQuartoService gerenciarQuartoService;
 	
 	private Quarto quarto;
-	
-	//private SituacaoQuarto situacao;
-		
+			
 	private List<Quarto> quartos;
 	
 	//private TipoDeQuarto tipo;
@@ -56,6 +54,10 @@ public class GerenciarQuartoMB {
 	
 	public TipoDeQuarto[] getTpQuartos(){
 		   return TipoDeQuarto.values();
+	}
+	
+	public SituacaoQuarto[] getSituacoes(){
+		   return SituacaoQuarto.values();
 	}
 	 
 
