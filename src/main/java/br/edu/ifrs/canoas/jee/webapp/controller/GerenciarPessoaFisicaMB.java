@@ -2,12 +2,14 @@ package br.edu.ifrs.canoas.jee.webapp.controller;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaFisicaService;
+import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 import lombok.Data;
 
 @Named
@@ -26,7 +28,12 @@ public class GerenciarPessoaFisicaMB {
 	private List<PessoaFisica> pessoasFisicasFiltradas;
 
 	public String salva() {
-		gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);
+		try {
+			gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);
+		} catch (Exception e) {
+			e.printStackTrace();
+			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Pessoa.cpf.erro", pessoaFisica.getCpf());
+		}
 		this.init();
 		return limpa();
 	}
@@ -49,5 +56,4 @@ public class GerenciarPessoaFisicaMB {
 		pessoaFisica = new PessoaFisica();
 		return "/Client/PessoaFisica.jsf?facesRedirect=true";
 	}
-
 }
