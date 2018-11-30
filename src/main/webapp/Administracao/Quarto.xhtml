@@ -65,9 +65,10 @@
 						
 						<p:outputLabel for="tipo" value="#{messages['quarto.tipo']}" />
 						<h:panelGrid columns="2" style="margin-bottom:10px"  cellpadding="5">
-            			<p:selectOneMenu id="tipo" value="#{gerenciarUsuarioMB.usuario.sobrenome}" required="true" style="width:180px" >
+            			<p:selectOneMenu value="#{gerenciarQuartoMB.quarto.tipo}" id="tipo" required="true" style="width:250px" >
                 		<f:selectItem itemLabel="#{messages['quarto.select']}" itemValue="" noSelectionOption="true" />
-                		<f:selectItems value="#{dropdownView.tipo}" />
+                		<f:selectItems value="#{gerenciarQuartoMB.tpQuartos}" itemValue="#{tipo}"
+                                                           var="tipo" itemLabel="#{tipo.descricao}" />
             			</p:selectOneMenu>
             			</h:panelGrid>
 						
@@ -77,9 +78,9 @@
 						<div class="form-group">
 							<p:outputLabel for="situacao" value="#{messages['quarto.situacao']}" />
     						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-        					<p:selectOneRadio id="situacao" value="#{gerenciarUsuarioMB.usuario.email}" required="true">
-            				<f:selectItem itemLabel="#{messages['quarto.disponivel']}" itemValue="disponivel" />
-            				<f:selectItem itemLabel="#{messages['quarto.indisponivel']}" itemValue="indisponivel" />
+        					<p:selectOneRadio id="situacao" value="#{gerenciarQuartoMB.quarto.situacao}" required="true">
+            				<f:selectItems value="#{gerenciarQuartoMB.situacoes}" itemValue="#{s}"
+                                                           var="s" itemLabel="#{messages[s.descricao]}" />
        						</p:selectOneRadio>
     						</h:panelGrid>
 						</div>

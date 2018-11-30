@@ -18,7 +18,8 @@
 			<section class="content-header">
 				<h1>
 					<p:outputLabel value="#{messages['cliente.cliente']}" />
-					<small><p:outputLabel value="#{messages['menu.subtitle']}" /></small>
+					<small><p:outputLabel
+							value="#{messages['cliente.menu.subtitle']}" /></small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> <p:outputLabel
@@ -95,9 +96,12 @@
 							<div class="form-group">
 								<p:outputLabel for="datanasc"
 									value="#{messages['cliente.datanasc']}" />
-								<p:calendar id="datanasc" pattern="dd/MM/yyyy"
-									value="#{dtGerenciaPessoa.pessoaFisica.dataNascimento}"
-									showOn="button" required="true" mask="99/99/9999" />
+								<div>
+									<p:calendar id="datanasc" pattern="dd/MM/yyyy"
+										value="#{dtGerenciaPessoa.pessoaFisica.dataNascimento}"
+										showOn="button" required="true" mask="99/99/9999" />
+								</div>
+
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
@@ -115,14 +119,14 @@
 						<div class="box-footer">
 
 							<h:panelGroup rendered="#{empty dtGerenciaPessoa.pessoasFisicas}">
-								<em><p:outputLabel value="#{messages['users.empty']}" />.</em>
+								<em><p:outputLabel value="#{messages['cliente.empty']}" />.</em>
 							</h:panelGroup>
 
 
 
 							<p:dataTable var="cli" value="#{dtGerenciaPessoa.pessoasFisicas}"
 								rows="10" paginator="true" widgetVar="cliTable"
-								emptyMessage="#{messages['pessoaFisica.busca.invalida']}"
+								emptyMessage="#{messages['cliente.busca.invalida']}"
 								filteredValue="#{dtGerenciaPessoa.pessoasFisicasFiltradas}"
 								rendered="#{not empty dtGerenciaPessoa.pessoasFisicas}">
 

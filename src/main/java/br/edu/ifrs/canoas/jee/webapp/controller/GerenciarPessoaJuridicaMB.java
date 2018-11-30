@@ -5,11 +5,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.xml.bind.ValidationException;
 
-import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarPessoaJuridicaService;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
@@ -17,7 +15,7 @@ import lombok.Data;
 
 @Data
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class GerenciarPessoaJuridicaMB {
 
 	@Inject
