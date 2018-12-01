@@ -2,6 +2,7 @@ package br.edu.ifrs.canoas.jee.webapp.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -26,11 +27,13 @@ public class GerenciarDiariaMB implements Serializable{
 	
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
+	private List<DiariaAvulsa> diariasFiltradas;
 	private DiariaAvulsa diariaAvulsa;
 	private List<String> tipoClientes;	
 	private String tipoCliente;
 	private Pessoa pessoa;
 	private Quarto quarto;
+	private Date dataAtual;
 	
 	private List<PessoaJuridica> PJ;
 	private List<PessoaFisica> PF;
@@ -38,9 +41,7 @@ public class GerenciarDiariaMB implements Serializable{
 	private List<Quarto> quartos;
 	private List<DiariaAvulsa> diarias;
 	
-	public void handleKeyEvent() {
-		System.out.println(tipoCliente);
-		
+	public void	onChangeTipoCliente() {
 		if(tipoCliente.intern() == "Pessoa Física") {
 			diariaAvulsa.setPessoa(new PessoaFisica());
 		}else if(tipoCliente.intern() == "Pessoa Jurídica") {
@@ -53,13 +54,15 @@ public class GerenciarDiariaMB implements Serializable{
 		diariaAvulsa = new DiariaAvulsa();
 		diariaAvulsa.setQuarto(new Quarto());
 		
-		diarias = gerenciarDiariaService.busca();	
+		diarias = gerenciarDiariaService.busca(null);	
 		tipoClientes = gerenciarDiariaService.getTipoCliente();
 		
 		PF = gerenciarDiariaService.getPF();
 		PJ = gerenciarDiariaService.getPJ();
 		
 		quartos = gerenciarDiariaService.getQuartos();
+		
+		dataAtual = new Date();
 	}
 	
 	public String salva() {
