@@ -3,6 +3,8 @@ package br.edu.ifrs.canoas.jee.webapp.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +23,7 @@ import lombok.Data;
 @Data
 public class Reserva extends BaseEntity<Long> implements Serializable {
 
-	private static final long serialVersionUID = -7506875242774252963L;
+	private static final long serialVersionUID = 1L;
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	private Double valor;

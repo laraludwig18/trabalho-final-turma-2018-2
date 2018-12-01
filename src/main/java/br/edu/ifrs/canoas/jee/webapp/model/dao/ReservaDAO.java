@@ -3,6 +3,9 @@ package br.edu.ifrs.canoas.jee.webapp.model.dao;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
@@ -10,6 +13,8 @@ import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 public class ReservaDAO extends BaseDAO<Reserva, Long> {
 
 	private static final long serialVersionUID = 1L;
+	@Inject
+    protected EntityManager em;
 
 	@SuppressWarnings("unchecked")
 	public List<Reserva> buscaPorData(Date data) {

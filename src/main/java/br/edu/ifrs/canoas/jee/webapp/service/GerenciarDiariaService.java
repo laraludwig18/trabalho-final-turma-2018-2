@@ -56,8 +56,11 @@ public class GerenciarDiariaService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DiariaReservada> buscaDiariaReservada() {
-		return diariaReservadaDAO.lista();
+	public List<DiariaReservada> buscaDiariaReservada(String criterio) {
+		if (criterio != null && criterio.length() > 0)
+			return diariaReservadaDAO.buscaPorCriterio(criterio);
+		else
+			return diariaReservadaDAO.lista();
 	}
 
 	public void exclui(DiariaAvulsa diariaAvulsa) {

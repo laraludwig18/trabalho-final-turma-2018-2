@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,7 +22,8 @@ import br.edu.ifrs.canoas.jee.webapp.service.GerenciarReservaService;
 import lombok.Data;
 
 @Named
-@RequestScoped
+@ManagedBean
+@ViewScoped
 @Data
 public class GerenciarReservaMB {
 
@@ -34,6 +37,8 @@ public class GerenciarReservaMB {
 	private DiariaReservada diariaReservada;
 	@Inject
 	private Quarto quarto;
+	
+	private List<DiariaReservada> diariasReservadas;
 	private List<Reserva> reservas;
 	private List<String> tipoClientes;
 	private String tipoCliente;
@@ -47,11 +52,17 @@ public class GerenciarReservaMB {
 
 	@PostConstruct
     public void init() {
+		
+		reserva.setPessoa(new PessoaFisica());
+		
 		reservas = gerenciarReservaService.busca(null);
+		diariasReservadas = gerenciarDiariaService.buscaDiariaReservada(null);
+		
 		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
 		cpfs = gerenciarReservaService.pegaCpfPf();
 		cnpjs = gerenciarReservaService.pegaCnpjPj();
 		quartos = gerenciarReservaService.pegaQuartos();
+		
 		dataAtual = new Date();
     }
 
