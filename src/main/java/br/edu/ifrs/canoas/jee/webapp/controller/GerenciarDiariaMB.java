@@ -1,10 +1,11 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,10 +17,13 @@ import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarDiariaService;
 import lombok.Data;
 
+//Toda classe com escopo maior que request deve implementar serializable
 @Named
-@RequestScoped
+@ViewScoped
 @Data
-public class GerenciarDiariaMB {
+public class GerenciarDiariaMB implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
 	private DiariaAvulsa diariaAvulsa;
@@ -34,14 +38,19 @@ public class GerenciarDiariaMB {
 	private List<Quarto> quartos;
 	private List<DiariaAvulsa> diarias;
 	
-	public Boolean isPf() {
-		return pessoa instanceof PessoaFisica ? true : false;
-	}
-
+	public void handleKeyEvent() {
+		System.out.println(tipoCliente);
+		
+		if(tipoCliente.intern() == "Pessoa Física") {
+			diariaAvulsa.setPessoa(new PessoaFisica());
+		}else if(tipoCliente.intern() == "Pessoa Jurídica") {
+			diariaAvulsa.setPessoa(new PessoaJuridica());
+		}
+    }
+	
 	@PostConstruct
 	public void init() {
 		diariaAvulsa = new DiariaAvulsa();
-		diariaAvulsa.setPessoa(new PessoaFisica());
 		diariaAvulsa.setQuarto(new Quarto());
 		
 		diarias = gerenciarDiariaService.busca();	

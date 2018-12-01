@@ -43,7 +43,8 @@ insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quar
 insert into reserva values(1, '2018-11-26', 350.56, 101);
 insert into diaria values('DiariaReservada', 2,'2018-11-26', 10, 2, 1, null);
 
-insert into diaria values ('DiariaAvulsa', 1, '1999-01-26', 12, 1, null, 114);
+insert into diaria values ('DiariaAvulsa', 16, '1999-01-26', 12, 1, null, 114);
+insert into diaria values ('DiariaAvulsa', 17, '2018-01-16', 15, 2, null,200);
 
 insert into pais (id, nome) values (1, 'Brasil');
 insert into pais (id, nome) values (2, 'Outros');
