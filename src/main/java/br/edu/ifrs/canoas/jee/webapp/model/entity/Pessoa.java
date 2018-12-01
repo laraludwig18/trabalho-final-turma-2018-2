@@ -40,5 +40,9 @@ public abstract class Pessoa extends BaseEntity<Long> implements Serializable {
 		this.telefone = telefone;
 		this.endereco = endereco;
 	}
+	
+	public String getCpfCnpj() {
+		return (this instanceof PessoaFisica) ? ((PessoaFisica)this).getCpf(): ((PessoaJuridica)this).getCnpj();
+	}
 
 }
