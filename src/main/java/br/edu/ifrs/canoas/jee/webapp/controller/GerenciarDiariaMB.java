@@ -1,7 +1,6 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +48,12 @@ public class GerenciarDiariaMB implements Serializable{
 		}
     }
 	
+	public String isPFouPJ(DiariaAvulsa diariaAvulsa){
+		return diariaAvulsa.getPessoa() instanceof PessoaFisica
+		? "Pessoa Física" : "Pessoa Jurídica";
+	}
+		
+	
 	@PostConstruct
 	public void init() {
 		diariaAvulsa = new DiariaAvulsa();
@@ -73,6 +78,7 @@ public class GerenciarDiariaMB implements Serializable{
 	
 	public void edita(DiariaAvulsa diariaAvulsa) {
 		this.diariaAvulsa = diariaAvulsa;
+		this.tipoCliente = isPFouPJ(diariaAvulsa); 
 	}
 	
 	public void exclui(DiariaAvulsa diaria) {
@@ -81,10 +87,6 @@ public class GerenciarDiariaMB implements Serializable{
 	}
 	
 	public String limpa() {
-		diariaAvulsa = new DiariaAvulsa();
-		PF = new ArrayList<>();
-		PJ = new ArrayList<>();
-		quartos = new ArrayList<>();
-		return "/public/diaria?facesRedirect=true";
+		return "/public/diaria.jsf?facesRedirect=true";
 	}
 }

@@ -65,8 +65,7 @@
 										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
 										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}"
-										var="tipoCliente" itemLabel="#{tipoCliente}"
-										itemValue="#{tipoCliente}" />
+										/>
 									<p:ajax event="change" update="cpfCnpj"
 										listener="#{gerenciarDiariaMB.onChangeTipoCliente}" />
 								</h:selectOneMenu>
