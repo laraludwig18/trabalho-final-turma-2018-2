@@ -1,4 +1,5 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -31,6 +32,27 @@ public class GerenciarReservaService {
 			else 
 				reservaDAO.atualiza(reserva);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Reserva> busca(String criterio) {
+		if(criterio !=null && criterio.length() > 0)
+			return reservaDAO.buscaPorCriterio(criterio);
+		else
+			return reservaDAO.lista();
+	}
+	
+	public void exclui(Reserva reserva) {
+		reservaDAO.exclui(reserva.getId());
+	}
+	
+	public List<String> getTipoCliente() {
+		List<String> list = new ArrayList<String>();
+		list.add("Pessoa Física");
+		list.add("Pessoa Jurídica");
+
+		return list;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<PessoaFisica> pegaCpfPf(){ 
 		return pessoaFisicaDAO.lista();
@@ -46,20 +68,5 @@ public class GerenciarReservaService {
 		return quartoDAO.lista();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Reserva> busca(String criterio) {
-		if(criterio !=null && criterio.length() > 0)
-			return reservaDAO.buscaPorCriterio(criterio);
-		else
-			return reservaDAO.lista();
-	}
-	
-	public void exclui(Reserva reserva) {
-		reservaDAO.exclui(reserva.getId());
-	}
-	
-	public Quarto buscaQuarto(Long id) {
-		return quartoDAO.busca(id);
-	}
 	
 }

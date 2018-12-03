@@ -11,6 +11,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaReservada;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
@@ -31,34 +32,47 @@ public class GerenciarReservaMB {
     private GerenciarReservaService gerenciarReservaService;
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
-	@Inject
+	private DiariaReservada diariaReservada;
 	private Reserva reserva;
 	@Inject
-	private DiariaReservada diariaReservada;
-	@Inject
 	private Quarto quarto;
+	private Pessoa pessoa;
+	private Integer qtdDias;
+	private Date dataAtual;
+	private String tipoCliente;
 	
 	private List<DiariaReservada> diariasReservadas;
+	private List<Reserva> reservasFiltradas;
 	private List<Reserva> reservas;
 	private List<String> tipoClientes;
-	private String tipoCliente;
 	private List<PessoaFisica> cpfs;
 	private List<PessoaJuridica> cnpjs;
 	private List<Quarto> quartos;
-	private Long quartoId;
-	private Long pessoaId;
-	private Integer qtdDias;
-	private Date dataAtual;
-
+	
+	public void	onChangeTipoCliente() {
+		if(tipoCliente.intern() == "Pessoa Física") {
+			reserva.setPessoa(new PessoaFisica());
+		}else if(tipoCliente.intern() == "Pessoa Jurídica") {
+			reserva.setPessoa(new PessoaJuridica());
+		}
+    }
+	
+	public String isPFouPJ(Reserva reserva){
+		return reserva.getPessoa() instanceof PessoaFisica
+		? "Pessoa Física" : "Pessoa Jurídica";
+	}
+	
 	@PostConstruct
     public void init() {
-		
-		reserva.setPessoa(new PessoaFisica());
+		reserva = new Reserva();
+		diariaReservada = new DiariaReservada();
+		diariaReservada.setQuarto(new Quarto());
+		diariaReservada.setReserva(new Reserva());
 		
 		reservas = gerenciarReservaService.busca(null);
 		diariasReservadas = gerenciarDiariaService.buscaDiariaReservada(null);
 		
-		tipoClientes = Arrays.asList("Pessoa Fisica", "Pessoa Juridica");
+		tipoClientes = gerenciarReservaService.getTipoCliente();
 		cpfs = gerenciarReservaService.pegaCpfPf();
 		cnpjs = gerenciarReservaService.pegaCnpjPj();
 		quartos = gerenciarReservaService.pegaQuartos();
@@ -68,8 +82,8 @@ public class GerenciarReservaMB {
 
 	public String salva() {
 		gerenciarReservaService.salvaReserva(reserva);
-		quarto = gerenciarReservaService.buscaQuarto(quartoId);
-		diariaReservada = criaDiariaReservada(reserva, qtdDias, quarto);
+		diariaReservada.getReserva().setId(reserva.getId());
+		diariaReservada.getQuarto().setId(quarto.getId());
 		gerenciarDiariaService.salvaDiariaReservada(diariaReservada);
 		this.init();
 		return limpa();
@@ -77,6 +91,7 @@ public class GerenciarReservaMB {
 
 	public void edita(Reserva r) {
 		this.reserva = r;
+		this.tipoCliente = isPFouPJ(r);
 	}
 
 	public void exclui(Reserva r) {
@@ -88,16 +103,4 @@ public class GerenciarReservaMB {
 		reserva = new Reserva();
 		return "/public/reserva.jsf?facesRedirect=true";
 	}
-
-
-	public DiariaReservada criaDiariaReservada(Reserva reserva, Integer qtdDias, Quarto quarto) {
-		diariaReservada.setData(reserva.getData());
-		diariaReservada.setQtdDias(qtdDias);
-		diariaReservada.setQuarto(quarto);
-		diariaReservada.setReserva(reserva);
-		
-		return diariaReservada;
-	}
-
-
 }

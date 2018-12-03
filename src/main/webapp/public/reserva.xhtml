@@ -56,58 +56,65 @@
 
 							<h:inputHidden value="#{gerenciarReservaMB.reserva.id}"
 								id="hiddenId" />
+								
 							<div class="form-group">
-								<p:outputLabel for="tpCliente"
-									value="#{messages['reserva.tipoCliente']}" />
-								<h:selectOneMenu id="tpCliente"
+								<p:outputLabel value="#{messages['reserva.tipoCliente']}"
+									for="tipoCliente" />
+								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarReservaMB.tipoCliente}"
 									styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['reserva.label.tipoCliente']}"
 										itemValue="" />
 									<f:selectItems value="#{gerenciarReservaMB.tipoClientes}"
-										var="tpCliente" itemLabel="#{tpCliente}"
-										itemValue="#{tpCliente}" />
-<!-- 									<f:ajax render="tipoC" /> -->
+										/>
+									<p:ajax event="change" update="cpfCnpj"
+										listener="#{gerenciarReservaMB.onChangeTipoCliente}" />
 								</h:selectOneMenu>
 							</div>
 
-<!-- 							<h:panelGroup id="tipoC"> -->
-<!-- 								<h:panelGroup -->
-<!-- 									rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Juridica'}" -->
-<!-- 									class="form-group"> -->
-<!-- 									<p:outputLabel for="cnpj" value="#{messages['reserva.cnpj']}" /> -->
-<!-- 									<h:selectOneMenu id="cnpj" -->
-<!-- 										value="#{gerenciarReservaMB.reserva.pessoa}" -->
-<!-- 										styleClass="form-control" required="true"> -->
-<!-- 										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}" -->
-<!-- 											itemValue="" /> -->
-<!-- 										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" var="pj" -->
-<!-- 											itemLabel="#{pj.cnpj}" itemValue="#{pj}" /> -->
-<!-- 									</h:selectOneMenu> -->
-<!-- 								</h:panelGroup> -->
+							<h:panelGroup id="cpfCnpj">
 
-								<h:panelGroup class="form-group">
-<!-- 									rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Fisica'}" -->
-									<p:outputLabel for="cpf" value="#{messages['reserva.cpf']}" />
-									<h:selectOneMenu id="cpf"
-										value="#{gerenciarReservaMB.reserva.pessoa.id}"
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Jurídica'}">
+									
+									<p:outputLabel value="#{messages['reserva.cnpj']}" for="cnpj" />
+									<h:selectOneMenu
+										value="#{gerenciarReservaMB.pessoa.id}" id="cnpj"
 										styleClass="form-control" required="true">
-										<f:selectItem itemLabel="#{messages['reserva.label.cpf']}"
+										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}"
 											itemValue="" />
-										<f:selectItems value="#{gerenciarReservaMB.cpfs}" var="pf"
-											itemLabel="#{pf.cpf}" itemValue="#{pf.id}" />
+										<f:selectItems value="#{gerenciarReservaMB.cnpjs}" var="PJ"
+											itemLabel="#{PJ.cnpj}" itemValue="#{PJ.id}" />
 									</h:selectOneMenu>
+									<br/>
 								</h:panelGroup>
-<!-- 							</h:panelGroup> -->
+								
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarReservaMB.tipoCliente == 'Pessoa Física'}">
+	
+									<p:outputLabel value="#{messages['reserva.cpf']}" for="cpf" />
+									<h:selectOneMenu
+										value="#{gerenciarReservaMB.pessoa.id}" id="cpf"
+										styleClass="form-control" required="true">
+										<f:selectItem
+											itemLabel="#{messages['reserva.label.cpf']}"
+											itemValue="" />
+										<f:selectItems value="#{gerenciarReservaMB.cpfs}" var="PF"
+											itemLabel="#{PF.cpf}" itemValue="#{PF.id}" />
+									</h:selectOneMenu>
+									<br/>
+								</h:panelGroup>
+
+							</h:panelGroup>
 
 							<div class="form-group">
-								<p:outputLabel for="quarto"
-									value="#{messages['reserva.quarto']}" />
-								<h:selectOneMenu id="quarto"
-									value="#{gerenciarReservaMB.quartoId}"
+								<p:outputLabel value="#{messages['reserva.quarto']}" for="quarto" />
+								<h:selectOneMenu
+									value="#{gerenciarReservaMB.quarto.id}" id="quarto"
 									styleClass="form-control" required="true">
-									<f:selectItem itemLabel="#{messages['reserva.label.quarto']}"
+									<f:selectItem
+										itemLabel="#{messages['reserva.label.quarto']}"
 										itemValue="" />
 									<f:selectItems value="#{gerenciarReservaMB.quartos}"
 										var="quarto" itemLabel="#{quarto.numero}"
@@ -116,9 +123,10 @@
 							</div>
 
 							<div class="form-group">
-								<p:outputLabel for="qntdias" value="#{messages['reserva.dias']}" />
-								<h:inputText id="qntdias" styleClass="form-control"
-									required="true" value="#{gerenciarReservaMB.qtdDias}">
+								<p:outputLabel value="#{messages['reserva.dias']}" for="qtdDias" />
+								<h:inputText id="qtdDias" styleClass="form-control"
+									value="#{gerenciarReservaMB.diariaReservada.qtdDias}"
+									required="true">
 									<f:passThroughAttribute name="type" value="number" />
 								</h:inputText>
 							</div>
@@ -165,42 +173,68 @@
 
 
 							<p:dataTable var="reserva" value="#{gerenciarReservaMB.reservas}"
-								id="tb-reservas" 
-								paginator="true"
-								rendered="#{not empty gerenciarReservaMB.reservas}">
+								id="tb-reservas" paginator="true" rows="6"
+								rendered="#{not empty gerenciarReservaMB.reservas}"
+								emptyMessage="#{messages['cliente.busca.invalida']}"
+								widgetVar="reservaTable" 
+								filteredValue="#{gerenciarReservaMB.reservasFiltradas}" >
+								
+								<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="#{messages['buscar']}" />
+										<p:inputText id="globalFilter"
+											onkeyup="PF('reservaTable').filter()" style="width:133px"
+											 />
+									</p:outputPanel>
+								</f:facet>
 
-
-								<p:column headerText="Quartos">
-									<h:outputText value="#{diariaReservada.quarto.numero}" />
+								<p:column headerText="#{messages['reserva.table.quartos']}"
+									sortBy="#{_diaria.quarto.numero}"
+									filterBy="#{_diaria.quarto.numero}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+									<h:outputText value="#{_diaria.quarto.numero}" />
 								</p:column>
 
-								<p:column headerText="CPF/CNPJ">
-									<h:outputText value="#{reserva.pessoa.cpf}" />
+								<p:column headerText="#{messages['reserva.table.cpfCnpj']}"
+									sortBy="#{_reserva.pessoa.cpfCnpj}"
+									filterBy="#{_reserva.pessoa.cpfCnpj}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+									<h:outputText value="#{_reserva.pessoa.getCpfCnpj}" />
 								</p:column>
 
-								<p:column headerText="Data Reserva">
-									<h:outputText value="#{reserva.data}">
+								<p:column headerText="#{messages['reserva.table.dataReserva']}"
+									sortBy="#{_reserva.data}"
+									filterBy="#{_reserva.data}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+									<h:outputText value="#{_reserva.data}">
 										<f:convertDateTime pattern="dd/MM/yyyy"
 											timeZone="America/Sao_Paulo" />
 									</h:outputText>
 								</p:column>
 
-								<p:column headerText="Quantidade Dias">
-									<h:outputText value="#{diariaReservada.qtdDias}" />
+								<p:column headerText="#{messages['reserva.table.qtdDias']}"
+									sortBy="#{_diaria.qtdDias}"
+									filterBy="#{_diaria.qtdDias}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+									<h:outputText value="#{_diaria.qtdDias}" />
 								</p:column>
 
 
-								<p:column headerText="Ações">
-									<h:commandButton value="#{messages['edit']}" imediate="true"
+								<p:column headerText="#{messages['reserva.table.acao']}">
+									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.edita(reserva)}"
-										upadte="tb-reservas">
+										action="#{gerenciarReservaMB.edita(_reserva)}"
+										update="tb-reservas">
 										<p:ajax update=":mainForm:reserva-content" />
 									</h:commandButton>
 
 									<h:commandLink value="#{messages['delete']}" immediate="true"
 										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.exclui(reserva)}" ajax="true"
+										action="#{gerenciarReservaMB.exclui(_reserva)}" ajax="true"
 										update="tb-reservas">
 									</h:commandLink>
 								</p:column>
