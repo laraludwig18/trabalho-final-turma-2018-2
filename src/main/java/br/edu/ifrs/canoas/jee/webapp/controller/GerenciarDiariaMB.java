@@ -1,7 +1,6 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +21,8 @@ import lombok.Data;
 @ViewScoped
 @Data
 public class GerenciarDiariaMB implements Serializable{
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -2700152367303211581L;
 	
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
@@ -32,7 +32,6 @@ public class GerenciarDiariaMB implements Serializable{
 	private String tipoCliente;
 	private Pessoa pessoa;
 	private Quarto quarto;
-	private Date dataAtual;
 	
 	private List<PessoaJuridica> PJ;
 	private List<PessoaFisica> PF;
@@ -67,7 +66,6 @@ public class GerenciarDiariaMB implements Serializable{
 		
 		quartos = gerenciarDiariaService.getQuartos();
 		
-		dataAtual = new Date();
 	}
 	
 	public String salva() {

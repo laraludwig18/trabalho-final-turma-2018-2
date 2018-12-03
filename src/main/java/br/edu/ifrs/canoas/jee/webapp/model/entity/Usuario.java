@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.jee.webapp.model.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -31,12 +32,7 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	@NotNull
 	private String sobrenome;
 	
-	@NotNull
-	private Pais pais;
-
-	@NotNull
-	private Estado estado;
-		
+	@OneToOne
 	private Municipio municipio;
 
 	@NotNull
@@ -44,6 +40,7 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	public Usuario() {
 		super();
+		municipio = new Municipio();
 	}
 
 }

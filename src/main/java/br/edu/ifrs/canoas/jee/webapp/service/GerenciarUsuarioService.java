@@ -31,17 +31,17 @@ public class GerenciarUsuarioService {
 
 		log.info("Salvando " + usuario.getNome());
 
-		// if (usuario.getId() == null) {
-		// 	usuarioDAO.insere(usuario);
-		// 	Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getNome());
-		// 	// return true;
-		// } else {
-		// 	usuarioDAO.atualiza(usuario);
-		// 	Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso", usuario.getNome());
-		// 	// return true;
-		// }
+		 if (usuario.getId() == null) {
+		 	usuarioDAO.insere(usuario);
+		 	Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getNome());
+		 	// return true;
+		 } else {
+		 	usuarioDAO.atualiza(usuario);
+		 	Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso", usuario.getNome());
+		 	// return true;
+		 }
 
-		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getEstado());
+//		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso", usuario.getEstado());
 
 		return true;
 	}

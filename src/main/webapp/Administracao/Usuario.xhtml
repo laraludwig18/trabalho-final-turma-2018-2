@@ -84,7 +84,7 @@
 							<div class="form-group">
 					            <p:outputLabel for="pais"
 									value="#{messages['usuario.endereco.pais']}" />
-								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.usuario.pais}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id}" style="width: 100% !important" required="true">
 								   <f:selectItems value="#{gerenciarUsuarioMB.paises}" var="pais"
 								   		itemLabel="#{pais.nome}" itemValue="#{pais.id}" />
 					            </p:selectOneMenu>
@@ -95,7 +95,7 @@
 					        <div class="form-group">
 					            <p:outputLabel for="estado"
 									value="#{messages['usuario.endereco.estado']}" />
-								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.usuario.estado}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.usuario.municipio.estado.id}" style="width: 100% !important" required="true">
 								   <f:selectItems value="#{gerenciarUsuarioMB.estados}" var="estado"
 								   		itemLabel="#{estado.nome}" itemValue="#{estado.id}" />
 					            </p:selectOneMenu>
@@ -106,7 +106,7 @@
 							<div class="form-group">
 					            <p:outputLabel for="municipio"
 									value="#{messages['usuario.endereco.municipio']}" />
-								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio}" style="width: 100% !important" required="true">
+								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio.id}" style="width: 100% !important" required="true">
 								   <f:selectItems value="#{gerenciarUsuarioMB.municipios}" var="municipio"
 								   		itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" />
 					            </p:selectOneMenu>
@@ -146,7 +146,7 @@
 									<h:outputText value="#{_usr.nome} #{_usr.sobrenome}" />
 								</p:column>
 								<p:column headerText="#{messages['usuario.table.endereco']}">
-									<h:outputText value="#{_usr.logradouro} - #{_usr.estado} - #{_usr.pais}" />
+									<h:outputText value="#{_usr.logradouro} - #{_usr.municipio.estado.nome} - #{_usr.municipio.estado.pais.nome}" />
 								</p:column>
 								<p:column headerText="#{messages['usuario.table.email']}">
 									<h:outputText value="#{_usr.email}" />

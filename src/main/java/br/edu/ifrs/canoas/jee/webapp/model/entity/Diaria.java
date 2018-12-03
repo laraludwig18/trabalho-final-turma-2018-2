@@ -30,7 +30,7 @@ public class Diaria  extends BaseEntity<Long> implements Serializable {
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	protected Date data;
+	protected Date data = new Date();
 	
 	@NotNull
 	private Integer qtdDias;
