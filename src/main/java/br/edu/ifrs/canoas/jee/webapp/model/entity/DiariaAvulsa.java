@@ -6,13 +6,18 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto.QuartoBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
 @Data
+@AllArgsConstructor
 public class DiariaAvulsa extends Diaria implements Serializable {
-	private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = 2962456013321012587L;
+
 	@ManyToOne
 	private Pessoa pessoa;
  

@@ -17,7 +17,7 @@ import lombok.Data;
 @Data
 public class Usuario extends BaseEntity<Long> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 3747992687232892283L;
 
 	@NotNull @Email 
 	private String email;

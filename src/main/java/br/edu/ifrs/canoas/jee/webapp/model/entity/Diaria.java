@@ -15,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto.QuartoBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
@@ -22,8 +25,9 @@ import lombok.Data;
 @DiscriminatorColumn(name = "diaria_tipo")
 @Data
 public class Diaria  extends BaseEntity<Long> implements Serializable {
-	private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = -4408735553657743241L;
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	protected Date data;

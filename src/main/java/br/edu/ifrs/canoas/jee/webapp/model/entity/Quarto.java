@@ -5,13 +5,12 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Entity implementation class for Entity: Quarto
@@ -19,6 +18,8 @@ import lombok.Data;
  */
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
 public class Quarto extends BaseEntity<Long> implements Serializable {
 
 	
