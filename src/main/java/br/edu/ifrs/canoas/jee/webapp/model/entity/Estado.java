@@ -24,6 +24,7 @@ public class Estado extends BaseEntity<Long> implements Serializable {
 	
 	public Estado() {
 		super();
+		pais = new Pais();
 	}
 
 }
