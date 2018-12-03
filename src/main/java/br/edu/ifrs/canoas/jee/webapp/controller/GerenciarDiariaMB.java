@@ -71,7 +71,9 @@ public class GerenciarDiariaMB implements Serializable{
 	}
 	
 	public String salva() {
-		gerenciarDiariaService.salvaDiaria(diariaAvulsa);
+		if(!gerenciarDiariaService.salvaDiaria(diariaAvulsa)) {
+			return null;
+		}
 		this.init();
 		return limpa();
 	}

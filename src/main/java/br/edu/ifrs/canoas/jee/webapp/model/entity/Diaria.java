@@ -14,15 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import lombok.Data;
 
-/**
- * Entity implementation class for Entity: Diaria
- *
- */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "diaria_tipo")
@@ -30,9 +24,11 @@ import lombok.Data;
 public class Diaria  extends BaseEntity<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	protected Date data;
 	
+	@NotNull
 	private Integer qtdDias;
 	
 	@ManyToMany()
