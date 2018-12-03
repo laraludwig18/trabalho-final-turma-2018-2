@@ -1,11 +1,4 @@
 
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'Rio Grande do Norte', 'Jardim dos Bancários', 'Natal', 'Geraldo', 'Brasil', 'xz6zK6q0f2', 'Moura');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'Espírito Santo', 'Avenida São Francisco de Assis', 'Vila Velha', 'Osvaldo', 'Brasil', 'nbELDhbraz', 'Viana');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'Mato Grosso', 'Rua A-169', 'Rondonópolis', 'Kamilly', 'Brasil', 'IQUd5YpbZp', 'Silva');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'Paraíba', 'Rua Bruno Cunha Peixoto', 'Cabedelo', 'Giovanni', 'Brasil', 'yL29aS36wa', 'Lopes');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'Alagoas', 'Rua José Soares de Souza', 'Maceió', 'Samuel', 'Brasil', 'ybdO2SoxXf', 'Neves');
-insert into usuario (id, email, estado, logradouro, municipio, nome, pais, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'Bahia', 'Alto da Floresta', 'Ilhéus', 'Stefany', 'Brasil', 'LSAsJOjoYM', 'Melo');
-
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',102,'Bernardo','bernardo@email.com','(51)94366-7661','810.436.399-57','1992-01-25','66156992');
@@ -86,3 +79,10 @@ insert into municipio (id, nome, estado_id) values (6, 'Gravataí', 21);
 insert into municipio (id, nome, estado_id) values (7, 'Viamão', 21);
 insert into municipio (id, nome, estado_id) values (8, 'Novo Hamburgo', 21);
 insert into municipio (id, nome, estado_id) values (9, 'São Leopoldo', 21);
+
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'Jardim dos Bancários', 1, 'Geraldo', 'xz6zK6q0f2', 'Moura');
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'Avenida São Francisco de Assis', 2, 'Osvaldo', 'nbELDhbraz', 'Viana');
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'Rua A-169', 3, 'Kamilly', 'IQUd5YpbZp', 'Silva');
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'Rua Bruno Cunha Peixoto', 4, 'Giovanni', 'yL29aS36wa', 'Lopes');
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'Rua José Soares de Souza', 5, 'Samuel', 'ybdO2SoxXf', 'Neves');
+insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'Alto da Floresta', 6, 'Stefany', 'LSAsJOjoYM', 'Melo');
