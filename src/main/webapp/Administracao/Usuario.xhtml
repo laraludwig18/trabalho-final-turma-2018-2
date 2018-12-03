@@ -100,6 +100,18 @@
 								   		itemLabel="#{estado.nome}" itemValue="#{estado.id}" />
 					            </p:selectOneMenu>
 					        </div>
+					        
+					        <!-- ========================================================= -->
+					        
+					        <div class="form-group">
+								<p:outputLabel for="estado"
+					            	value="#{messages['usuario.endereco.estado']}"
+					            	rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.nome == 'Outros'}">
+					            </p:outputLabel>
+								<p:inputText id="estadoText" styleClass="form-control"
+					            	value="#{gerenciarUsuarioMB.usuario.municipio.estado.nome}"
+					            	rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.nome == 'Outros'}"/>
+							</div>
 
 							<!-- ========================================================= -->
 

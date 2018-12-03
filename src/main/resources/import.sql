@@ -86,10 +86,3 @@ insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome
 insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'Rua Bruno Cunha Peixoto', 4, 'Giovanni', 'yL29aS36wa', 'Lopes');
 insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'Rua José Soares de Souza', 5, 'Samuel', 'ybdO2SoxXf', 'Neves');
 insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'Alto da Floresta', 6, 'Stefany', 'LSAsJOjoYM', 'Melo');
-
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (101, 'geraldogustavomateusmoura_@previeweventos.com.br', 'Jardim dos Bancários', 1, 'Geraldo', 'xz6zK6q0f2', 'Moura');
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (102, 'osvaldoanthonyhugoviana-92@moppe.com.br', 'Avenida São Francisco de Assis', 2, 'Osvaldo', 'nbELDhbraz', 'Viana');
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (103, 'kamillysimoneisissilva-92@balaiofilmes.com.br', 'Rua A-169', 3, 'Kamilly', 'IQUd5YpbZp', 'Silva');
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (104, 'giovannijorgelopes-94@arganet.com.br', 'Rua Bruno Cunha Peixoto', 4, 'Giovanni', 'yL29aS36wa', 'Lopes');
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (105, 'samuelluandasneves_@righettorosa.com.br', 'Rua José Soares de Souza', 5, 'Samuel', 'ybdO2SoxXf', 'Neves');
-insert into usuario (id, email, logradouro, municipio_id, nome, senha, sobrenome) values (106, 'stefanylauramelo_@ozsurfing.com.br', 'Alto da Floresta', 6, 'Stefany', 'LSAsJOjoYM', 'Melo');

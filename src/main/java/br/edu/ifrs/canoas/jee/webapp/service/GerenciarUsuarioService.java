@@ -45,7 +45,6 @@ public class GerenciarUsuarioService {
 
 		return true;
 	}
-
 	
 	/**
 	 * Valida a senha do usuário. Testa o algoritmo de criptografia
@@ -61,7 +60,6 @@ public class GerenciarUsuarioService {
 		}
 		return false;
 	}
-
 
 	/**
 	 * retorna a quantidade de e-mails cadastrados no banco iguais ao informado.
@@ -97,13 +95,11 @@ public class GerenciarUsuarioService {
 		return result;
 	}
 
-
 	public void exclui(Usuario usuario) {
 		usuarioDAO.exclui(usuario.getId());
 		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.excluido.sucesso",usuario.getNome());
 		log.info("Excluido " + usuario.getNome() + " com id " + usuario.getId());
 	}
-
 
 	public Usuario get(Long id) {
 		return usuarioDAO.busca(id);

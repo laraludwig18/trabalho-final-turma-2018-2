@@ -59,10 +59,6 @@ public class GerenciarUsuarioMB {
 		estados = gerenciarEstadoService.busca(null);
 		municipios = gerenciarMunicipioService.busca(null);
 
-//		paises = gerenciarUsuarioService.getPaises();
-//		estados = gerenciarUsuarioService.getEstados();			// : need work
-//		municipios = gerenciarUsuarioService.getMunicipios();
-
 		//	:	for testing
 //		usuario.builder()
 //			.name("Lukas")
