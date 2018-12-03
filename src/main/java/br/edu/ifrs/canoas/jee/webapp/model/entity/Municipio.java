@@ -24,6 +24,7 @@ public class Municipio extends BaseEntity<Long> implements Serializable {
 	
 	public Municipio() {
 		super();
+		estado = new Estado();
 	}
 
 }

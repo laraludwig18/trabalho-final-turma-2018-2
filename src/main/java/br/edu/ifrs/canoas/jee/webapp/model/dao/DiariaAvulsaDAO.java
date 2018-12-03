@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.jee.webapp.model.dao;
 import java.util.List;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 
 public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 	private static final long serialVersionUID = 1L;
@@ -24,5 +25,15 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 		         .setParameter("cnpj", criterio.trim().toLowerCase())
 		         .setParameter("numero", criterio.trim().toLowerCase())
 		         .getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Quarto> buscaQuartos(){
+		return em.createQuery(
+		         "SELECT q "
+		         + "FROM Quarto q "
+		         + "WHERE id not in( "
+		         + " SELECT d.quarto from Diaria d "
+				 + " WHERE d.data = curdate()) ").getResultList();
 	}
 }

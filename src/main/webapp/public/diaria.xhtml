@@ -60,7 +60,7 @@
 									for="tipoCliente" />
 								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarDiariaMB.tipoCliente}"
-									styleClass="form-control" required="true">
+									styleClass="form-control">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
 										itemValue="" />
@@ -105,8 +105,7 @@
 								</h:panelGroup>
 								
 							</h:panelGroup>
-							
-							
+									
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
 								<h:selectOneMenu
@@ -132,11 +131,14 @@
 
 							<div class="form-group">
 								<p:outputLabel for="data" value="#{messages['diaria.data']}" />
-								<br />
-								<p:calendar id="data"
-									value="#{gerenciarDiariaMB.diariaAvulsa.data}" showOn="button"
-									pattern="dd/MM/yyyy" required="true" 
-									mindate="#{gerenciarDiariaMB.dataAtual}"/>
+								<h:inputText id="data" styleClass="form-control"
+									value="#{gerenciarDiariaMB.diariaAvulsa.data}"
+									readonly="true" required="true">
+									<f:convertDateTime pattern="dd/MM/yyyy"
+											timeZone="America/Sao_Paulo" />
+								</h:inputText>
+								
+
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
