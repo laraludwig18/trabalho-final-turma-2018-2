@@ -80,7 +80,7 @@
 									
 									<p:outputLabel value="#{messages['reserva.cnpj']}" for="cnpj" />
 									<h:selectOneMenu
-										value="#{gerenciarReservaMB.pessoa.id}" id="cnpj"
+										value="#{gerenciarReservaMB.diariaReservada.reserva.pessoa.id}" id="cnpj"
 										styleClass="form-control" required="true">
 										<f:selectItem itemLabel="#{messages['reserva.label.cnpj']}"
 											itemValue="" />
@@ -95,7 +95,7 @@
 	
 									<p:outputLabel value="#{messages['reserva.cpf']}" for="cpf" />
 									<h:selectOneMenu
-										value="#{gerenciarReservaMB.pessoa.id}" id="cpf"
+										value="#{gerenciarReservaMB.diariaReservada.reserva.pessoa.id}" id="cpf"
 										styleClass="form-control" required="true">
 										<f:selectItem
 											itemLabel="#{messages['reserva.label.cpf']}"
@@ -111,7 +111,7 @@
 							<div class="form-group">
 								<p:outputLabel value="#{messages['reserva.quarto']}" for="quarto" />
 								<h:selectOneMenu
-									value="#{gerenciarReservaMB.quarto.id}" id="quarto"
+									value="#{gerenciarReservaMB.diariaReservada.quarto.id}" id="quarto"
 									styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['reserva.label.quarto']}"
@@ -137,7 +137,7 @@
 								<h:panelGrid columns="2" style="margin-bottom:10px"
 									cellpadding="5">
 									<p:calendar id="data"
-										value="#{gerenciarReservaMB.reserva.data}" label="data"
+										value="#{gerenciarReservaMB.diariaReservada.reserva.data}" label="data"
 										pattern="dd/MM/yyyy" mask="99/99/9999"
 										mindate="#{gerenciarReservaMB.dataAtual}" showOn="button"
 										required="true" />
@@ -149,41 +149,41 @@
 								<p:outputLabel for="valor" value="#{messages['reserva.valor']}" />
 								<p:inputMask id="valor" symbol="R$" mask="999.99"
 									styleClass="form-control"
-									value="#{gerenciarReservaMB.reserva.valor}" required="true">
+									value="#{gerenciarReservaMB.diariaReservada.reserva.valor}" required="true">
 								</p:inputMask>
 							</div>
 
 
 							<p:commandButton value="#{messages['clean']}"
-								action="#{gerenciarReservaMB.limpa}"
-								styleClass="btn btn-default" ajax="false" style="border: none;"
-								immediate="true" />
+								action="#{gerenciarReservaMB.limpa}" styleClass="btn btn-default"
+								ajax="false" style="border: none;" immediate="true" />
 
-							<h:commandButton value="Salvar"
-								action="#{gerenciarReservaMB.salva}"
-								styleClass="btn btn-primary pull-right" />
+							<h:commandButton value="#{messages['save']}"
+								styleClass="btn btn-primary pull-right"
+								action="#{gerenciarReservaMB.salva}">
+							</h:commandButton>
 
 						</div>
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarReservaMB.reservas}">
+							<h:panelGroup rendered="#{empty gerenciarReservaMB.diariasReservadas}">
 								<em><p:outputLabel value="#{messages['reserva.empty']}" />.</em>
 							</h:panelGroup>
 
 
-							<p:dataTable var="reserva" value="#{gerenciarReservaMB.reservas}"
-								id="tb-reservas" paginator="true" rows="6"
-								rendered="#{not empty gerenciarReservaMB.reservas}"
+							<p:dataTable var="_diaria" value="#{gerenciarReservaMB.diariasReservadas}"
+								id="tb-diarias" paginator="true" rows="6"
+								rendered="#{not empty gerenciarReservaMB.diariasReservadas}"
 								emptyMessage="#{messages['cliente.busca.invalida']}"
-								widgetVar="reservaTable" 
-								filteredValue="#{gerenciarReservaMB.reservasFiltradas}" >
+								widgetVar="diariaTable" 
+								filteredValue="#{gerenciarReservaMB.diariasReservadasFiltradas}" >
 								
 								<f:facet name="header">
 									<p:outputPanel>
 										<h:outputText value="#{messages['buscar']}" />
 										<p:inputText id="globalFilter"
-											onkeyup="PF('reservaTable').filter()" style="width:133px"
+											onkeyup="PF('diariaTable').filter()" style="width:133px"
 											 />
 									</p:outputPanel>
 								</f:facet>
@@ -197,19 +197,19 @@
 								</p:column>
 
 								<p:column headerText="#{messages['reserva.table.cpfCnpj']}"
-									sortBy="#{_reserva.pessoa.cpfCnpj}"
-									filterBy="#{_reserva.pessoa.cpfCnpj}"
+									sortBy="#{_diaria.reserva.pessoa.cpfCnpj}"
+									filterBy="#{_diaria.reserva.pessoa.cpfCnpj}"
 									filterStyle="display:none"
 									filterMatchMode="contains">
-									<h:outputText value="#{_reserva.pessoa.getCpfCnpj}" />
+									<h:outputText value="#{_diaria.reserva.pessoa.getCpfCnpj()}" />
 								</p:column>
 
 								<p:column headerText="#{messages['reserva.table.dataReserva']}"
-									sortBy="#{_reserva.data}"
-									filterBy="#{_reserva.data}"
+									sortBy="#{_diaria.reserva.data}"
+									filterBy="#{_diaria.reserva.data}"
 									filterStyle="display:none"
 									filterMatchMode="contains">
-									<h:outputText value="#{_reserva.data}">
+									<h:outputText value="#{_diaria.reserva.data}">
 										<f:convertDateTime pattern="dd/MM/yyyy"
 											timeZone="America/Sao_Paulo" />
 									</h:outputText>
@@ -223,20 +223,8 @@
 									<h:outputText value="#{_diaria.qtdDias}" />
 								</p:column>
 
-
 								<p:column headerText="#{messages['reserva.table.acao']}">
-									<h:commandButton value="#{messages['edit']}" immediate="true"
-										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.edita(_reserva)}"
-										update="tb-reservas">
-										<p:ajax update=":mainForm:reserva-content" />
-									</h:commandButton>
-
-									<h:commandLink value="#{messages['delete']}" immediate="true"
-										styleClass="btn btn-default"
-										action="#{gerenciarReservaMB.exclui(_reserva)}" ajax="true"
-										update="tb-reservas">
-									</h:commandLink>
+								
 								</p:column>
 
 							</p:dataTable>
