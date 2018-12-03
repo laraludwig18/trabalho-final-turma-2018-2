@@ -28,7 +28,8 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<p:messages id="msgs" showDetail="false" autoUpdate="true" closable="true" />
+				<p:messages id="msgs" showDetail="false" autoUpdate="true"
+					closable="true" />
 				<h:panelGroup id="diaria-content">
 					<!-- Default box -->
 					<div class="box">
@@ -59,41 +60,58 @@
 									for="tipoCliente" />
 								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarDiariaMB.tipoCliente}"
-									styleClass="form-control" immediate="true">
+									styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
 										itemValue="" />
 									<f:selectItems value="#{gerenciarDiariaMB.tipoClientes}"
-										var="tipoCliente" itemLabel="#{tipoCliente}"
-										temValue="#{tipoCliente}" />
+										/>
+									<p:ajax event="change" update="cpfCnpj"
+										listener="#{gerenciarDiariaMB.onChangeTipoCliente}" />
 								</h:selectOneMenu>
 							</div>
-
-							<div class="form-group">
-								<p:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cnpj"
-									styleClass="form-control">
-									<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}"
-										itemValue="" />
-									<f:selectItems value="#{gerenciarDiariaMB.PJ}" var="PJ"
-										itemLabel="#{PJ.cnpj}" itemValue="#{PJ.id}" />
-								</h:selectOneMenu>
-							</div>
-
-							<div class="form-group">
-								<p:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cpf"
-									styleClass="form-control">
+		
+							<h:panelGroup id="cpfCnpj">
+							
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarDiariaMB.tipoCliente == 'Pessoa Jurídica'}">
 									
-									<f:selectItems value="#{gerenciarDiariaMB.PF}" var="PF"
-										itemLabel="#{PF.cpf}" itemValue="#{PF.id}" />
-								</h:selectOneMenu>
-							</div>
-
+									<p:outputLabel value="#{messages['diaria.cnpj']}" for="cnpj" />
+									<h:selectOneMenu
+										value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cnpj"
+										styleClass="form-control" required="true">
+										<f:selectItem itemLabel="#{messages['diaria.itemLabel.cnpj']}"
+											itemValue="" />
+										<f:selectItems value="#{gerenciarDiariaMB.PJ}" var="PJ"
+											itemLabel="#{PJ.cnpj}" itemValue="#{PJ.id}" />
+									</h:selectOneMenu>
+									<br/>
+								</h:panelGroup>
+								
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarDiariaMB.tipoCliente == 'Pessoa Física'}">
+	
+									<p:outputLabel value="#{messages['diaria.cpf']}" for="cpf" />
+									<h:selectOneMenu
+										value="#{gerenciarDiariaMB.diariaAvulsa.pessoa.id}" id="cpf"
+										styleClass="form-control" required="true">
+										<f:selectItem
+											itemLabel="#{messages['diaria.itemLabel.cpf']}"
+											itemValue="" />
+										<f:selectItems value="#{gerenciarDiariaMB.PF}" var="PF"
+											itemLabel="#{PF.cpf}" itemValue="#{PF.id}" />
+									</h:selectOneMenu>
+									<br/>
+								</h:panelGroup>
+								
+							</h:panelGroup>
+							
+							
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.quarto']}" for="quarto" />
-								<h:selectOneMenu value="#{gerenciarDiariaMB.diariaAvulsa.quarto.id}"
-									id="quarto" styleClass="form-control" required="true">
+								<h:selectOneMenu
+									value="#{gerenciarDiariaMB.diariaAvulsa.quarto.id}" id="quarto"
+									styleClass="form-control" required="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.quarto']}"
 										itemValue="" />
@@ -106,7 +124,8 @@
 							<div class="form-group">
 								<p:outputLabel value="#{messages['diaria.dias']}" for="qtdDias" />
 								<h:inputText id="qtdDias" styleClass="form-control"
-									value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}" required="true">
+									value="#{gerenciarDiariaMB.diariaAvulsa.qtdDias}"
+									required="true">
 									<f:passThroughAttribute name="type" value="number" />
 								</h:inputText>
 							</div>
@@ -116,7 +135,8 @@
 								<br />
 								<p:calendar id="data"
 									value="#{gerenciarDiariaMB.diariaAvulsa.data}" showOn="button"
-									pattern="dd/MM/yyyy" required="true" />
+									pattern="dd/MM/yyyy" required="true" 
+									mindate="#{gerenciarDiariaMB.dataAtual}"/>
 							</div>
 
 							<p:commandButton value="#{messages['clean']}"
@@ -131,35 +151,63 @@
 
 						<div class="box-footer">
 
-							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}" >
+							<h:panelGroup rendered="#{empty gerenciarDiariaMB.diarias}">
 								<em><p:outputLabel value="#{messages['diaria.empty']}" />.</em>
 							</h:panelGroup>
 
 							<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
-								id="tb-diarias"
-								paginator="true"
-								rendered="#{not empty gerenciarDiariaMB.diarias}">
+								id="tb-diarias" paginator="true"
+								rows="6"
+								rendered="#{not empty gerenciarDiariaMB.diarias}"
+								emptyMessage="#{messages['cliente.busca.invalida']}"
+								widgetVar="diariaTable"
+								filteredValue="#{gerenciarDiariaMB.diariasFiltradas}">
+								
+								<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="#{messages['buscar']}" />
+										<p:inputText id="globalFilter"
+											onkeyup="PF('diariaTable').filter()" style="width:133px"
+											 />
+									</p:outputPanel>
+								</f:facet>
 
-								<p:column headerText="Quartos">
+								<p:column headerText="#{messages['diaria.table.quartos']}"
+									sortBy="#{_diaria.quarto.numero}"
+									filterBy="#{_diaria.quarto.numero}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 									<h:outputText value="#{_diaria.quarto.numero}" />
 								</p:column>
 
-								<p:column headerText="CPF/CNPJ">
-									<h:outputText value="#{_diaria.pessoa.cpf}" />
-								</p:column> 
-								
-								<p:column headerText="Data Entrada">
+								<p:column headerText="#{messages['diaria.table.cpfCnpj']}"
+									sortBy="#{_diaria.pessoa.cpfCnpj}"
+									filterBy="#{_diaria.pessoa.cpfCnpj}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+									<h:outputText value="#{_diaria.pessoa.cpfCnpj}" />
+								</p:column>
+
+								<p:column headerText="#{messages['diaria.table.dataEntrada']}"
+									sortBy="#{_diaria.data}"
+									filterBy="#{_diaria.data}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 									<h:outputText value="#{_diaria.data}">
 										<f:convertDateTime pattern="dd/MM/yyyy"
 											timeZone="America/Sao_Paulo" />
 									</h:outputText>
 								</p:column>
 
-								<p:column headerText="Quantidade Dias">
+								<p:column headerText="#{messages['diaria.table.qtdDias']}"
+									sortBy="#{_diaria.qtdDias}"
+									filterBy="#{_diaria.qtdDias}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 									<h:outputText value="#{_diaria.qtdDias}" />
 								</p:column>
 
-								<p:column headerText="Ação">
+								<p:column headerText="#{messages['diaria.table.acao']}">
 									<h:commandButton value="#{messages['edit']}" immediate="true"
 										styleClass="btn btn-default"
 										action="#{gerenciarDiariaMB.edita(_diaria)}"

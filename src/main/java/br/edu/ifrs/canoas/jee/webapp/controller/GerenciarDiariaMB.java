@@ -1,10 +1,11 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,17 +17,22 @@ import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarDiariaService;
 import lombok.Data;
 
+//Toda classe com escopo maior que request deve implementar serializable
 @Named
-@RequestScoped
+@ViewScoped
 @Data
-public class GerenciarDiariaMB {
+public class GerenciarDiariaMB implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
     private GerenciarDiariaService gerenciarDiariaService;
+	private List<DiariaAvulsa> diariasFiltradas;
 	private DiariaAvulsa diariaAvulsa;
 	private List<String> tipoClientes;	
 	private String tipoCliente;
 	private Pessoa pessoa;
 	private Quarto quarto;
+	private Date dataAtual;
 	
 	private List<PessoaJuridica> PJ;
 	private List<PessoaFisica> PF;
@@ -34,23 +40,34 @@ public class GerenciarDiariaMB {
 	private List<Quarto> quartos;
 	private List<DiariaAvulsa> diarias;
 	
-	public Boolean isPf() {
-		return pessoa instanceof PessoaFisica ? true : false;
+	public void	onChangeTipoCliente() {
+		if(tipoCliente.intern() == "Pessoa Física") {
+			diariaAvulsa.setPessoa(new PessoaFisica());
+		}else if(tipoCliente.intern() == "Pessoa Jurídica") {
+			diariaAvulsa.setPessoa(new PessoaJuridica());
+		}
+    }
+	
+	public String isPFouPJ(DiariaAvulsa diariaAvulsa){
+		return diariaAvulsa.getPessoa() instanceof PessoaFisica
+		? "Pessoa Física" : "Pessoa Jurídica";
 	}
-
+		
+	
 	@PostConstruct
 	public void init() {
 		diariaAvulsa = new DiariaAvulsa();
-		diariaAvulsa.setPessoa(new PessoaFisica());
 		diariaAvulsa.setQuarto(new Quarto());
 		
-		diarias = gerenciarDiariaService.busca();	
+		diarias = gerenciarDiariaService.busca(null);	
 		tipoClientes = gerenciarDiariaService.getTipoCliente();
 		
 		PF = gerenciarDiariaService.getPF();
 		PJ = gerenciarDiariaService.getPJ();
 		
 		quartos = gerenciarDiariaService.getQuartos();
+		
+		dataAtual = new Date();
 	}
 	
 	public String salva() {
@@ -61,6 +78,7 @@ public class GerenciarDiariaMB {
 	
 	public void edita(DiariaAvulsa diariaAvulsa) {
 		this.diariaAvulsa = diariaAvulsa;
+		this.tipoCliente = isPFouPJ(diariaAvulsa); 
 	}
 	
 	public void exclui(DiariaAvulsa diaria) {
@@ -69,10 +87,6 @@ public class GerenciarDiariaMB {
 	}
 	
 	public String limpa() {
-		diariaAvulsa = new DiariaAvulsa();
-		PF = new ArrayList<>();
-		PJ = new ArrayList<>();
-		quartos = new ArrayList<>();
-		return "/public/diaria?facesRedirect=true";
+		return "/public/diaria.jsf?facesRedirect=true";
 	}
 }
