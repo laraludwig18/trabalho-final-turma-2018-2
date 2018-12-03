@@ -224,7 +224,19 @@
 								</p:column>
 
 								<p:column headerText="#{messages['reserva.table.acao']}">
-								
+									
+									<h:commandButton value="#{messages['edit']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarReservaMB.edita(_diaria)}"
+										update="tb-diarias">
+										<p:ajax update=":mainForm:reserva-content" />
+									</h:commandButton>
+
+									<h:commandLink value="#{messages['delete']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarReservaMB.exclui(_diaria)}" ajax="true"
+										update="tb-diarias">
+									</h:commandLink>
 								</p:column>
 
 							</p:dataTable>

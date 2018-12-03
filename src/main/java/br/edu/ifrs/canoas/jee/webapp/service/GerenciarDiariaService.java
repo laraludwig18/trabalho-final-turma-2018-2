@@ -75,7 +75,7 @@ public class GerenciarDiariaService {
 	}
 
 	public void excluiDiariaReservada(DiariaReservada diariareservada) {
-		diariaAvulsaDAO.exclui(diariareservada.getId());
+		diariaReservadaDAO.exclui(diariareservada.getId());
 	}
 
 	public List<String> getTipoCliente() {

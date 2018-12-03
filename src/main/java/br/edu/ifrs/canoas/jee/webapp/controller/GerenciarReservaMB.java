@@ -93,7 +93,7 @@ public class GerenciarReservaMB implements Serializable{
 	}
 
 	public void exclui(DiariaReservada dr) {
-		gerenciarReservaService.exclui(dr.getReserva());
+//		gerenciarReservaService.exclui(dr.getReserva());
 		gerenciarDiariaService.excluiDiariaReservada(dr);
 		this.init();
 	}
