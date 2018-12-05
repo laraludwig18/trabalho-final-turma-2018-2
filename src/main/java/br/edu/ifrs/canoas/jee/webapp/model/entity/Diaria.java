@@ -15,9 +15,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto.QuartoBuilder;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 
 @Entity

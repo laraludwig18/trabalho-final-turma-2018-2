@@ -28,7 +28,7 @@
 			<section class="content">
 	  	  		<p:messages id="msgs" showDetail="false" autoUpdate="true" closable="true"/>	
 	  	  		
-	  	  		<h:panelGroup id="user-content">
+	  	  		<h:panelGroup id="quarto-content">
 	  	  		<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
@@ -52,13 +52,15 @@
 					
 					<div class="box-body" id="form-quarto">
 						
-						<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}" id="hiddenId" />
-	
+						 <h:inputHidden value="#{gerenciarQuartoMB.quarto.id}" id="hiddenId" />
+					<h:form>
 						<div class="form-group">
+						
 							<p:outputLabel for="numero" value="#{messages['quarto.num']}" />
 							<p:inputText id="numero" styleClass="form-control" minlength="3" maxlength="20"
-								value="#{gerenciarUsuarioMB.usuario.nome}" required="true" autoResize="true" />
+								value="#{gerenciarQuartoMB.quarto.numero}" required="true" autoResize="true" />
 							<!-- <p:message for="nome" /> -->
+						
 						</div>
 
 						<div class="form-group">
@@ -72,73 +74,103 @@
             			</p:selectOneMenu>
             			</h:panelGrid>
 						
-							
+						
 						</div>
 
 						<div class="form-group">
+						
 							<p:outputLabel for="situacao" value="#{messages['quarto.situacao']}" />
     						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
         					<p:selectOneRadio id="situacao" value="#{gerenciarQuartoMB.quarto.situacao}" required="true">
-            				<f:selectItems value="#{gerenciarQuartoMB.situacoes}" itemValue="#{s}"
-                                                           var="s" itemLabel="#{messages[s.descricao]}" />
+            				<f:selectItems value="#{gerenciarQuartoMB.situacoes}" var="s" itemValue="#{s}"
+                                                            itemLabel="#{messages['quarto.situacao.' += s]}" />
        						</p:selectOneRadio>
     						</h:panelGrid>
+    					
 						</div>
 
 						<div class="form-group">
-						<h:form>
+						
 							<p:outputLabel for="descricao" value="#{messages['quarto.desc']}" />
 							<p:inputTextarea id="descricao" styleClass="form-control"
-								value="#{gerenciarUsuarioMB.usuario.senha}" counter="counter" maxlength="400"
+								value="#{gerenciarQuartoMB.quarto.descricao}" counter="counter" maxlength="400"
 								counterTemplate="{0} #{messages['quarto.restante']}"  autoResize="true"/>
 							
 							<h:outputText id="counter"/>
-							<!-- <p:message for="senha" errorClass="invalid" /> -->
-							</h:form>
+							
 						</div>
 
 						<p:commandButton value="#{messages['clean']}" 
-						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"
+						    action="#{gerenciarQuartoMB.limpa}" styleClass="btn btn-default"
 							ajax="false" style="border: none;" immediate="true" />
 							
-						<h:commandButton value="Salvar" action="#{gerenciarUsuarioMB.salva}"
+						<h:commandButton value="Salvar" action="#{gerenciarQuartoMB.salva}"
 							styleClass="btn btn-primary pull-right">
 							
 						</h:commandButton>
+						</h:form>
 					</div>
 					
 					<div class="box-footer">
 
-						<h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
+						<h:panelGroup rendered="#{empty gerenciarQuartoMB.quartos}">
 							<em><p:outputLabel value="#{messages['quarto.empty']}" />.</em>
 						</h:panelGroup>
 						
 						
-						<p:dataTable var="_qrt" value="#{gerenciarUsuarioMB.usuarios}" id="tb-quartos"
-							rendered="#{not empty gerenciarUsuarioMB.usuarios}">
-							<p:column headerText="#{messages['qrt.numero']}">
-								<h:outputText value="#{qrt.numero}" />
+						<p:dataTable var="_quarto" value="#{gerenciarQuartoMB.quartos}" id="tb-quartos"
+							rendered="#{not empty gerenciarQuartoMB.quartos}"
+							paginator="true"
+							rows="10"
+							emptyMessage="#{messages['cliente.busca.invalida']}"
+							widgetVar="quartoTable"
+							filteredValue="#{gerenciarQuartoMB.quartosFiltrados}">
+							
+							<f:facet name="header">
+									<p:outputPanel>
+										<h:outputText value="#{messages['buscar']}" />
+										<p:inputText id="globalFilter"
+											onkeyup="PF('quartoTable').filter()" style="width:133px" placeholder="#{messages['quarto.busca']}"
+											 />
+									</p:outputPanel>
+								</f:facet>
+							
+							<p:column headerText="#{messages['qrt.numero']}"
+									sortBy="#{_quarto.numero}"
+									filterBy="#{_quarto.numero}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+								<h:outputText value="#{_quarto.numero}" />
 							</p:column>
-							<p:column headerText="#{messages['qrt.tipo']}">
-								<h:outputText value="#{qrt.tipo}" />
+							<p:column headerText="#{messages['qrt.tipo']}"
+									sortBy="#{_quarto.tipo}"
+									filterBy="#{_quarto.tipo}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+								<h:outputText value="#{_quarto.tipo}" />
 							</p:column>
-							<p:column headerText="#{messages['qrt.situacao']}">
-								<h:outputText value="#{qrt.situacao}" />
+							<p:column headerText="#{messages['qrt.situacao']}"
+									sortBy="#{_quarto.situacao}"
+									filterBy="#{_quarto.situacao}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
+								<h:outputText value="#{_quarto.situacao}" />
 							</p:column>
 
-							<p:column headerText="Ações">
-								<!-- EDITA -->
-								<h:commandButton value="#{messages['edit']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarUsuarioMB.edita(_usr)}" update="form-usuario" >
-									<p:ajax update=":mainForm:user-content" />
-								</h:commandButton>
-				 				<!-- EXCLUI -->
-								<h:commandLink value="#{messages['delete']}" immediate="true" styleClass="btn btn-default"
-									action="#{gerenciarUsuarioMB.exclui}" ajax="true" update="tb-usuarios">									
-									<f:setPropertyActionListener value="#{_usr}"
-										target="#{gerenciarUsuarioMB.usuario}" />
-								</h:commandLink>
-							</p:column>
+								<p:column headerText="#{messages['qrt.table.acao']}">
+									<h:commandButton value="#{messages['edit']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarQuartoMB.edita(_quarto)}"
+										update="tb-quartos">
+										<p:ajax update=":mainForm:quarto-content" />
+									</h:commandButton>
+
+									<h:commandLink value="#{messages['delete']}" immediate="true"
+										styleClass="btn btn-default"
+										action="#{gerenciarQuartoMB.exclui(_quarto)}" ajax="true"
+										update="tb-quartos">
+									</h:commandLink>
+								</p:column>
 						</p:dataTable>
 
 					</div>

@@ -1,6 +1,5 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,14 +22,18 @@ public class GerenciarQuartoMB {
 	@Inject
 	private GerenciarQuartoService gerenciarQuartoService;
 	
+	@Inject
 	private Quarto quarto;
 			
 	private List<Quarto> quartos;
 	
+	private List<Quarto> quartosFiltrados;
+	
 	//private TipoDeQuarto tipo;
 			
 	public String salva() {
-		gerenciarQuartoService.salvaQuarto(quarto);
+		if (!gerenciarQuartoService.salvaQuarto(quarto))
+			return null;
 		this.init();
 		return limpa();
 	}
@@ -38,18 +41,22 @@ public class GerenciarQuartoMB {
 	
 	@PostConstruct
     public void init() {
-		this.limpa();
+		quarto = new Quarto();
 		quartos = gerenciarQuartoService.busca(null);
     }
 	
-	public void exclui() {
+	public void exclui(Quarto quarto) {
 		gerenciarQuartoService.exclui(quarto);
 		this.init();
 	}
+	
+	public void edita(Quarto quarto) {
+		this.quarto = quarto;
+	}
 
 	public String limpa() {
-		quarto = new Quarto();
-		return "/adm/quarto.jsf?facesRedirect=true";
+		return "/Administracao/quarto.jsf?facesRedirect=true";
+		
 	}
 	
 	public TipoDeQuarto[] getTpQuartos(){

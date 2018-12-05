@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,14 +25,13 @@ public class Quarto extends BaseEntity<Long> implements Serializable {
 
 	
 	private static final long serialVersionUID = 57657643543453426L;
-	//@Min(3)
-	//@Max(20)
+	@Size(min=3, max=20, message="{quarto.erro.numero}")
 	private String numero;
 	@Enumerated(EnumType.STRING)
 	private TipoDeQuarto tipo;
 	@Enumerated(EnumType.STRING)
 	private SituacaoQuarto situacao;
-	@Max(400)
+	@Size(max=400, message="{quarto.erro.descricao}")
 	private String descricao;
 	
 	public Quarto() {

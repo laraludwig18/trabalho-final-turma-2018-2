@@ -60,7 +60,8 @@
 									for="tipoCliente" />
 								<h:selectOneMenu id="tipoCliente"
 									value="#{gerenciarDiariaMB.tipoCliente}"
-									styleClass="form-control">
+									styleClass="form-control"
+									required="true">
 									<f:selectItem
 										itemLabel="#{messages['diaria.itemLabel.tipoCliente']}"
 										itemValue="" />
@@ -159,7 +160,7 @@
 
 							<p:dataTable var="_diaria" value="#{gerenciarDiariaMB.diarias}"
 								id="tb-diarias" paginator="true"
-								rows="6"
+								rows="10"
 								rendered="#{not empty gerenciarDiariaMB.diarias}"
 								emptyMessage="#{messages['cliente.busca.invalida']}"
 								widgetVar="diariaTable"
