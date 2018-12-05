@@ -53,12 +53,14 @@
 					<div class="box-body" id="form-quarto">
 						
 						 <h:inputHidden value="#{gerenciarQuartoMB.quarto.id}" id="hiddenId" />
-	
+					<h:form>
 						<div class="form-group">
+						
 							<p:outputLabel for="numero" value="#{messages['quarto.num']}" />
 							<p:inputText id="numero" styleClass="form-control" minlength="3" maxlength="20"
 								value="#{gerenciarQuartoMB.quarto.numero}" required="true" autoResize="true" />
 							<!-- <p:message for="nome" /> -->
+						
 						</div>
 
 						<div class="form-group">
@@ -72,10 +74,11 @@
             			</p:selectOneMenu>
             			</h:panelGrid>
 						
-							
+						
 						</div>
 
 						<div class="form-group">
+						
 							<p:outputLabel for="situacao" value="#{messages['quarto.situacao']}" />
     						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
         					<p:selectOneRadio id="situacao" value="#{gerenciarQuartoMB.quarto.situacao}" required="true">
@@ -83,17 +86,18 @@
                                                             itemLabel="#{messages['quarto.situacao.' += s]}" />
        						</p:selectOneRadio>
     						</h:panelGrid>
+    					
 						</div>
 
 						<div class="form-group">
-						<h:form>
+						
 							<p:outputLabel for="descricao" value="#{messages['quarto.desc']}" />
 							<p:inputTextarea id="descricao" styleClass="form-control"
 								value="#{gerenciarQuartoMB.quarto.descricao}" counter="counter" maxlength="400"
 								counterTemplate="{0} #{messages['quarto.restante']}"  autoResize="true"/>
 							
 							<h:outputText id="counter"/>
-							</h:form>
+							
 						</div>
 
 						<p:commandButton value="#{messages['clean']}" 
@@ -104,6 +108,7 @@
 							styleClass="btn btn-primary pull-right">
 							
 						</h:commandButton>
+						</h:form>
 					</div>
 					
 					<div class="box-footer">

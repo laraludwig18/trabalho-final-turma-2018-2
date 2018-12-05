@@ -41,7 +41,7 @@ public class GerenciarQuartoMB {
 	
 	@PostConstruct
     public void init() {
-		this.limpa();
+		quarto = new Quarto();
 		quartos = gerenciarQuartoService.busca(null);
     }
 	
@@ -55,8 +55,7 @@ public class GerenciarQuartoMB {
 	}
 
 	public String limpa() {
-		quarto = new Quarto();
-		return "/adm/quarto.jsf?facesRedirect=true";
+		return "/Administracao/quarto.jsf?facesRedirect=true";
 		
 	}
 	
