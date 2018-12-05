@@ -37,6 +37,13 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 				 + " WHERE d.data = curdate()) ").getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<DiariaAvulsa> buscaDiariasAvulsas(){
+		return em.createQuery(
+		         "SELECT da "
+		         + "FROM DiariaAvulsa da "
+		         + "order by da.quarto.numero ").getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<DiariaAvulsa> buscaPessoaPorID(Long id) {

@@ -33,6 +33,11 @@ public class GerenciarDiariaService {
 	private PessoaJuridicaDAO pessoaJuridicaDAO;
 
 	public Boolean salvaDiaria(DiariaAvulsa diariaAvulsa) {
+		if(diariaAvulsa.getQtdDias() <= 0) {
+			Mensagens.define(FacesMessage.SEVERITY_ERROR, "diaria.qtdDias.invalida");
+			return false;
+		}
+		
 		if (diariaAvulsa.getId() == null) {
 			diariaAvulsaDAO.insere(diariaAvulsa);
 			Mensagens.define(FacesMessage.SEVERITY_INFO, "diaria.cadastra.sucesso");
@@ -52,12 +57,11 @@ public class GerenciarDiariaService {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<DiariaAvulsa> busca(String criterio) {
 		if (criterio != null && criterio.length() > 0) {
 			return diariaAvulsaDAO.buscaPorCriterio(criterio);
 		}else {
-			return diariaAvulsaDAO.lista();
+			return diariaAvulsaDAO.buscaDiariasAvulsas();
 		}
 	}
 
