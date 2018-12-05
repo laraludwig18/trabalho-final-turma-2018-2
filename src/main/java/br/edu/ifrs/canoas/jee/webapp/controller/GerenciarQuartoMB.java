@@ -45,7 +45,7 @@ public class GerenciarQuartoMB {
 		quartos = gerenciarQuartoService.busca(null);
     }
 	
-	public void exclui() {
+	public void exclui(Quarto quarto) {
 		gerenciarQuartoService.exclui(quarto);
 		this.init();
 	}

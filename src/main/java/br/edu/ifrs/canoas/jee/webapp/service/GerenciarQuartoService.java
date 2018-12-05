@@ -40,5 +40,6 @@ public class GerenciarQuartoService {
 
 	public void exclui(Quarto quarto) {
 		quartoDAO.exclui(quarto.getId());
+		Mensagens.define(FacesMessage.SEVERITY_INFO, "quarto.exclui.sucesso");
 	}
 }
