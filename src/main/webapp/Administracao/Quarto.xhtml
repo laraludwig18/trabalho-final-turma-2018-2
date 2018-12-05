@@ -125,18 +125,30 @@
 									<p:outputPanel>
 										<h:outputText value="#{messages['buscar']}" />
 										<p:inputText id="globalFilter"
-											onkeyup="PF('quartoTable').filter()" style="width:133px"
+											onkeyup="PF('quartoTable').filter()" style="width:133px" placeholder="#{messages['quarto.busca']}"
 											 />
 									</p:outputPanel>
 								</f:facet>
 							
-							<p:column headerText="#{messages['qrt.numero']}">
+							<p:column headerText="#{messages['qrt.numero']}"
+									sortBy="#{_quarto.numero}"
+									filterBy="#{_quarto.numero}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 								<h:outputText value="#{_quarto.numero}" />
 							</p:column>
-							<p:column headerText="#{messages['qrt.tipo']}">
+							<p:column headerText="#{messages['qrt.tipo']}"
+									sortBy="#{_quarto.tipo}"
+									filterBy="#{_quarto.tipo}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 								<h:outputText value="#{_quarto.tipo}" />
 							</p:column>
-							<p:column headerText="#{messages['qrt.situacao']}">
+							<p:column headerText="#{messages['qrt.situacao']}"
+									sortBy="#{_quarto.situacao}"
+									filterBy="#{_quarto.situacao}"
+									filterStyle="display:none"
+									filterMatchMode="contains">
 								<h:outputText value="#{_quarto.situacao}" />
 							</p:column>
 
