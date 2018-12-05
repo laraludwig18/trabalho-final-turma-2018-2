@@ -3,6 +3,7 @@ package br.edu.ifrs.canoas.jee.webapp.model.dao;
 import java.util.List;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
+import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 
 public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
@@ -46,7 +47,7 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<DiariaAvulsa> buscaPessoaPorID(Long id) {
+	public List<Pessoa> buscaPessoaPorID(Long id) {
 		return em.createQuery("SELECT u " + "FROM DiariaAvulsa u " + "WHERE u.pessoa.id = :id")
 				.setParameter("id", id).getResultList();
 	}
