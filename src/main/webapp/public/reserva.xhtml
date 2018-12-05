@@ -147,10 +147,10 @@
 							<!-- valor usando mascara para real, maior que zero	 -->
 							<div class="form-group">
 								<p:outputLabel for="valor" value="#{messages['reserva.valor']}" />
-								<p:inputMask id="valor" symbol="R$" mask="999.99"
-									styleClass="form-control"
-									value="#{gerenciarReservaMB.diariaReservada.reserva.valor}" required="true">
-								</p:inputMask>
+								<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+									<p:inputNumber  id="valor" value="#{gerenciarReservaMB.diariaReservada.reserva.valor}" symbol=" R$"
+	                              		 decimalSeparator="," thousandSeparator="." required="true" />  
+                               	</h:panelGrid>
 							</div>
 
 

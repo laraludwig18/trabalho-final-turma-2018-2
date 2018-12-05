@@ -35,17 +35,10 @@ public class Reserva extends BaseEntity<Long> implements Serializable {
 	}
 
 	public Reserva(Date data, Double valor, Pessoa pessoa) {
-		if(validaData(data)) {
 			this.data = data;
 			this.valor = valor;
 			this.pessoa = pessoa;
-		}
-		else
-			throw new RuntimeException("data nao pode ser menor que a data atual");
 	}
 	
-	private boolean validaData(Date data) {
-		Date dataAtual = new Date();
-		return data.after(dataAtual);
-	}
+
 }
