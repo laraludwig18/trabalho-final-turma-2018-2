@@ -39,4 +39,7 @@ public class PessoaFisicaDAO extends BaseDAO<PessoaFisica, Long>{
 		         .setParameter("telefone", criterio.trim().toLowerCase())
 		         .getResultList();
 	}
+	
+
+	
 }

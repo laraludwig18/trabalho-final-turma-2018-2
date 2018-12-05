@@ -7,7 +7,7 @@ import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 
 public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 	private static final long serialVersionUID = 1L;
-	
+
 	@SuppressWarnings("unchecked")
 	public List<DiariaAvulsa> buscaPorCriterio(String criterio){
 		return em.createQuery(
@@ -18,7 +18,7 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 		         + " or da.pessoa.cpf = :cpf "
 		         + " or da.pessoa.cnpj = :cnpj "
 		         + " or da.quarto.numero = :numero ")
-				
+
 		         .setParameter("qtdDias", criterio.trim().toLowerCase())
 		         .setParameter("data", criterio.trim().toLowerCase())
 		         .setParameter("cpf", criterio.trim().toLowerCase())
@@ -26,7 +26,7 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 		         .setParameter("numero", criterio.trim().toLowerCase())
 		         .getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Quarto> buscaQuartos(){
 		return em.createQuery(
@@ -35,5 +35,12 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 		         + "WHERE id not in( "
 		         + " SELECT d.quarto from Diaria d "
 				 + " WHERE d.data = curdate()) ").getResultList();
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public List<DiariaAvulsa> buscaPessoaPorID(Long id) {
+		return em.createQuery("SELECT u " + "FROM DiariaAvulsa u " + "WHERE u.pessoa.id = :id")
+				.setParameter("id", id).getResultList();
 	}
 }

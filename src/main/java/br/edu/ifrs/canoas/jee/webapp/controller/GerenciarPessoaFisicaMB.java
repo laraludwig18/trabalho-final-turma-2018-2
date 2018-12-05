@@ -28,12 +28,8 @@ public class GerenciarPessoaFisicaMB {
 	private List<PessoaFisica> pessoasFisicasFiltradas;
 
 	public String salva() {
-		try {
-			gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);
-		} catch (Exception e) {
-			e.printStackTrace();
-			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Pessoa.cpf.erro", pessoaFisica.getCpf());
-		}
+
+		gerenciarPessoaFisicaService.salvaPessoaFisica(pessoaFisica);
 		this.init();
 		return limpa();
 	}
