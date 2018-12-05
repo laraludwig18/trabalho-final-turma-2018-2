@@ -29,18 +29,17 @@ public class GerenciarReservaService {
 	private PessoaJuridicaDAO pessoaJuridicaDAO;
 	@Inject
 	private QuartoDAO quartoDAO;
-	@Inject
-	private Logger log;
 	
 	public void salvaReserva(Reserva reserva) {
-		if( validaData(reserva.getData()) ) {
+	if(!validaData(reserva.getData()) ) {
+		Mensagens.define(FacesMessage.SEVERITY_ERROR, "Reserva.data.erro");
+	}else if(!validaValor(reserva.getValor()) ){
+		Mensagens.define(FacesMessage.SEVERITY_ERROR, "Reserva.valor.erro");
+	}else {
 			if (reserva.getId() == null)
 				reservaDAO.insere(reserva);
 			else 
 				reservaDAO.atualiza(reserva);
-		}else {
-			log.info("Reserva.data.erro");
-			Mensagens.define(FacesMessage.SEVERITY_ERROR, "Reserva.data.erro");
 		}
 	}
 	
@@ -87,7 +86,10 @@ public class GerenciarReservaService {
 			return false;
 	}
 	
-//	public boolean validaValor() {
-//		
-//	}
+	public boolean validaValor(Double valor) {
+		if(valor < 0)
+			return false;
+		else
+			return true;
+	}
 }

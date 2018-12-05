@@ -1,6 +1,7 @@
 package br.edu.ifrs.canoas.jee.webapp.service;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -50,10 +51,14 @@ public class GerenciarDiariaService {
 	}
 
 	public void salvaDiariaReservada(DiariaReservada diariaReservada) {
-		if (diariaReservada.getId() == null) {
-			diariaReservadaDAO.insere(diariaReservada);
+		if(diariaReservada.getQtdDias() <= 0) {
+			Mensagens.define(FacesMessage.SEVERITY_ERROR, "diaria.qtdDias.invalida");
 		}else {
-			diariaReservadaDAO.atualiza(diariaReservada);
+			if (diariaReservada.getId() == null) {
+				diariaReservadaDAO.insere(diariaReservada);
+			}else {
+				diariaReservadaDAO.atualiza(diariaReservada);
+			}	
 		}
 	}
 
@@ -99,4 +104,5 @@ public class GerenciarDiariaService {
 	public List<Quarto> getQuartos(Long id){
 		return diariaAvulsaDAO.buscaQuartos(id);
 	}
+	
 }

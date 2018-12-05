@@ -36,9 +36,15 @@ insert into quarto(id, descricao, numero, situacao, tipo) values (22, 'Descricao
 insert into quarto(id, descricao, numero, situacao, tipo) values (23, 'Descricao', '304', 'INDISPONIVEL', 'MASTER');
 insert into quarto(id, descricao, numero, situacao, tipo) values (24, 'Descricao', '305', 'DISPONIVEL', 'PRESIDENCIAL');
 
-insert into reserva values(100, '2018-11-26', 350.56, 101);
+insert into reserva values(100, '2019-11-26', 350.56, 101);
+insert into reserva values(101, '2019-03-12', 657.80, 102);
+insert into reserva values(102, '2019-05-22', 777.30, 103);
+insert into reserva values(103, '2019-01-05', 547.00, 102);
 
-insert into diaria values('DiariaReservada', 200,'2018-11-26', 10, 20, 100, null);
+insert into diaria values('DiariaReservada', 200,'2018-11-26', 3, 20, 100, null);
+insert into diaria values('DiariaReservada', 201,'2019-03-12', 8, 21, 101, null);
+insert into diaria values('DiariaReservada', 202,'2019-05-22', 12, 22, 102, null);
+insert into diaria values('DiariaReservada', 203,'2019-01-05', 5, 23, 103, null);
 
 insert into diaria values ('DiariaAvulsa', 50, sysdate, 12, 21, null, 102);
 insert into diaria values ('DiariaAvulsa', 51, sysdate, 2, 22, null, 210);
