@@ -30,14 +30,19 @@ insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMun
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ceasa BLAH', 'ceasa@asd.com' , '(51)9999-7799', '54.853.453/4534-54', 'Ceasa', 'Ceasa', 'Ceasa BLAH', 'PessoaJuridica', 210);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Pornhub NETWORK', 'pornhub@network.com', '(06)9999-9999', '00.343.453/4534-54', 'Pornhub', 'Pornhub', 'Pornhub NETWORK', 'PessoaJuridica', 211);
 
-insert into quarto(id, descricao, numero, situacao, tipo) values (1, null, 'quarto 1', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (2, null, 'quarto 2', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (20, null, 'quarto 1', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (21, null, 'quarto 2', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (22, null, 'quarto 3', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (23, null, 'quarto 4', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (24, null, 'quarto 5', null, null);
 
 insert into reserva values(100, '2018-11-26', 350.56, 101);
-insert into diaria values('DiariaReservada', 200,'2018-11-26', 10, 2, 100, null);
 
-insert into diaria values ('DiariaAvulsa', 16, '2019-02-16', 12, 1, null, 114);
-insert into diaria values ('DiariaAvulsa', 17, '2019-01-16', 15, 2, null,200);
+insert into diaria values('DiariaReservada', 200,'2018-11-26', 10, 20, 100, null);
+
+insert into diaria values ('DiariaAvulsa', 50, sysdate, 12, 21, null, 200);
+insert into diaria values ('DiariaAvulsa', 52, sysdate, 2, 22, null, 210);
+insert into diaria values ('DiariaAvulsa', 53, sysdate, 15, 20, null, 114);
 
 insert into pais (id, nome) values (1, 'Brasil');
 insert into pais (id, nome) values (2, 'Outros');
