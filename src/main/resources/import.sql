@@ -1,4 +1,4 @@
-
+﻿
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',100,'Alice','alice@email.com','(51)91447-1941','837.583.798-70','1999-02-26','88692048');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',101,'Sophia','sophia@email.com','(51)95884-9910','699.299.736-30','1997-07-13','49532102');
 insert into pessoa (dtype, id, nome, email, telefone, cpf, datanascimento, rg) values ('PessoaFisica',102,'Bernardo','bernardo@email.com','(51)94366-7661','810.436.399-57','1992-01-25','66156992');
@@ -30,11 +30,11 @@ insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMun
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Ceasa BLAH', 'ceasa@asd.com' , '(51)9999-7799', '54.853.453/4534-54', 'Ceasa', 'Ceasa', 'Ceasa BLAH', 'PessoaJuridica', 210);
 insert into Pessoa (nome, email, telefone, cnpj, inscricaoEstadual, inscricaoMunicipal, razaoSocial, DTYPE, id) values ('Pornhub NETWORK', 'pornhub@network.com', '(06)9999-9999', '00.343.453/4534-54', 'Pornhub', 'Pornhub', 'Pornhub NETWORK', 'PessoaJuridica', 211);
 
-insert into quarto(id, descricao, numero, situacao, tipo) values (20, null, 'quarto 1', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (21, null, 'quarto 2', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (22, null, 'quarto 3', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (23, null, 'quarto 4', null, null);
-insert into quarto(id, descricao, numero, situacao, tipo) values (24, null, 'quarto 5', null, null);
+insert into quarto(id, descricao, numero, situacao, tipo) values (20, 'Descricao', '301', 'DISPONIVEL', 'STANDARD');
+insert into quarto(id, descricao, numero, situacao, tipo) values (21, 'Descricao', '302', 'DISPONIVEL', 'MEGA_ULTRA');
+insert into quarto(id, descricao, numero, situacao, tipo) values (22, 'Descricao', '303', 'DISPONIVEL', 'TRIPLO');
+insert into quarto(id, descricao, numero, situacao, tipo) values (23, 'Descricao', '304', 'INDISPONIVEL', 'MASTER');
+insert into quarto(id, descricao, numero, situacao, tipo) values (24, 'Descricao', '305', 'DISPONIVEL', 'PRESIDENCIAL');
 
 insert into reserva values(100, '2018-11-26', 350.56, 101);
 

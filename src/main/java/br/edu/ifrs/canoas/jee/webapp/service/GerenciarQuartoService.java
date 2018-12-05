@@ -16,12 +16,16 @@ public class GerenciarQuartoService {
 	@Inject
 	private QuartoDAO quartoDAO;
 
-	public void salvaQuarto(Quarto quarto) {
+	public Boolean salvaQuarto(Quarto quarto) {
 		// TODO Auto-generated method stub
 		if (quarto.getId() == null) {
 			quartoDAO.insere(quarto);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "quarto.cadastra.sucesso");
+			return true;
 		} else {
 			quartoDAO.atualiza(quarto);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "quarto.atualiza.sucesso");
+			return true;
 		}
 	}
 
@@ -33,7 +37,6 @@ public class GerenciarQuartoService {
 			return quartoDAO.lista();
 		}
 	}
-
 
 	public void exclui(Quarto quarto) {
 		quartoDAO.exclui(quarto.getId());
