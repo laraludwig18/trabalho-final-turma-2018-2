@@ -79,8 +79,8 @@
 							<p:outputLabel for="situacao" value="#{messages['quarto.situacao']}" />
     						<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
         					<p:selectOneRadio id="situacao" value="#{gerenciarQuartoMB.quarto.situacao}" required="true">
-            				<f:selectItems value="#{gerenciarQuartoMB.situacoes}" itemValue="#{s}"
-                                                           var="s" itemLabel="#{messages[s.descricao]}" />
+            				<f:selectItems value="#{gerenciarQuartoMB.situacoes}" var="s" itemValue="#{s}"
+                                                            itemLabel="#{messages['quarto.situacao.' += s]}" />
        						</p:selectOneRadio>
     						</h:panelGrid>
 						</div>
