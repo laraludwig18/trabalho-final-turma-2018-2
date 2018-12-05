@@ -54,7 +54,6 @@
 							<h:inputHidden value="#{gerenciarUsuarioMB.usuario.id}"
 								id="hiddenId" />
 
-
 							<div class="form-group">
 								<p:outputLabel for="nome" value="#{messages['usuario.nome']}" />
 								<p:inputText id="nome" styleClass="form-control"
@@ -80,49 +79,69 @@
 							</div>
 
 							<!-- ========================================================= -->
-							
-							<div class="form-group">
-					            <p:outputLabel for="pais"
-									value="#{messages['usuario.endereco.pais']}" />
-								<p:selectOneMenu id="pais" value="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id}" style="width: 100% !important" required="true">
-								   <f:selectItems value="#{gerenciarUsuarioMB.paises}" var="pais"
-								   		itemLabel="#{pais.nome}" itemValue="#{pais.id}" />
-					            </p:selectOneMenu>
-					        </div>
 
-					        <!-- ========================================================= -->
+					        <!-- ================================================================================================================== -->
 
-					        <div class="form-group">
-					            <p:outputLabel for="estado"
-									value="#{messages['usuario.endereco.estado']}" />
-								<p:selectOneMenu id="estado" value="#{gerenciarUsuarioMB.usuario.municipio.estado.id}" style="width: 100% !important" required="true">
-								   <f:selectItems value="#{gerenciarUsuarioMB.estados}" var="estado"
-								   		itemLabel="#{estado.nome}" itemValue="#{estado.id}" />
-					            </p:selectOneMenu>
-					        </div>
-					        
-					        <!-- ========================================================= -->
-					        
-					        <div class="form-group">
-								<p:outputLabel for="estado"
-					            	value="#{messages['usuario.endereco.estado']}"
-					            	rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.nome == 'Outros'}">
-					            </p:outputLabel>
-								<p:inputText id="estadoText" styleClass="form-control"
-					            	value="#{gerenciarUsuarioMB.usuario.municipio.estado.nome}"
-					            	rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.nome == 'Outros'}"/>
-							</div>
+					        <h:panelGroup id="paisUsuario">
 
-							<!-- ========================================================= -->
+								<h:panelGroup class="form-group">
+									<p:outputLabel value="#{messages['usuario.endereco.pais']}" for="pais" />
+									<h:selectOneMenu
+										value="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id}" id="pais"
+										styleClass="form-control" required="true">
+										<f:selectItems value="#{gerenciarUsuarioMB.paises}" var="pais"
+											itemLabel="#{pais.nome}" itemValue="#{pais.id}" />
+										<p:ajax event="change" update="estadoUsuario"
+											listener="#{gerenciarUsuarioMB.onChangePais}" />
+									</h:selectOneMenu>
+									<br/>
+								</h:panelGroup>
 
-							<div class="form-group">
-					            <p:outputLabel for="municipio"
-									value="#{messages['usuario.endereco.municipio']}" />
-								<p:selectOneMenu id="municipio" value="#{gerenciarUsuarioMB.usuario.municipio.id}" style="width: 100% !important" required="true">
-								   <f:selectItems value="#{gerenciarUsuarioMB.municipios}" var="municipio"
-								   		itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" />
-					            </p:selectOneMenu>
-					        </div>
+							</h:panelGroup>
+
+					        <!-- ================================================================================================================== -->
+
+					        <h:panelGroup id="estadoUsuario">
+
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id == '101'}">
+									<p:outputLabel value="#{messages['usuario.endereco.estado']}" for="estado" />
+									<h:selectOneMenu
+										value="#{gerenciarUsuarioMB.usuario.municipio.estado.id}" id="estado"
+										styleClass="form-control" required="true">
+										<f:selectItems value="#{gerenciarUsuarioMB.estados}" var="estado"
+											itemLabel="#{estado.nome}" itemValue="#{estado.id}" />
+										<p:ajax event="change" update="municipioUsuario"
+											listener="#{gerenciarUsuarioMB.onChangeEstado}" />
+									</h:selectOneMenu>
+									<br/>
+								</h:panelGroup>
+								
+								<h:panelGroup class="form-group"
+									rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id == '102'}">
+									<p:outputLabel for="estadoText" value="#{messages['usuario.endereco.estado']}"/>
+									<p:inputText id="estadoText" styleClass="form-control"
+					            		value="#{gerenciarUsuarioMB.usuario.municipio.estado.nome}"/>
+					            	<br/>
+								</h:panelGroup>
+
+							</h:panelGroup>
+
+							<!-- ================================================================================================================== -->
+
+							<h:panelGroup id="municipioUsuario">
+								
+								<h:panelGroup class="form-group"
+									>
+									<p:outputLabel for="municipioText" value="#{messages['usuario.endereco.municipio']}"/>
+									<p:inputText id="municipioText" styleClass="form-control"
+					            		value="#{gerenciarUsuarioMB.usuario.municipio.nome}"/>
+					            	<br/>
+								</h:panelGroup>
+
+							</h:panelGroup>
+
+							<!-- ================================================================================================================== -->
 
 							<!-- ========================================================= -->
 

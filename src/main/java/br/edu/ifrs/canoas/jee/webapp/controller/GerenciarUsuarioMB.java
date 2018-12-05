@@ -46,7 +46,13 @@ public class GerenciarUsuarioMB {
 	private List<Municipio> municipios;
 		
 	public String salva() {
+
+		// gerenciarPaisService.salvaPais(usuario.getMunicipio().getEstado().getPais());
+		gerenciarEstadoService.salvaEstado(usuario.getMunicipio().getEstado());
+		gerenciarMunicipioService.salvaMunicipio(usuario.getMunicipio());
+
 		gerenciarUsuarioService.salvaUsuario(usuario);
+
 		this.init();
 		return limpa();
 	}
@@ -58,16 +64,6 @@ public class GerenciarUsuarioMB {
 		paises = gerenciarPaisService.busca(null);
 		estados = gerenciarEstadoService.busca(null);
 		municipios = gerenciarMunicipioService.busca(null);
-
-		//	:	for testing
-//		usuario.builder()
-//			.name("Lukas")
-//			.sobrenome("Kenes")
-//			.email("lukaskenes@live.com")
-//			.senha("lUk4s123")
-//			.logradouro("lɐᴉpunɯ ɯǝʇ oɐu oᴉɯǝɹƃ")
-//			.build();
-
     }
 	
 	public void exclui() {
@@ -83,22 +79,14 @@ public class GerenciarUsuarioMB {
 		usuario = new Usuario();
 		return "/Administracao/Usuario.jsf?facesRedirect=true";
 	}
-	
-	public void alterarPais(AjaxBehaviorEvent ev) {
-		String pais = (String)((UIOutput)ev.getSource()).getValue();
-		System.out.println("pais: " + pais);
 
-		if(pais.equals("Brasil")) {
-//			estados = gerenciarUsuarioService.getEstados();
-		}
+	public void onChangePais() {
+		// usuario.getMunicipio().setEstado(new Estado());
+		System.out.println(usuario.getMunicipio().getEstado().getPais().getId());
+	}
+
+	public void onChangeEstado() {
+//		usuario.getMunicipio().setEstado(new Estado());
 	}
 	
-	public void alterarEstado(AjaxBehaviorEvent ev) {
-		String estado = (String)((UIOutput)ev.getSource()).getValue();
-		System.out.println("estado: " + estado);
-
-		if(estado.equals("RS - Rio Grande do Sul")) {
-//			municipios = gerenciarUsuarioService.getMunicipios();
-		}
-	}
 }
