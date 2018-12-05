@@ -9,6 +9,9 @@ import br.edu.ifrs.canoas.jee.webapp.model.dao.PaisDAO;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Pais;
 
+import javax.faces.application.FacesMessage;
+import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
+
 @Stateless
 public class GerenciarPaisService {
 	
