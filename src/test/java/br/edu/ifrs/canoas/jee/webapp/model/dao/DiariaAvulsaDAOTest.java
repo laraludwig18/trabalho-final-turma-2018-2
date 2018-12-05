@@ -1,10 +1,7 @@
 package br.edu.ifrs.canoas.jee.webapp.model.dao;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -19,7 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Pessoa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
 

@@ -96,7 +96,7 @@ public class GerenciarDiariaService {
 		return pessoaJuridicaDAO.lista();
 	}
 
-	public List<Quarto> getQuartos(){
-		return diariaAvulsaDAO.buscaQuartos();
+	public List<Quarto> getQuartos(Long id){
+		return diariaAvulsaDAO.buscaQuartos(id);
 	}
 }

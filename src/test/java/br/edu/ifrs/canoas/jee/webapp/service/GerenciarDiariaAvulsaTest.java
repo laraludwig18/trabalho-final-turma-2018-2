@@ -23,7 +23,6 @@ import br.edu.ifrs.canoas.jee.webapp.model.dao.DiariaAvulsaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.DiariaAvulsa;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaFisica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Quarto;
-import br.edu.ifrs.canoas.jee.webapp.model.entity.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
 @RunWith(Arquillian.class)

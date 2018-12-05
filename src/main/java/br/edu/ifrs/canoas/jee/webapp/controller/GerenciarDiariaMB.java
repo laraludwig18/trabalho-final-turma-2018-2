@@ -64,8 +64,7 @@ public class GerenciarDiariaMB implements Serializable{
 		PF = gerenciarDiariaService.getPF();
 		PJ = gerenciarDiariaService.getPJ();
 		
-		quartos = gerenciarDiariaService.getQuartos();
-		
+		quartos = gerenciarDiariaService.getQuartos(null);
 	}
 	
 	public String salva() {
@@ -76,9 +75,10 @@ public class GerenciarDiariaMB implements Serializable{
 		return limpa();
 	}
 	
-	public void edita(DiariaAvulsa diariaAvulsa) {
+	public void edita(DiariaAvulsa diariaAvulsa) {	
 		this.diariaAvulsa = diariaAvulsa;
 		this.tipoCliente = isPFouPJ(diariaAvulsa); 
+		this.quartos = gerenciarDiariaService.getQuartos(diariaAvulsa.getQuarto().getId());
 	}
 	
 	public void exclui(DiariaAvulsa diaria) {

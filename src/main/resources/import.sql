@@ -40,9 +40,9 @@ insert into reserva values(100, '2018-11-26', 350.56, 101);
 
 insert into diaria values('DiariaReservada', 200,'2018-11-26', 10, 20, 100, null);
 
-insert into diaria values ('DiariaAvulsa', 50, sysdate, 12, 21, null, 200);
-insert into diaria values ('DiariaAvulsa', 52, sysdate, 2, 22, null, 210);
-insert into diaria values ('DiariaAvulsa', 53, sysdate, 15, 20, null, 114);
+insert into diaria values ('DiariaAvulsa', 50, sysdate, 12, 21, null, 102);
+insert into diaria values ('DiariaAvulsa', 51, sysdate, 2, 22, null, 210);
+insert into diaria values ('DiariaAvulsa', 52, sysdate, 15, 20, null, 114);
 
 insert into pais (id, nome) values (1, 'Brasil');
 insert into pais (id, nome) values (2, 'Outros');

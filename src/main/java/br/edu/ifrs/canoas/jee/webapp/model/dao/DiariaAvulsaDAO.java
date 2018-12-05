@@ -29,14 +29,27 @@ public class DiariaAvulsaDAO extends BaseDAO<DiariaAvulsa, Long> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Quarto> buscaQuartos(){
+	public List<Quarto> buscaQuartos(Long id){
 		return em.createQuery(
 		         "SELECT q "
 		         + "FROM Quarto q "
 		         + "WHERE id not in( "
 		         + " SELECT d.quarto from Diaria d "
-				 + " WHERE d.data = curdate()) ").getResultList();
+				 + " WHERE d.data = curdate()) "
+		 		 + " or q.id = :id "
+				 ).setParameter("id", id)
+				.getResultList();
 	}
+	
+//	@SuppressWarnings("unchecked")
+//	public List<Quarto> buscaQuartos(){
+//		return em.createQuery(
+//		         "SELECT q "
+//		         + "FROM Quarto q "
+//		         + "WHERE id not in( "
+//		         + " SELECT d.quarto from Diaria d "
+//				 + " WHERE d.data = curdate()) ").getResultList();
+//	}
 
 	@SuppressWarnings("unchecked")
 	public List<DiariaAvulsa> buscaDiariasAvulsas(){
