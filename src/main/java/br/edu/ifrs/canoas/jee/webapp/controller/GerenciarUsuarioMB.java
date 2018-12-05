@@ -46,11 +46,6 @@ public class GerenciarUsuarioMB {
 	private List<Municipio> municipios;
 		
 	public String salva() {
-
-		// gerenciarPaisService.salvaPais(usuario.getMunicipio().getEstado().getPais());
-		gerenciarEstadoService.salvaEstado(usuario.getMunicipio().getEstado());
-		gerenciarMunicipioService.salvaMunicipio(usuario.getMunicipio());
-
 		gerenciarUsuarioService.salvaUsuario(usuario);
 
 		this.init();
@@ -81,8 +76,7 @@ public class GerenciarUsuarioMB {
 	}
 
 	public void onChangePais() {
-		// usuario.getMunicipio().setEstado(new Estado());
-		System.out.println(usuario.getMunicipio().getEstado().getPais().getId());
+		// usuario.setMunicipio(new Municipio());
 	}
 
 	public void onChangeEstado() {

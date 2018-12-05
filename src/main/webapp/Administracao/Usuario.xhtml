@@ -104,7 +104,7 @@
 					        <h:panelGroup id="estadoUsuario">
 
 								<h:panelGroup class="form-group"
-									rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id == '101'}">
+									>
 									<p:outputLabel value="#{messages['usuario.endereco.estado']}" for="estado" />
 									<h:selectOneMenu
 										value="#{gerenciarUsuarioMB.usuario.municipio.estado.id}" id="estado"
@@ -117,26 +117,24 @@
 									<br/>
 								</h:panelGroup>
 								
-								<h:panelGroup class="form-group"
-									rendered="#{gerenciarUsuarioMB.usuario.municipio.estado.pais.id == '102'}">
-									<p:outputLabel for="estadoText" value="#{messages['usuario.endereco.estado']}"/>
-									<p:inputText id="estadoText" styleClass="form-control"
-					            		value="#{gerenciarUsuarioMB.usuario.municipio.estado.nome}"/>
-					            	<br/>
-								</h:panelGroup>
+
 
 							</h:panelGroup>
 
 							<!-- ================================================================================================================== -->
 
 							<h:panelGroup id="municipioUsuario">
-								
+
 								<h:panelGroup class="form-group"
 									>
-									<p:outputLabel for="municipioText" value="#{messages['usuario.endereco.municipio']}"/>
-									<p:inputText id="municipioText" styleClass="form-control"
-					            		value="#{gerenciarUsuarioMB.usuario.municipio.nome}"/>
-					            	<br/>
+									<p:outputLabel value="#{messages['usuario.endereco.municipio']}" for="municipio" />
+									<h:selectOneMenu
+										value="#{gerenciarUsuarioMB.usuario.municipio.id}" id="municipio"
+										styleClass="form-control">
+										<f:selectItems value="#{gerenciarUsuarioMB.municipios}" var="municipio"
+											itemLabel="#{municipio.nome}" itemValue="#{municipio.id}" />
+									</h:selectOneMenu>
+									<br/>
 								</h:panelGroup>
 
 							</h:panelGroup>
