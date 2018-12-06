@@ -15,6 +15,8 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import br.edu.ifrs.canoas.jee.webapp.model.entity.PessoaJuridica;
 import br.edu.ifrs.canoas.jee.webapp.model.entity.Reserva;
 
 @RunWith(Arquillian.class)
@@ -37,16 +39,26 @@ public class ReservaDAOTest {
     }
 
 	@Test
-	public void testa_a_persistencia_da_usuario_em_branco () {
+	public void buscaReservaPorCriterios () {
+		Reserva reserva = new Reserva();
+		reserva.setData(new Date(16/12/2018));
+		reserva.setValor(200.00D);
+		reserva.setPessoa(criaPessoa());
+		reservaDAO.insere(reserva);
+		assertNotNull(reserva.getId());
+		assertNotNull(reservaDAO.buscaPorCriterio(String.valueOf(reserva.getData())).get(0));
+		assertNotNull(reservaDAO.buscaPorCriterio(String.valueOf(reserva.getValor())).get(0));
+		log.info("a reserva de data " + reserva.getData() + " foi persistida com o id " + reserva.getId());
 
-//		Reserva reserva = new Reserva();
-//		reserva.setData(data);
-//		reserva.setValor(200.00D);
-//		reserva.setPessoa(1);
-//		reservaDAO.insere(reserva);
-//		assertNotNull(reserva.getId());
-//		log.info(reserva.setPessoa() + " foi persistido com o id " + reserva.getId());
-
+	}
+	
+	public PessoaJuridica criaPessoa() {
+		PessoaJuridica pj = new PessoaJuridica();
+		pj.setRazaoSocial("razaoSocial");
+		pj.setCnpj("1234567891011");
+		pj.setInscricaoEstadual("inscricaoEstadual");
+		pj.setInscricaoMunicipal("inscricaoMunicipal");
+		return pj;
 	}
 
 }

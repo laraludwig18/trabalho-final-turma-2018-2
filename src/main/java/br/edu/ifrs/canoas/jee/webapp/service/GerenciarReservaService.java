@@ -41,7 +41,7 @@ public class GerenciarReservaService {
 			else 
 				reservaDAO.atualiza(reserva);
 		}
-	}
+	} 
 	
 	@SuppressWarnings("unchecked")
 	public List<Reserva> busca(String criterio) {
