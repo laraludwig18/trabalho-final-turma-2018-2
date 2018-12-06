@@ -1,5 +1,6 @@
 package br.edu.ifrs.canoas.jee.webapp.controller;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -16,8 +17,12 @@ import lombok.Data;
 @ManagedBean(name = "dtGerenciaPessoa")
 @ViewScoped
 @Data
-public class GerenciarPessoaFisicaMB {
+public class GerenciarPessoaFisicaMB implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private GerenciarPessoaFisicaService gerenciarPessoaFisicaService;
 	@Inject
