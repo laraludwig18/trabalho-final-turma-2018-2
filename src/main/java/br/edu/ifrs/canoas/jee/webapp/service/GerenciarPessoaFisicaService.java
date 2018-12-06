@@ -2,11 +2,9 @@ package br.edu.ifrs.canoas.jee.webapp.service;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
-
 import br.edu.ifrs.canoas.jee.webapp.model.dao.DiariaAvulsaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.PessoaFisicaDAO;
 import br.edu.ifrs.canoas.jee.webapp.model.dao.ReservaDAO;
@@ -25,8 +23,6 @@ public class GerenciarPessoaFisicaService {
 	@Inject
 	private ReservaDAO reservaDAO;
 
-	@Inject
-	private Logger log;
 
 	public boolean salvaPessoaFisica(PessoaFisica pessoaFisica) {
 
