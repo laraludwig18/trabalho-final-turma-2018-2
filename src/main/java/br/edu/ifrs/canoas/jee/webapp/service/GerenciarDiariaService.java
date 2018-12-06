@@ -50,14 +50,17 @@ public class GerenciarDiariaService {
 		}
 	}
 
-	public void salvaDiariaReservada(DiariaReservada diariaReservada) {
+	public Boolean salvaDiariaReservada(DiariaReservada diariaReservada) {
 		if(diariaReservada.getQtdDias() <= 0) {
 			Mensagens.define(FacesMessage.SEVERITY_ERROR, "diaria.qtdDias.invalida");
+			return false;
 		}else {
 			if (diariaReservada.getId() == null) {
 				diariaReservadaDAO.insere(diariaReservada);
+				return true;
 			}else {
 				diariaReservadaDAO.atualiza(diariaReservada);
+				return true;
 			}	
 		}
 	}
